@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portfolio</title>
+        <link rel="stylesheet" href="/CSS/style.css">
+        <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
+        <script src="/JS/script.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="icon" href="/img/moi.jpg" type="image/x-icon">
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    </head>
+    
+    <body>
+        <nav class="navbar">
+            <div class="logo">Alexandre Perez</div>
+            <ul class="nav-list">
+                <li class="menu-deroulant"><a href="/cv.pdf">Mon CV</a></li>
+                <li class="menu-deroulant"><a href="#projects">Projets</a>
+                    <ul class="sous">
+                        <li><a href="#projects"><span class="hover-underline-animation">Paris 8</span></a></li>
+                        <li><a href="#projects"><span class="hover-underline-animation">UberAlex</span></a></li>
+                        <li><a href="#projects"><span class="hover-underline-animation">R6 Packs</span></a></li>
+                    </ul>
+                </li>
+                <li class="menu-deroulant"><a href="/blog.html">Mon Blog</a></li>
+                <li class="menu-deroulant"><a href="#contact">Contactez-moi</a></li>
+                <li class="menu-deroulant"><a href="#">Mes réseaux</a>
+                    <ul class="sous">
+                        <li><a href="https://www.linkedin.com/in/alexandre-perez-b3309b267/"><span class="hover-underline-animation">LinkedIn</span></a></li>
+                        <li><a href="https://profile.indeed.com/?hl=fr_FR&co=FR&from=gnav-jobseeker-profile--profile-one-frontend"><span class="hover-underline-animation">Indeed</span></a></li>
+                        <li><a href="https://github.com/Hallexxx"><span class="hover-underline-animation">GitHub</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="navigation">
+            <input type="checkbox" class="navigation__checkbox" id="nav-toggle">
+            <label for="nav-toggle" class="navigation__button">
+              <span class="navigation__icon" aria-label="toggle navigation menu"></span>
+            </label>
+            <div class="navigation__background"></div>
+      
+            <nav class="navigation__nav" role="navigation">
+                <ul class="navigation__list">
+                    <li class="navigation__item">
+                    <a href="cv.pdf" class="navigation__link"><span>01</span>Mon CV</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="#projects" class="navigation__link"><span>02</span>Projets</a>
+                        <ul class="sous">
+                            <li><a href="#projects"><span class="hover-underline-animation">Paris 8</span></a></li>
+                            <li><a href="#projects"><span class="hover-underline-animation">UberAlex</span></a></li>
+                            <li><a href="#projects"><span class="hover-underline-animation">R6 Packs</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="/blog.html" class="navigation__link"><span>03</span>Mon Blog</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="/index.html#contact" class="navigation__link"><span>04</span>Contactez-moi</a>
+                    </li>
+                    <li class="navigation__item">
+                    <a href="#" class="navigation__link"><span>05</span>Mes réseaux</a>
+                        <ul class="sou">
+                            <li class="navigation__items"><a href="https://www.linkedin.com/in/alexandre-perez-b3309b267/" class="navigation__links"><span class="hover-underline-animation">LinkedIn</span></a></li>
+                            <li class="navigation__items"><a href="https://profile.indeed.com/?hl=fr_FR&co=FR&from=gnav-jobseeker-profile--profile-one-frontend" class="navigation__links"><span class="hover-underline-animation">Indeed</span></a></li>
+                            <li class="navigation__items"><a href="https://github.com/Hallexxx" class="navigation__links"><span class="hover-underline-animation">GitHub</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <section id="home">
+            <div class="container scroll-animation">
+                <div class="image-container">
+                    <img src="/img/moi.jpg" alt="Image" class="rounded-image">
+                    <div class="overlay-text">
+                        <p>Nom : Perez <br></p>
+                        <p>Prénom : Alexandre <br></p>
+                        <p>Téléphone : 0667619382<br></p>
+                        <p>Etude : Bachelor 3 Informatique <br></p>
+                        <p>E-mail : alex.perezab470@gmail.com <br></p>
+                        <p>Baccalauréat : Baccalauréat professionnel SN Mention Bien</p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="pres">
+                        <div class="text">
+                            <h1>Bienvenue<br></h1>
+                                <p>
+                                    Je m'appelle <span id="test">Alexandre Perez</span>, je suis actuellement en <em>troisième</em> année de Bachelor <em>Informatique</em> à l'école Ynov.<br>
+                                    J'aime le développement WEB <em>Front/End</em> et le développement Jeu Vidéo notamment sur <em>Unity</em> que j'ai déjà pratiqué.
+                                </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h1 class="title">Mes Compétences</h1>
+            <div>
+                <div class="experience-details-container">
+                    <div class="about-containers">
+                        <div class="details-container">
+                            <h2 class="experience-sub-title">Frontend Development</h2>
+                            <div class="article-container">
+                                <article>
+                                    <img src="../img/checkmark.png" alt="Experience icon" class="icon"/>
+                                    <div>
+                                        <h3>HTML</h3>
+                                        <p>Avancé</p>
+                                    </div>
+                                </article>
+                                <article>
+                                    <img src="../img/checkmark.png" alt="Experience icon" class="icon"/>
+                                    <div>
+                                        <h3>CSS</h3>
+                                        <p>Intermédiaire</p>
+                                    </div>
+                                </article>
+                                <article>
+                                    <img src="../img/checkmark.png" alt="Experience icon" class="icon"/>
+                                    <div>
+                                        <h3>Unreal</h3>
+                                        <p>Basic</p>
+                                    </div>
+                                </article>
+                                <article>
+                                    <img src="../img/checkmark.png" alt="Experience icon" class="icon"/>
+                                    <div>
+                                        <h3>JavaScript</h3>
+                                        <p>Intermédiaire</p>
+                                    </div>
+                                </article>
+                                <article>
+                                    <img src="../img/checkmark.png" alt="Experience icon" class="icon"/>
+                                    <div>
+                                        <h3>SQL</h3>
+                                        <p>Intermédiaire</p>
+                                    </div>
+                                </article>
+                                <article>
+                                    <img src="../img/checkmark.png" alt="Experience icon" class="icon"/>
+                                    <div>
+                                        <h3>Unity</h3>
+                                        <p>Intermédiaire</p>
+                                    </div>
+                                </article>
+                                <article>
+                                    <img src="../img/checkmark.png" alt="Experience icon" class="icon"/>
+                                    <div>
+                                        <h3>MongoDB</h3>
+                                        <p>Basic</p>
+                                    </div>
+                                </article>
+                                <article>
+                                    <img src="../img/checkmark.png" alt="Experience icon" class="icon"/>
+                                    <div>
+                                        <h3>C#</h3>
+                                        <p>Intermédiaire</p>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                        <div class="details-container">
+                            <h2 class="experience-sub-title">Frontend Development</h2>
+                            <div class="article-container">
+                                <article>
+                                    <img src="../img/checkmark.png" alt="Experience icon" class="icon"/>
+                                    <div>
+                                        <h3>PHP</h3>
+                                        <p>Basic</p>
+                                    </div>
+                                </article>
+                                <article>
+                                    <img src="../img/checkmark.png" alt="Experience icon" class="icon"/>
+                                    <div>
+                                        <h3>Node JS</h3>
+                                        <p>Intermédiaire</p>
+                                    </div>
+                                </article>
+                                <article>
+                                    <img src="../img/checkmark.png" alt="Experience icon" class="icon"/>
+                                    <div>
+                                        <h3>JAVA</h3>
+                                        <p>Basic</p>
+                                    </div>
+                                </article>
+                                <article>
+                                    <img src="../img/checkmark.png" alt="Experience icon" class="icon"/>
+                                    <div>
+                                        <h3>Git</h3>
+                                        <p>Intermédiaire</p>
+                                    </div>
+                                </article>
+                                <article>
+                                    <img src="../img/checkmark.png" alt="Experience icon" class="icon"/>
+                                    <div>
+                                        <h3>C++</h3>
+                                        <p>Basic</p>
+                                    </div>
+                                </article>
+                                <article>
+                                    <img src="../img/checkmark.png" alt="Experience icon" class="icon"/>
+                                    <div>
+                                        <h3>Express JS</h3>
+                                        <p>Intermédiaire</p>
+                                    </div>
+                                </article>
+                                <article>
+                                    <img src="../img/checkmark.png" alt="Experience icon" class="icon"/>
+                                    <div>
+                                        <h3>Python</h3>
+                                        <p>Intermédiaire</p>
+                                    </div>
+                                </article>
+                                <article>
+                                    <img src="../img/checkmark.png" alt="Experience icon" class="icon"/>
+                                    <div>
+                                        <h3>Django</h3>
+                                        <p>Intermédiaire</p>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="gray-bg">
+            <h1 class="title">Mes Projets</h1>
+            <div class="experience-details-container">
+                <div class="about-containers">
+                    <div class="details-container color-container">
+                        <div>
+                            <div class="article-container">
+                                <a href="https://github.com/Fr33Ze06/R6_Packs.git"><img src="../img/r.png" alt="Project 3" class="project-img"/></a>
+                            </div>
+                            <div class="project-info">
+                                <h2 class="experience-sub-title project-title">Site R6 Packs</h2>
+                                <h5 class="project-description">
+                                    Conception et développement d'un site web dédié à Rainbow Six Siege, <br>
+                                    axé sur la répertoriation des skins du jeu. <br> 
+                                    Intégration d'un système de recherche, de connexion avec un inventaire , <br>
+                                    et de l'ouverture de packs, s'inspirant du style du site Hellcase.</h5>
+                            </div>
+                        </div>
+                        <div class="btn-container">
+                            <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/FreeZe060/R6_Packs'">Live Demo</button>
+                        </div>
+                    </div>
+                    <div class="details-container color-container1">
+                        <div>
+                            <div class="article-container">
+                                <img src="../img/uber.jpg" alt="Project 3" class="project-img"/>
+                            </div>
+                            <div class="project-info">
+                                <h2 class="experience-sub-title project-title">Site UberAlex</h2>
+                                <h5 class="project-description">
+                                    UberAlex, développé en Node.js, permet aux restaurateurs de vendre en ligne sans livreurs professionnels. <br>
+                                    Les utilisateurs reçoivent des notifications pour effectuer des livraisons et gagnent une petite contribution. <br>
+                                    Un système de vérification d'identité assure la sécurité. <br>
+                                    Le projet favorise l'entraide de proximité et réduit les coûts de livraison.</h5>
+                            </div>
+                        </div>
+                        <div class="btn-container">
+                            <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/FreeZe060/UberAlex'">Live Demo</button>
+                        </div>
+                    </div>
+                    <div class="details-container color-container">
+                        <div>
+                            <div class="article-container">
+                                <img src="../img/par.svg" alt="Project 3" class="project-img"/>
+                            </div>
+                            <div class="project-info">
+                                <h2 class="experience-sub-title project-title">Site Paris 8</h2>
+                                <h5 class="project-description">
+                                    Conception et développement d'un site web en Python en utilisant le framework Django
+                                    permet la gestion des employés via un système d'authentification et des fonctionnalités CRUD (Create, Read, Update, Delete). <br> 
+                                    Un tableau de bord administratif facilite la modification, l'ajout et la suppression des informations des employés.</h5>
+                            </div>
+                        </div>
+                        <div class="btn-container">
+                            <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/Hallexxx/Stage_Paris_8'">Live Demo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container_contact">
+                <div class="row">
+                    <h1>Contactez-moi</h1>
+                </div>
+                <div class="input-container">
+                    <form id="contactForm">
+                        <div class="col-xs-12">
+                            <div class="styled-input wide">
+                                <input type="text" id="name" name="name" required />
+                                <label class="lab">Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="styled-input">
+                                <input type="email" id="email" name="email" required />
+                                <label class="lab">Email</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="styled-input" style="float:right;">
+                                <input type="text" id="phone" name="phone" required />
+                                <label class="lab">Phone Number</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="styled-input wide">
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                                <label class="lab">Message</label>
+                            </div>
+                        </div>
+                        <div class="g-recaptcha" data-sitekey="6LeaWhoqAAAAAFDz-eYRkmw2Op4Die9NuFP5I6lr"></div>
+                        <div class="col-xs-12">
+                            <button type="submit" class="btn-lrg submit-btn">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+            emailjs.init("SMtd3raQv-lBlSyUv"); // Remplacez par votre User ID EmailJS
+
+            document.getElementById('contactForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const serviceID = 'service_tcrq5ix'; // Remplacez par votre Service ID EmailJS
+                const templateID = 'template_17tai3g'; // Remplacez par votre Template ID EmailJS
+
+                emailjs.sendForm(serviceID, templateID, this)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    alert('Message envoyé avec succès!');
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert('Échec de l\'envoi du message.');
+                });
+            });
+            });
+        </script>
+
+        <a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
+        <footer>
+            <div class="footer-col">
+                <div class="social-links">
+                    <a href="https://twitter.com/HallexxP"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/Hallexxx"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/hallexx__/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/alexandre-perez-b3309b267/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <p>© 2023 Alexandre Perez - Tous droits réservés</p>
+        </footer>
+    </body>
+</html>
