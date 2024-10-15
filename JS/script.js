@@ -1,8 +1,8 @@
 let currentProjectIndex = 0;
 const projectUrls = [
-    "../resto_template/HTML/restaurant1.html",
-    "../barber_template/HTML/barber1.html",
-    "../garage_template/HTML/garage1.html",
+    "../resto_template/HTML/restaurant.html",
+    "../barber_template/HTML/barber.html",
+    "../garage_template/HTML/garage.html",
     "../garage_template/HTML/garage2.html"
 ];
 
