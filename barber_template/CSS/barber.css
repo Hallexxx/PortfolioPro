@@ -1,0 +1,94 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.8); /* Fond de la navbar noir avec transparence */
+}
+
+.nav-link {
+    color: #fff;
+    font-size: 18px;
+}
+
+.nav-link.active {
+    color: #ffb400; /* Couleur orange pour le lien actif */
+}
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    background: url('/img/barbe.jpg') no-repeat center center/cover; /* Image du barbershop */
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Sombre overlay sur l'image */
+}
+
+.hero-content {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.hero-content h2 {
+    font-size: 6rem;
+    font-weight: bold;
+    margin-top: -20px;
+}
+
+.scroll-down {
+    font-size: 2rem;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-decoration: none;
+}
+
+.scroll-down:hover {
+    color: #ffb400; /* Changement de couleur au hover */
+}
+
+/* Our Story Section */
+.our-story-section {
+    background-color: #fff;
+}
+
+.our-story-section h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffb400; /* Couleur orange */
+}
+
+.our-story-section p {
+    font-size: 1.25rem;
+    color: #333;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+}
+
+footer a {
+    color: #fff;
+}
+
+footer a:hover {
+    color: #ffb400;
+}

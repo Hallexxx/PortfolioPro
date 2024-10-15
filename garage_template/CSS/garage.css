@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Reset and Body */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* Updated font */
+    background-color: #111;
+    color: #fff;
+}
+
+/* Navbar Styles */
+.navbar-brand {
+    font-size: 24px;
+}
+
+.nav-link {
+    font-size: 18px;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Place la vidéo derrière le contenu */
+}
+
+.hero {
+    height: 100vh;
+    position: relative;
+}
+
+.hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero .content {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+}
+
+.social-icons a {
+    color: #fff;
+}
+
+.social-icons a:hover {
+    color: #ccc;
+}
+
+/* Services Section */
+/* .services {
+    background-color: #222;
+} */
+
+.section-title {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.service-item h3 {
+    font-size: 24px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.service-item p {
+    font-size: 16px;
+    color: #ccc;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+}
+
+
+/* Section Projets */
+.projets {
+    background-color: #f5f5f5;
+}
+
+.projets h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.projets p {
+    font-size: 18px;
+    color: #666;
+}
+
+.projets .img-fluid {
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+/* Section Histoire */
+.histoire {
+    background-color: #e6e4e1;
+    background-image: url('histoire-background-pattern.png'); /* Ajouter un pattern similaire à l'image */
+    background-size: cover;
+    padding: 60px 0;
+}
+
+.histoire h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.histoire p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.histoire .text-muted {
+    color: #777;
+}
+
+
+.navbar {
+    justify-content: center; /* Center navbar elements */
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 30px; /* Space between navbar items */
+}
+
+.navbar-brand {
+    font-size: 24px;
+    margin-right: auto;
+}
+
+.user-icon {
+    position: relative;
+}
+
+.user-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.user-icon .fa-chevron-down {
+    margin-left: 5px;
+    transition: transform 0.3s;
+}
+
+.user-icon.active .fa-chevron-down {
+    transform: rotate(180deg); /* Rotate when active */
+}
+
+.user-icon .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background-color: #444;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.user-icon.active .dropdown-menu {
+    display: block;
+}
+
+/* Services Section */
+.services {
+    background: url('/img/blac.jpg') no-repeat center center/cover; /* Add a background image */
+    padding: 80px 0;
+}
+
+.section-title {
+    font-size: 36px; /* Increase title size */
+    margin-bottom: 30px; /* Add more space below title */
+    color: #fff;
+}
+
+.service-item {
+    margin-bottom: 40px;
+}
+
+.service-item h3 {
+    font-size: 28px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.service-item p {
+    font-size: 18px;
+    color: #ddd;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    padding: 40px 0;
+    color: #ccc;
+}
+
+footer .footer-items {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px 0;
+}
+
+footer .footer-items div {
+    margin: 10px;
+}
+
+/* Section Où nous trouver */
+.map-section {
+    background-color: #222;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.map-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.map {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    height: 400px;
+}
+
+.map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 10px;
+}
+
+.map .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.map.active .overlay {
+    display: none; /* Hide overlay when active */
+}
+
