@@ -31,6 +31,15 @@ function previousProject() {
     document.getElementById("popupIframe").src = projectUrls[currentProjectIndex];
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("projectPopup").addEventListener("click", function(event) {
+        const popupContent = document.querySelector(".popup-content");
+        console.log("Clicked at:", event.target); // Debug
+        if (!popupContent.contains(event.target)) { 
+            closeProjectPopup();
+        }
+    });
+});
 document.addEventListener("scroll", function() {
     var sections = document.querySelectorAll("section");
     var navLinks = document.querySelectorAll(".nav-link");
