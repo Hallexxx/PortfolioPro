@@ -356,7 +356,7 @@ p, a, .navbar-brand {
     top: 50%;
     transform: translateY(-50%);
     background: none;
-    color: #fff;
+    color: #F0AD4E; 
     border: none;
     padding: 10px;
     cursor: pointer;
@@ -377,11 +377,11 @@ p, a, .navbar-brand {
 }
 
 .tarif-separator {
-    border-color: #F0AD4E; /* Ligne séparatrice jaune */
+    border-color: #F0AD4E;
 }
 
 .tarif-item span {
-    font-size: 1.1rem; /* Ajuste la taille du texte pour les tarifs */
+    font-size: 1.1rem; 
 }
 
 #contact {
@@ -474,4 +474,17 @@ footer {
 footer p {
     margin: 0; 
     font-size: 0.9rem; 
+}
+
+.link-hover {
+    text-decoration: none; 
+    position: relative; /* Nécessaire pour le ::after */
+    color: #f8f9fa; /* Couleur de base des liens */
+    transition: color 0.3s ease; /* Transition douce pour la couleur */
+}
+
+footer .bi:hover {
+    color: #f0ad4e; 
+    transform: scale(1.2); 
+    transition: transform 0.3s ease, color 0.3s ease;
 }
