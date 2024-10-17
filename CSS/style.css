@@ -478,9 +478,9 @@ footer p {
 
 .link-hover {
     text-decoration: none; 
-    position: relative; /* Nécessaire pour le ::after */
-    color: #f8f9fa; /* Couleur de base des liens */
-    transition: color 0.3s ease; /* Transition douce pour la couleur */
+    position: relative; 
+    color: #f8f9fa;
+    transition: color 0.3s ease;
 }
 
 footer .bi:hover {
