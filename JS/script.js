@@ -3,7 +3,9 @@ const projectUrls = [
     "../resto_template/HTML/restaurant.html",
     "../barber_template/HTML/barber.html",
     "../garage_template/HTML/garage.html",
-    "../garage_template/HTML/garage2.html"
+    "../garage_template/HTML/garage2.html",
+    "../travaux_template/HTML/travaux.html",
+    "../hotel_template/HTML/hotel.html"
 ];
 
 function openProjectPopup(index) {

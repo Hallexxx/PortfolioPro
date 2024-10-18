@@ -1,0 +1,57 @@
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: #fff;
+    color: #333;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+    margin-right: 15px;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #f0ad4e;
+}
+
+.hero {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+}
+
+.hero h1 {
+    font-size: 48px;
+    color: #333;
+}
+
+.hero p {
+    font-size: 24px;
+    color: #777;
+}
+
+.booking-section input, .booking-section button {
+    margin: 10px 5px;
+}
+
+.about-section, .services-section, .gallery-section {
+    background-color: #f8f9fa;
+}
+
+.about-section h2, .services-section h2, .gallery-section h2 {
+    color: #333;
+}
+
+.services-section h4 {
+    margin-top: 20px;
+    color: #333;
+}
+
+.gallery-section img {
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 0;
+}
