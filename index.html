@@ -501,20 +501,25 @@
                         <div class="input-container">
                             <form id="contactForm">
                                 <div class="styled-input wide">
-                                    <input type="text" id="name" name="name" required />
+                                    <input type="text" id="name" name="name" pattern="[a-zA-Z]{2,}" required />
                                     <label class="lab">Nom</label>
+                                    <small id="nom-error" class="error-message"></small>
                                 </div>
                                 <div class="styled-input">
                                     <input type="email" id="email" name="email" required />
                                     <label class="lab">Email</label>
+                                    <small id="email-error" class="error-message"></small>
                                 </div>
                                 <div class="styled-input">
-                                    <input type="text" id="phone" name="phone" required />
+                                    <input required type="text" id="phone" name="phone" pattern="^(0[67]|\+33[67])\d{8}$"/>
                                     <label class="lab">Numéro de téléphone</label>
+                                    <small id="telephone-error" class="error-message"></small>
+					                <small class="little">format 0601020304 - 0701020304 - +33601020304 - +33701020304</small>
                                 </div>
                                 <div class="styled-input wide">
-                                    <textarea id="message" name="message" rows="5" required></textarea>
+                                    <textarea id="message" name="message" rows="5" minlength="30" required></textarea>
                                     <label class="lab">Message</label>
+                                    <small id="message-error" class="error-message"></small>
                                 </div>
                                 <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
                                 <button type="submit" class="btn-lrg submit-btn">Envoyer le Message</button>
