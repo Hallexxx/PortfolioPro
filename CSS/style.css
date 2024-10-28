@@ -10,6 +10,9 @@ p, a, .navbar-brand {
     font-weight: 400;
 }
 
+
+/************************************************** NAVBAR **************************************************/
+
 .navbar {
     padding: 1rem 0;
     position: fixed;
@@ -55,6 +58,8 @@ p, a, .navbar-brand {
 .navbar-nav .nav-link.active {
     color: #f0ad4e;
 }
+
+/************************************************** HOME **************************************************/
 
 #home {
     height: 100vh;
@@ -122,6 +127,8 @@ p, a, .navbar-brand {
     }
 }
 
+/************************************************** ABOUT **************************************************/
+
 .about-section {
     padding: 50px 0;
     background-color: #000;
@@ -187,6 +194,8 @@ p, a, .navbar-brand {
     }
 }
 
+/************************************************** SKILLS **************************************************/
+
 .skill-container {
     position: relative;
     margin-bottom: 30px;
@@ -232,6 +241,8 @@ p, a, .navbar-brand {
     background: linear-gradient(to right, #f0ad4e 0%, #f0ad4e 100%);
 }
 
+/************************************************** RESUME **************************************************/
+
 #resume {
     background-color: #111; 
 }
@@ -263,6 +274,8 @@ p, a, .navbar-brand {
 .text-warning {
     color: #f0ad4e; 
 }
+
+/************************************************** PROJECT **************************************************/
 
 #projects {
     background-color: #111;
@@ -371,6 +384,8 @@ p, a, .navbar-brand {
     right: 20px;
 }
 
+/************************************************** TARIFS **************************************************/
+
 .text-golds {
     color: #F0AD4E; 
     margin-bottom: 2rem;
@@ -383,6 +398,8 @@ p, a, .navbar-brand {
 .tarif-item span {
     font-size: 1.1rem; 
 }
+
+/************************************************** CONTACT **************************************************/
 
 #contact {
     background-color: #111; 
@@ -408,7 +425,7 @@ p, a, .navbar-brand {
 
 p.text-warning {
     font-size: 1.1rem; 
-    margin-top: 10px; 
+    margin-top: 10px;
 }
 
 .contact-icon i {
@@ -466,6 +483,14 @@ p.text-warning {
 .btn-lrg:hover {
     background-color: #e59e0e; 
 }
+
+.little{
+    font-size: 0.8rem; 
+    color: #f0ad4e;
+    margin-left: 9px;
+}
+
+/************************************************** FOOTER **************************************************/
 
 footer {
     background-color: #000;
