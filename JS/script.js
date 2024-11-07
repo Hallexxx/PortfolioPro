@@ -36,12 +36,13 @@ function previousProject() {
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("projectPopup").addEventListener("click", function(event) {
         const popupContent = document.querySelector(".popup-content");
-        console.log("Clicked at:", event.target); // Debug
+        console.log("Clicked at:", event.target); 
         if (!popupContent.contains(event.target)) { 
             closeProjectPopup();
         }
     });
 });
+
 document.addEventListener("scroll", function() {
     var sections = document.querySelectorAll("section");
     var navLinks = document.querySelectorAll(".nav-link");
@@ -83,54 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// document.addEventListener('DOMContentLoaded', function () {
-//     document.getElementById("projectPopup").addEventListener("click", function(event) {
-//         const popupContent = document.querySelector(".popup-content");
-//         if (!popupContent.contains(event.target)) {
-//             closeProjectPopup(); // Ferme la popup
-//         }
-//     });
-//     let experienceAnimated = false;
-    
-//     gsap.from(".container .scroll-animation", { opacity: 0, y: 50, duration: 1, delay: 0.5 });
-    
-//     gsap.from("#experience .article-container article", { opacity: 0, x: -50, stagger: 0.2, duration: 0.8, delay: 1 });
-    
-//     gsap.from("#projects .details-container", { opacity: 0, y: 30, stagger: 0.2, duration: 1, delay: 1.5 });
-    
-//     gsap.from('.logo', { opacity: 0, duration: 1, delay: 0.5, y: -30, ease: 'power2.out' });
-//     gsap.from('.nav-list li', { opacity: 0, duration: 1, delay: 0.8, stagger: 0.2, ease: 'power2.out' });
-    
-//     document.addEventListener("scroll", function () {
-//         const experienceSection = document.getElementById("experience");
-//         const rect = experienceSection.getBoundingClientRect();
-        
-//         if (rect.top < window.innerHeight && rect.bottom > 0 && !experienceAnimated) {
-//             experienceAnimated = true;
-            
-//             gsap.to(experienceSection, { opacity: 1, duration: 1, ease: "power2.out" });
-            
-//             const experienceTitle = experienceSection.querySelector(".title");
-//             gsap.to(experienceTitle, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" });
-            
-//             const experienceArticles = document.querySelectorAll("#experience .article-container article");
-//             experienceArticles.forEach((article, index) => {
-//                 gsap.to(article, { opacity: 1, x: 0, duration: 0.8, ease: "power2.out", delay: index * 0.2 });
-//             });
-//         }
-//     });
-// });
-
-
-
-// function isElementInViewport(el) {
-//     const rect = el.getBoundingClientRect();
-//     return (
-//         rect.top >= 0 &&
-//         rect.left >= 0 &&
-//         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-//         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-//     );
-// }
-
-
+AOS.init({
+    duration: 1500,
+    once: true 
+});
