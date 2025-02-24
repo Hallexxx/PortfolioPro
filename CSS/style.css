@@ -85,9 +85,32 @@ p, a, .navbar-brand {
     color: #fff;
     font-weight: bold;
     line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.intro span {
+.intro-line {
+    display: flex;
+    align-items: center;
+}
+
+.intro-text {
+    margin-right: 0.5rem;
+    color: white;
+}
+
+@media (min-width: 768px) {
+    .intro {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .intro-line {
+        margin-right: 1rem;
+    }
+}
+
+#typed {
     color: #f0ad4e;
 }
 
