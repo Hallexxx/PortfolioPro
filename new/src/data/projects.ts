@@ -241,7 +241,7 @@ export const projects: Project[] = [
     images: ["/ifsi3.webp","/ifsi2.webp","/ifsi1.webp"],
     demoUrl: "http://ifsi-argenteuil.fr/",
     featured: true,
-    date: "2025-09-29",
+    date: "2025-01-01",
     context:
       "Dans le cadre de mon alternance au sein de l’IFSI, j’ai participé à la maintenance et à l’évolution des outils numériques de l’établissement.\n" +
       "L’objectif principal était d’améliorer l’accès des élèves aux informations (planning, notes, documents) via un extranet web et une application mobile, tout en modernisant les process existants.",
@@ -416,7 +416,7 @@ export const projects: Project[] = [
     images: ["/universite_blanc.png"],
     githubUrl: "https://github.com/Hallexxx/Stage_Paris_8",
     featured: true,
-    date: "2024-12-08",
+    date: "2024-01-06",
     context:
       "Le site web a été créé en Python en utilisant le framework Django pour offrir une plateforme de gestion des employés.\nIl utilise GoogleCloud pour le stockage des données en ligne, assurant ainsi une gestion efficace et sécurisée des informations.\nLe site comprend un système d'authentification permettant aux utilisateurs de se connecter, de s'inscrire et d'accéder à des fonctionnalités d'administration.\nParmi ces fonctionnalités, on trouve les opérations CRUD (Create, Read, Update, Delete) pour gérer les informations des employés.\nDe plus, un tableau de bord administratif a été mis en place pour faciliter la modification, l'ajout et la suppression des données.",
     objectives: [
@@ -449,7 +449,7 @@ export const projects: Project[] = [
     cover: "/unreal_blanc.png",
     images: ["/unreal_blanc.png"],
     featured: false,
-    date: "2024-12-08",
+    date: "2024-01-01",
     context:
       "Le projet consiste à créer un prototype du jeu vidéo Metaphonia, un JRPG 3D au tour par tour de style manga.\nMetaphonia raconte l'histoire de Kazuma, un lycéen venant d'une famille pauvre, qui découvre une IA nommée Metaphonia sur son téléphone.\nLe jeu vise à offrir un divertissement via son univers et son gameplay, tout en transmettant des notions de morale.",
     objectives: [
@@ -487,7 +487,7 @@ export const projects: Project[] = [
     demoUrl: "https://meteo-vue.onrender.com",
     githubUrl: "https://github.com/Hallexxx/Meteo_Vue",
     featured: false,
-    date: "2024-12-08",
+    date: "2024-01-06",
     context:
       "À compléter : ajoute ici le contexte précis (API météo utilisée, pages, fonctionnalités).",
     objectives: ["À compléter."],
