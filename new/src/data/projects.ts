@@ -19,6 +19,65 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "polewin",
+    title: "PoleWin — App communautaire F1 (Prédictions, Mini-Fantasy & Live Chat)",
+    description:
+      "PoleWin est une plateforme web + mobile dédiée aux fans de Formule 1 : prédictions rapides, mini-fantasy, chat live pendant les sessions et progression via profils/badges.",
+    tags: ["Projet", "F1", "Community", "React", "React Native", "NestJS", "Express", "TypeScript", "PostgreSQL"],
+    cover: "../public/polewin.png",
+    images: ["../public/polewin.png"],
+    githubUrl: "https://github.com/orgs/PoleWin-Project/repositories",
+    featured: true,
+    date: "2026-01-01",
+    context:
+      "PoleWin est né du constat qu’il manque une expérience F1 réellement communautaire : les applis officielles sont centrées sur les données/vidéos, et les jeux existants sont souvent trop complexes.\n" +
+      "L’objectif : créer un hub où les fans vivent les Grands Prix ensemble (chat live), jouent avec des prédictions simples (5 actions max) et gagnent des badges/XP, tout en impliquant la communauté dans la roadmap (Early 50/100, votes, devlog).\n" +
+      "Le projet vise une base engagée (Discord + liste d’attente) et un modèle économique durable (badges, passes, clubs premium) sans dégrader l’expérience.",
+    objectives: [
+      "Créer un hub communautaire F1 (Europe/francophone) avec chat live par session (essais, qualifs, course)",
+      "Proposer des prédictions rapides et une mini-fantasy (ligues privées, scores simples, classements)",
+      "Mettre en place profils, XP et badges collectors (Early 100, streaks, perfect picks…)",
+      "Lancer un programme Early (accès MVP, rôles spéciaux Discord, votes roadmap)",
+      "Construire une base technique solide (PostgreSQL + API TS) pour évoluer vers statistiques avancées et tournois saisonniers"
+    ],
+    features: [
+      "Chat en direct : salons live (essais/qualifs/course), réactions, sondages, hot takes",
+      "Prédictions : picks rapides (5 actions max) avant qualif/GP, verrouillage à l’heure limite",
+      "Mini-fantasy : ligues privées, scoring simple, classement global et par ligue",
+      "Profils : points/XP, historique de prédictions, personnalisation du pseudo",
+      "Badges : Early 50/100, Weekly Streak, Perfect Pick, badges saisonniers",
+      "Programme Early : onboarding, whitelist, rôles spéciaux dans l’app et Discord",
+      "Devlog & Roadmap : journal des updates, votes communautaires sur les futures features",
+      "Intégration Discord : rôles automatiques, accès simplifié via le serveur officiel",
+      "Admin tools (MVP) : modération chat, gestion des contenus, contrôle des abus (spam, reports)"
+    ],
+    stack: [
+      "PostgreSQL",
+      "NestJS (TypeScript) / Express (API REST)",
+      "React (Web)",
+      "React Native (Mobile)",
+      "REST API",
+      "JWT / Auth",
+      "WebSocket (chat temps réel)",
+      "Docker (dev)",
+      "CI/CD (à terme)"
+    ],
+    challenges:
+      "• Temps réel : concevoir un chat live stable (WebSocket), gestion de rooms (par session) et modération (anti-spam, reports).\n" +
+      "• Scoring & équité : définir un système de points simple mais robuste (picks limités, verrouillage, tie-breakers) + recalcul fiable.\n" +
+      "• Modélisation PostgreSQL : structurer users, picks, sessions, ligues, badges, XP, messages, notifications sans incohérences.\n" +
+      "• Synchronisation web/mobile : partager la logique (contrats API), gérer états et latence (notifs, live updates, refresh).\n" +
+      "• Auth & sécurité : JWT, protections des endpoints, prévention abus (rate limiting, validations), et gestion des rôles (admin/modo/early).\n" +
+      "• Scalabilité : prévoir montée en charge lors des week-ends de GP (pics chat + prédictions) et stockage de logs.\n" +
+      "• Juridique & données : clarifier la légalité des gains/concours (notamment mineurs), et l’usage des données F1 (public vs restreint) + conformité.\n" +
+      "• Produit & communauté : mettre en place un MVP focus (chat + picks + profils) tout en collectant les retours early et itérer vite.",
+    results:
+      "• Concept et roadmap définis : MVP centré sur chat live, prédictions, ligues, profils & badges.\n" +
+      "• Base technique posée : architecture API TypeScript + PostgreSQL, préparation front web React et app React Native.\n" +
+      "• Stratégie communauté : Discord + liste d’attente + programme Early (50/100) pour guider l’évolution par retours utilisateurs.\n" +
+      "• Fondation pour évoluer : stats avancées, replays synchronisés, tournois saisonniers et contenus UGC."
+  },
+  {
     id: "alternance-kletel-multimedia",
     title: "Alternance Développeur Web & Applications (Kletel Multimédia)",
     description:
@@ -26,8 +85,6 @@ export const projects: Project[] = [
     tags: ["Alternance", "React", "React Native", "4D", "Apache", "SSL", "WordPress"],
     cover: "../public/kletel.png",
     images: ["../public/kletel.png"],
-    demoUrl: "https://example.com",
-    githubUrl: "https://github.com",
     featured: true,
     date: "2025-10-01",
     context:
@@ -135,8 +192,8 @@ export const projects: Project[] = [
     tags: ["Projets scolaires", "React", "Node.js", "Express", "MySQL", "TailwindCss"],
     cover: "../public/yshare.png",
     images: ["../public/yshare.png"],
-    demoUrl: "https://example.com",
-    githubUrl: "https://github.com/Hallexxx/Yshare",
+    demoUrl: "https://yshare-3jbg.onrender.com",
+    githubUrl: "https://github.com/FreeZe060/Yshare",
     featured: true,
     date: "2025-06-30",
     context:
@@ -182,6 +239,7 @@ export const projects: Project[] = [
     tags: ["Alternance", "WordPress", "Web", "Mobile", "Systèmes"],
     cover: "../public/ifsi.png",
     images: ["../public/ifsi.png"],
+    demoUrl: "http://ifsi-argenteuil.fr/",
     featured: true,
     date: "2025-09-29",
     context:
@@ -222,7 +280,7 @@ export const projects: Project[] = [
     tags: ["Projets scolaires", "Node.js", "Angular", "PHP", "Laravel"],
     cover: "../public/r.png",
     images: ["../public/r.png"],
-    demoUrl: "https://micro-creche-site.com",
+    demoUrl: "https://planetecreche.com",
     githubUrl: "https://github.com/Hallexxx/LaravelAngular",
     featured: true,
     date: "2024-12-08",
@@ -268,7 +326,7 @@ export const projects: Project[] = [
     tags: ["Projets scolaires", "Symfony", "PHP"],
     cover: "../public/r.png",
     images: ["../public/r.png"],
-    demoUrl: "https://votre-api-musique.com",
+    demoUrl: "https://apiplatform-symfony.onrender.com/",
     githubUrl: "https://github.com/Hallexxx/ApiPlatform_symfony",
     featured: false,
     date: "2024-12-06",
@@ -314,7 +372,7 @@ export const projects: Project[] = [
     tags: ["Projets scolaires", "Node.js"],
     cover: "../public/ubers.png",
     images: ["../public/ubers.png"],
-    demoUrl: "https://example.com",
+    demoUrl: "https://uberalex.onrender.com",
     githubUrl: "https://github.com/FreeZe060/UberAlex",
     featured: true,
     date: "2024-12-08",
@@ -391,8 +449,6 @@ export const projects: Project[] = [
     tags: ["Projets scolaires", "Unreal(BluePrint)"],
     cover: "../public/unreal.png",
     images: ["../public/unreal.png"],
-    demoUrl: "https://example.com",
-    githubUrl: "https://github.com",
     featured: false,
     date: "2024-12-08",
     context:
@@ -429,7 +485,7 @@ export const projects: Project[] = [
     tags: ["Projets personnels", "VueJs"],
     cover: "../public/r.png",
     images: ["../public/r.png"],
-    demoUrl: "https://example.com",
+    demoUrl: "https://meteo-vue.onrender.com",
     githubUrl: "https://github.com/Hallexxx/Meteo_Vue",
     featured: false,
     date: "2024-12-08",
@@ -450,8 +506,8 @@ export const projects: Project[] = [
     tags: ["Projets scolaires", "Angular", "TypeScript", "TailwindCss"],
     cover: "../public/harry.png",
     images: ["../public/harry.png"],
-    demoUrl: "https://example.com",
-    githubUrl: "https://github.com/Hallexxx/harry-potter-angular",
+    demoUrl: "https://angular-harry.onrender.com",
+    githubUrl: "https://github.com/FreeZe060/Angular/tree/ProjetGroupe",
     featured: true,
     date: "2024-12-10",
     context:
@@ -492,7 +548,6 @@ export const projects: Project[] = [
     tags: ["Projets scolaires", "Unity", "C#"],
     cover: "../public/unity.png",
     images: ["../public/unity.png"],
-    demoUrl: "https://example.com",
     githubUrl: "https://github.com/ludogernay/NightBorn",
     featured: false,
     date: "2024-12-08",
@@ -527,7 +582,7 @@ export const projects: Project[] = [
     tags: ["Projets scolaires", "Node.js"],
     cover: "../public/r.png",
     images: ["../public/r.png"],
-    demoUrl: "https://example.com",
+    demoUrl: "https://r6-packs.onrender.com",
     githubUrl: "https://github.com/FreeZe060/R6_Packs",
     featured: false,
     date: "2024-12-08",
@@ -605,8 +660,6 @@ export const projects: Project[] = [
     tags: ["Stage", "All"],
     cover: "../public/r.png",
     images: ["../public/r.png"],
-    demoUrl: "https://example.com",
-    githubUrl: "https://github.com",
     featured: false,
     date: "2024-12-08",
     context:
