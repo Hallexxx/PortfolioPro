@@ -20,12 +20,12 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "polewin",
-    title: "PoleWin — App communautaire F1 (Prédictions, Mini-Fantasy & Live Chat)",
+    title: "PoleWin — App communautaire F1 (Prédictions & Live Chat)",
     description:
       "PoleWin est une plateforme web + mobile dédiée aux fans de Formule 1 : prédictions rapides, mini-fantasy, chat live pendant les sessions et progression via profils/badges.",
     tags: ["Projet", "F1", "Community", "React", "React Native", "NestJS", "Express", "TypeScript", "PostgreSQL"],
-    cover: "../public/polewin.png",
-    images: ["../public/polewin.png"],
+    cover: "/polewin.webp",
+    images: ["/polewin.webp", "/poleacc.webp", "/polepre.webp", "/poleclass.webp", "/polelive.webp", "/polestats.webp", "/polevideo.webp"],
     githubUrl: "https://github.com/orgs/PoleWin-Project/repositories",
     featured: true,
     date: "2026-01-01",
@@ -133,8 +133,8 @@ export const projects: Project[] = [
     description:
       "Plateforme web et API permettant d’utiliser l’IA au quotidien : génération/édition de contenus (PDF, JSON, XML, images…), assistants & chatbots personnalisés, et automatisations (recherche produits + alertes, rédaction/envoi d’emails, etc.).",
     tags: ["Projet", "React", "Node.js", "MongoDB", "IA", "API", "Automation"],
-    cover: "../public/aimpress.png",
-    images: ["../public/aimpress.png"],
+    cover: "../public/aimtab.webp",
+    images: ["../public/aimtab.webp", "../public/aimout.webp", "../public/aimpro.webp"],
     demoUrl: "https://example.com",
     githubUrl: "https://github.com",
     featured: true,
