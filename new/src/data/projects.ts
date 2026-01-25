@@ -25,7 +25,7 @@ export const projects: Project[] = [
       "PoleWin est une plateforme web + mobile dédiée aux fans de Formule 1 : prédictions rapides, mini-fantasy, chat live pendant les sessions et progression via profils/badges.",
     tags: ["Projet", "F1", "Community", "React", "React Native", "NestJS", "Express", "TypeScript", "PostgreSQL"],
     cover: "/polewin.webp",
-    images: ["/polewin.webp", "/poleacc.webp", "/polepre.webp", "/poleclass.webp", "/polelive.webp", "/polestats.webp", "/polevideo.webp"],
+    images: ["/poleacc.webp", "/polepre.webp", "/poleclass.webp", "/polelive.webp", "/polestats.webp", "/polevideo.webp"],
     githubUrl: "https://github.com/orgs/PoleWin-Project/repositories",
     featured: true,
     date: "2026-01-01",
@@ -83,8 +83,8 @@ export const projects: Project[] = [
     description:
       "Alternance full-stack : apps React/React Native connectées à un back-end et une base 4D, déploiement Apache + SSL, et maintenance WordPress pour des sites clients.",
     tags: ["Alternance", "React", "React Native", "4D", "Apache", "SSL", "WordPress"],
-    cover: "../public/kletel.png",
-    images: ["../public/kletel.png"],
+    cover: "/kletel.webp",
+    images: ["/kletel.webp"],
     featured: true,
     date: "2025-10-01",
     context:
@@ -133,8 +133,8 @@ export const projects: Project[] = [
     description:
       "Plateforme web et API permettant d’utiliser l’IA au quotidien : génération/édition de contenus (PDF, JSON, XML, images…), assistants & chatbots personnalisés, et automatisations (recherche produits + alertes, rédaction/envoi d’emails, etc.).",
     tags: ["Projet", "React", "Node.js", "MongoDB", "IA", "API", "Automation"],
-    cover: "../public/aimtab.webp",
-    images: ["../public/aimtab.webp", "../public/aimout.webp", "../public/aimpro.webp"],
+    cover: "/aimtab.webp",
+    images: ["/aimtab.webp", "/aimout.webp", "/aimpro.webp"],
     demoUrl: "https://example.com",
     githubUrl: "https://github.com",
     featured: true,
