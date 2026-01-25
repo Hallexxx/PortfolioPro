@@ -190,8 +190,8 @@ export const projects: Project[] = [
     description:
       "Plateforme full-stack (React + Node.js) permettant de créer, gérer et rejoindre des événements : commentaires, demandes de participation, notifications site + e-mail et validation par l’organisateur.",
     tags: ["Projets scolaires", "React", "Node.js", "Express", "MySQL", "TailwindCss"],
-    cover: "../public/yshare.png",
-    images: ["../public/yshare.png"],
+    cover: "/yshare.png",
+    images: ["/yshare.png"],
     demoUrl: "https://yshare-3jbg.onrender.com",
     githubUrl: "https://github.com/FreeZe060/Yshare",
     featured: true,
@@ -237,8 +237,8 @@ export const projects: Project[] = [
     description:
       "Maintenance WordPress, conception d’un extranet élèves (planning, notes) et développement d’une application mobile pour l’accès aux informations et à l’emploi du temps.",
     tags: ["Alternance", "WordPress", "Web", "Mobile", "Systèmes"],
-    cover: "../public/ifsi.png",
-    images: ["../public/ifsi.png"],
+    cover: "/ifsi.png",
+    images: ["/ifsi3.webp","/ifsi2.webp","/ifsi1.webp"],
     demoUrl: "http://ifsi-argenteuil.fr/",
     featured: true,
     date: "2025-09-29",
@@ -278,8 +278,8 @@ export const projects: Project[] = [
     description:
       "Site de gestion de plannings micro-crèche : employés + enfants, CRUD, règles de ratio 1 employé / 3 enfants, multilingue.",
     tags: ["Projets scolaires", "Node.js", "Angular", "PHP", "Laravel"],
-    cover: "../public/r.png",
-    images: ["../public/r.png"],
+    cover: "/logoo.png",
+    images: ["/logoo.png"],
     demoUrl: "https://planetecreche.com",
     githubUrl: "https://github.com/Hallexxx/LaravelAngular",
     featured: true,
@@ -324,8 +324,8 @@ export const projects: Project[] = [
     description:
       "API sécurisée avec JWT pour gérer artistes, albums et chansons. CRUD, filtres et gestion de favoris...",
     tags: ["Projets scolaires", "Symfony", "PHP"],
-    cover: "../public/r.png",
-    images: ["../public/r.png"],
+    cover: "/favicon.ico",
+    images: ["/favicon.ico"],
     demoUrl: "https://apiplatform-symfony.onrender.com/",
     githubUrl: "https://github.com/Hallexxx/ApiPlatform_symfony",
     featured: false,
@@ -370,8 +370,8 @@ export const projects: Project[] = [
     description:
       "UberAlex est une application web et mobile, développée en Node.js, qui permet aux restaurateurs de proposer leurs produits en ligne...",
     tags: ["Projets scolaires", "Node.js"],
-    cover: "../public/ubers.png",
-    images: ["../public/ubers.png"],
+    cover: "/ubers.png",
+    images: ["/ubers.png"],
     demoUrl: "https://uberalex.onrender.com",
     githubUrl: "https://github.com/FreeZe060/UberAlex",
     featured: true,
@@ -412,9 +412,8 @@ export const projects: Project[] = [
     description:
       "Le site web a été créé en Python en utilisant le framework Django pour offrir une plateforme de gestion des employés. Il utilise GoogleCloud pour...",
     tags: ["Stage", "Python", "Django", "GoogleCloud"],
-    cover: "../public/par.svg",
-    images: ["../public/par.svg"],
-    demoUrl: "https://example.com",
+    cover: "/universite_blanc.png",
+    images: ["/universite_blanc.png"],
     githubUrl: "https://github.com/Hallexxx/Stage_Paris_8",
     featured: true,
     date: "2024-12-08",
@@ -447,8 +446,8 @@ export const projects: Project[] = [
     description:
       "Prototype d’un JRPG 3D au tour par tour de style manga. Metaphonia raconte l'histoire de Kazuma...",
     tags: ["Projets scolaires", "Unreal(BluePrint)"],
-    cover: "../public/unreal.png",
-    images: ["../public/unreal.png"],
+    cover: "/unreal_blanc.png",
+    images: ["/unreal_blanc.png"],
     featured: false,
     date: "2024-12-08",
     context:
@@ -483,8 +482,8 @@ export const projects: Project[] = [
     title: "Site Meteo",
     description: "Projet météo en VueJs (à compléter avec la description exacte si besoin).",
     tags: ["Projets personnels", "VueJs"],
-    cover: "../public/r.png",
-    images: ["../public/r.png"],
+    cover: "/nuageux.png",
+    images: ["/nuageux.png"],
     demoUrl: "https://meteo-vue.onrender.com",
     githubUrl: "https://github.com/Hallexxx/Meteo_Vue",
     featured: false,
@@ -504,8 +503,8 @@ export const projects: Project[] = [
     description:
       "Application Angular permettant d’explorer les personnages Harry Potter : liste, recherche, filtres, fiche détail, favoris et panier avec simulation d’achat.",
     tags: ["Projets scolaires", "Angular", "TypeScript", "TailwindCss"],
-    cover: "../public/harry.png",
-    images: ["../public/harry.png"],
+    cover: "/harry.png",
+    images: ["/harry.png"],
     demoUrl: "https://angular-harry.onrender.com",
     githubUrl: "https://github.com/FreeZe060/Angular/tree/ProjetGroupe",
     featured: true,
@@ -546,8 +545,8 @@ export const projects: Project[] = [
     description:
       "En collaboration avec un groupe de cinq personnes dans le cadre d'un projet scolaire, nous avons développé deux jeux 2D en utilisant Unity et C#...",
     tags: ["Projets scolaires", "Unity", "C#"],
-    cover: "../public/unity.png",
-    images: ["../public/unity.png"],
+    cover: "/unity.png",
+    images: ["/unity.png"],
     githubUrl: "https://github.com/ludogernay/NightBorn",
     featured: false,
     date: "2024-12-08",
@@ -580,8 +579,8 @@ export const projects: Project[] = [
     description:
       "Conception et développement d'un site web en Node.js dédié à Rainbow Six Siege, axé sur la répertoriation des skins du jeu. Le site inclut...",
     tags: ["Projets scolaires", "Node.js"],
-    cover: "../public/r.png",
-    images: ["../public/r.png"],
+    cover: "/r.png",
+    images: ["/r.png"],
     demoUrl: "https://r6-packs.onrender.com",
     githubUrl: "https://github.com/FreeZe060/R6_Packs",
     featured: false,
@@ -621,8 +620,8 @@ export const projects: Project[] = [
     description:
       "Détection/correction de problèmes sur les sites, transferts de données entre environnements web/intranet et création de newsletters en HTML.",
     tags: ["Stage", "Web", "HTML", "Support", "Content"],
-    cover: "../public/atoutfrance.png",
-    images: ["../public/atoutfrance.png"],
+    cover: "/atout.png",
+    images: ["/atout.png"],
     featured: false,
     date: "2022-01-15",
     context:
@@ -658,8 +657,8 @@ export const projects: Project[] = [
     description:
       "Stage au service informatique de la mairie d'Argenteuil : support, installations, hotline, réseau, déménagements de postes...",
     tags: ["Stage", "All"],
-    cover: "../public/r.png",
-    images: ["../public/r.png"],
+    cover: "/mairie.png",
+    images: ["/mairie.png"],
     featured: false,
     date: "2024-12-08",
     context:
