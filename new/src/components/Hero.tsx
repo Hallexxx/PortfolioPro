@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { motion, useSpring } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
@@ -21,18 +21,18 @@ const Hero = () => {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
       <motion.div
-        style={{ x: smoothX, y: smoothY, transformStyle: 'preserve-3d' }}
+        style={{ x: smoothX, y: smoothY, perspective: 900, transformStyle: 'preserve-3d' }}
         className="absolute left-1/2 top-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
       >
         <motion.div
           animate={{ rotateX: [62, 70, 62], rotateZ: [0, 360] }}
           transition={{ duration: 34, repeat: Infinity, ease: 'linear' }}
-          className="absolute inset-0 rounded-[34%] border border-[#3CF2FF]/14"
+          className="absolute inset-0 rounded-[34%] border border-[#3CF2FF]/[0.14]"
         />
         <motion.div
           animate={{ rotateX: [70, 58, 70], rotateY: [0, 360] }}
           transition={{ duration: 44, repeat: Infinity, ease: 'linear' }}
-          className="absolute inset-14 rounded-[38%] border border-[#FF2B2B]/12"
+          className="absolute inset-14 rounded-[38%] border border-[#FF2B2B]/[0.12]"
         />
         <div className="absolute inset-24 rounded-[32%] bg-[#10202A]/55 blur-2xl" />
       </motion.div>

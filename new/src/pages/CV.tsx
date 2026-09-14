@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from "react-router-dom"
 import Timeline from '../components/Timeline'
 import HorizontalScrollStats from '../components/HorizontalScrollStats'
@@ -21,8 +20,8 @@ export default function CV() {
           </p>
 
           <a
-            href="../../cv_alexandre_perez.pdf"
-            download="../../cv_alexandre_perez.pdf"
+            href="/cv_alexandre_perez.pdf"
+            download="cv_alexandre_perez.pdf"
             className="group relative inline-flex items-center gap-3 px-8 py-4 bg-[#7FEAFF] rounded-full font-semibold text-[#0B0F14] hover:bg-[#B9F7FF] transition-all duration-300 hover:scale-105"
           >
             <span>Télécharger mon CV</span>

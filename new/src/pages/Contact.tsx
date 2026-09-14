@@ -14,26 +14,26 @@ const Contact = () => {
 
   const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 
-  const validateForm = () => {
+  const validateForm = (data = formData) => {
     const newErrors: Record<string, string> = {}
 
-    if (!formData.name.trim()) {
+    if (!data.name.trim()) {
       newErrors.name = 'Le nom est requis'
     }
 
-    if (!formData.email.trim()) {
+    if (!data.email.trim()) {
       newErrors.email = "L'email est requis"
-    } else if (!validateEmail(formData.email)) {
+    } else if (!validateEmail(data.email)) {
       newErrors.email = 'Email invalide'
     }
 
-    if (!formData.subject.trim()) {
+    if (!data.subject.trim()) {
       newErrors.subject = 'Le sujet est requis'
     }
 
-    if (!formData.message.trim()) {
+    if (!data.message.trim()) {
       newErrors.message = 'Le message est requis'
-    } else if (formData.message.trim().length < 10) {
+    } else if (data.message.trim().length < 10) {
       newErrors.message = 'Le message doit contenir au moins 10 caractères'
     }
 
@@ -47,9 +47,10 @@ const Contact = () => {
   }
 
   const handleChange = (field: string, value: string) => {
-    setFormData({ ...formData, [field]: value })
+    const next = { ...formData, [field]: value }
+    setFormData(next)
     if (touched[field]) {
-      validateForm()
+      validateForm(next)
     }
   }
 

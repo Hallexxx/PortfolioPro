@@ -1,16 +1,13 @@
-import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
 import AnimatedBackground from './components/AnimatedBackground'
 import PageTransition from './components/PageTransition'
-import Collaborations from './components/Collaborations'
 import Services from './components/Services'
 import Process from './components/Process'
 import FeaturedCase from './components/FeaturedCase'
 import TechStack from './components/TechStack'
-import Testimonials from './components/Testimonials'
 import FinalCTA from './components/FinalCTA'
 import Projects from './pages/Projects'
 import CV from './pages/CV'
@@ -38,7 +35,7 @@ function HomePage() {
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-[#080D12] text-[#EAF0FF] font-['Manrope'] antialiased overflow-x-hidden">
+      <div className="min-h-screen bg-[#080D12] text-[#EAF0FF] font-['Manrope'] antialiased overflow-x-clip">
         <Navbar />
         <PageTransition>
           <Routes>

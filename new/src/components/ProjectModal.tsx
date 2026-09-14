@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Project } from '../data/projects'
 
@@ -207,8 +207,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 <h3 className="text-xl font-bold text-[#EAF0FF] mb-3 font-['Space_Grotesk']">Objectifs</h3>
                 <ul className="space-y-2">
                   {project.objectives.map((obj, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-[#A8B3CF]">
-                      <span className="text-[#3CF2FF] mt-1">→</span>
+                    <li key={idx} className="grid grid-cols-[12px_1fr] gap-3 text-[#A8B3CF]">
+                      <span className="mt-3 h-px bg-[#3CF2FF]" />
                       <span>{obj}</span>
                     </li>
                   ))}
@@ -219,8 +219,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 <h3 className="text-xl font-bold text-[#EAF0FF] mb-3 font-['Space_Grotesk']">Fonctionnalités</h3>
                 <ul className="space-y-2">
                   {project.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-[#A8B3CF]">
-                      <span className="text-[#3CF2FF] mt-1">✓</span>
+                    <li key={idx} className="grid grid-cols-[12px_1fr] gap-3 text-[#A8B3CF]">
+                      <span className="mt-3 h-px bg-[#3CF2FF]" />
                       <span>{feature}</span>
                     </li>
                   ))}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getBlogPost, getRelatedPosts } from '../data/blog'
 import BlogCard from '../components/BlogCard'
@@ -42,7 +42,7 @@ export default function BlogArticle() {
       <div className="min-h-screen pt-32 px-6 text-center">
         <h1 className="text-4xl text-[#EAF0FF] mb-4">Article introuvable</h1>
         <Link to="/blog" className="text-[#3CF2FF] hover:underline">
-          ← Retour au blog
+          Retour au blog
         </Link>
       </div>
     )
@@ -171,7 +171,6 @@ export default function BlogArticle() {
           to="/blog"
           className="inline-flex items-center gap-2 text-[#3CF2FF] hover:underline mb-8 group"
         >
-          <span className="group-hover:-translate-x-1 transition-transform">←</span>
           Retour au blog
         </Link>
 

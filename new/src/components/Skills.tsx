@@ -1,4 +1,3 @@
-import React from 'react'
 import { Skill } from '../data/cv'
 
 interface SkillsProps {

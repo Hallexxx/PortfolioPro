@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import BlogCard from '../components/BlogCard'
 import ScrollReveal from '../components/ScrollReveal'
 import { blogPosts, allTags } from '../data/blog'

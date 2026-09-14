@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import ProjectModal from '../components/ProjectModal'
 import ScrollReveal from '../components/ScrollReveal'
@@ -37,7 +37,7 @@ export default function Projects() {
   const activeProject = focusProjects.find((project) => project.id === activeId) ?? focusProjects[0]
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[#080D12] pt-28 text-[#EAF0FF]">
+    <div className="min-h-screen overflow-x-clip bg-[#080D12] pt-28 text-[#EAF0FF]">
       <section className="relative px-6 pb-20">
         <div className="absolute inset-0 pointer-events-none project-grid-fade" />
         <motion.div
@@ -82,7 +82,7 @@ export default function Projects() {
                   className={`group relative overflow-hidden rounded-2xl border p-5 text-left transition duration-500 ${
                     activeId === project.id
                       ? 'border-[#3CF2FF]/50 bg-[#0F1B24]'
-                      : 'border-white/[0.08] bg-[#0C131B]/76 hover:border-white/[0.18] hover:bg-[#101A23]'
+                      : 'border-white/[0.08] bg-[#0C131B]/[0.76] hover:border-white/[0.18] hover:bg-[#101A23]'
                   }`}
                   style={{ transform: `translateX(${index * 18}px)` }}
                 >
@@ -110,7 +110,7 @@ export default function Projects() {
         </div>
       </section>
 
-      <section className="relative border-y border-white/6 bg-[#0B1219] px-6 py-16">
+      <section className="relative border-y border-white/[0.06] bg-[#0B1219] px-6 py-16">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.82fr_1.18fr]">
           <ScrollReveal>
             <div className="sticky top-28 space-y-8">
@@ -183,7 +183,7 @@ export default function Projects() {
                         className="h-full w-full object-cover opacity-80 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#071017] via-transparent to-transparent" />
-                      <span className="absolute bottom-4 left-4 rounded-md bg-[#071017]/84 px-3 py-1 text-sm font-medium text-[#EAF0FF]">
+                      <span className="absolute bottom-4 left-4 rounded-md bg-[#071017]/[0.84] px-3 py-1 text-sm font-medium text-[#EAF0FF]">
                         Voir le detail
                       </span>
                     </button>

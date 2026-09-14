@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 const AnimatedBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -62,13 +62,20 @@ const AnimatedBackground = () => {
       }
     }
 
+    const handleResize = () => {
+      resize()
+      // setting canvas.width clears the bitmap: the rAF loop repaints it,
+      // but in reduced-motion mode nothing would ever redraw it
+      if (prefersReducedMotion) draw()
+    }
+
     resize()
     draw()
 
-    window.addEventListener('resize', resize)
+    window.addEventListener('resize', handleResize)
 
     return () => {
-      window.removeEventListener('resize', resize)
+      window.removeEventListener('resize', handleResize)
       cancelAnimationFrame(animationId)
     }
   }, [])

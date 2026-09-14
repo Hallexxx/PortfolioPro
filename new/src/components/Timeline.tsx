@@ -1,4 +1,3 @@
-import React from 'react'
 import { TimelineItem } from '../data/cv'
 
 interface TimelineProps {
@@ -72,7 +71,7 @@ export default function Timeline({ items }: TimelineProps) {
               <ul className="space-y-2 mb-4">
                 {item.description.map((desc, i) => (
                   <li key={i} className="flex items-start gap-2 text-[#A8B3CF]">
-                    <span className="text-[#3CF2FF] mt-1 flex-shrink-0">▹</span>
+                    <span className="mt-3 h-px w-3 flex-shrink-0 bg-[#3CF2FF]" />
                     <span className="text-sm leading-relaxed">{desc}</span>
                   </li>
                 ))}
