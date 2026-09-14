@@ -200,7 +200,7 @@ export const statCards: StatCard[] = [
   {
     id: 'stat-1',
     category: 'stat',
-    icon: '📁',
+    icon: 'PR',
     value: '10+',
     label: 'Projets réalisés',
     detail: 'Scolaires / alternance / perso',
@@ -209,7 +209,7 @@ export const statCards: StatCard[] = [
   {
     id: 'stat-2',
     category: 'stat',
-    icon: '🧩',
+    icon: 'TK',
     value: '15+',
     label: 'Technologies pratiquées',
     detail: 'Front, back, DB, outils',
@@ -218,7 +218,7 @@ export const statCards: StatCard[] = [
   {
     id: 'stat-3',
     category: 'stat',
-    icon: '🧑‍💻',
+    icon: 'XP',
     value: '2+ an',
     label: "d’expérience pro",
     detail: 'Alternances IFSI + Kletel',
@@ -229,7 +229,7 @@ export const statCards: StatCard[] = [
   {
     id: 'highlight-bachelor',
     category: 'highlight',
-    icon: '🎓',
+    icon: 'BA',
     value: 'Bachelor',
     label: 'Diplôme validé',
     detail: 'Ynov — Développement Web',
@@ -238,7 +238,7 @@ export const statCards: StatCard[] = [
   {
     id: 'highlight-yshare',
     category: 'highlight',
-    icon: '🎯',
+    icon: 'YS',
     value: 'Yshare',
     label: 'Projet de validation',
     detail: 'Node.js / React / Tailwind / MySQL',
@@ -247,7 +247,7 @@ export const statCards: StatCard[] = [
   {
     id: 'highlight-aimpress',
     category: 'highlight',
-    icon: '🤖',
+    icon: 'AI',
     value: 'Aimpress',
     label: 'Plateforme IA',
     detail: 'Web + API + workflows IA',
@@ -258,7 +258,7 @@ export const statCards: StatCard[] = [
   {
     id: 'stack-1',
     category: 'stack',
-    icon: '⚛️',
+    icon: 'RE',
     value: 'React',
     label: 'Front-end',
     detail: 'UI moderne & composants',
@@ -267,7 +267,7 @@ export const statCards: StatCard[] = [
   {
     id: 'stack-2',
     category: 'stack',
-    icon: '🟢',
+    icon: 'ND',
     value: 'Node.js',
     label: 'Back-end',
     detail: 'API REST & logique métier',
@@ -276,7 +276,7 @@ export const statCards: StatCard[] = [
   {
     id: 'stack-3',
     category: 'stack',
-    icon: '🍃',
+    icon: 'DB',
     value: 'MongoDB',
     label: 'Base de données',
     detail: 'Projets planning & Aimpress',
@@ -285,7 +285,7 @@ export const statCards: StatCard[] = [
   {
     id: 'stack-4',
     category: 'stack',
-    icon: '🎨',
+    icon: 'UI',
     value: 'Tailwind',
     label: 'UI / Style',
     detail: 'Design propre & rapide',
@@ -296,7 +296,7 @@ export const statCards: StatCard[] = [
   {
     id: 'cert-bac',
     category: 'cert',
-    icon: '🏅',
+    icon: 'BP',
     value: 'Bac Pro SN',
     label: 'Mention Bien',
     detail: 'Diplôme obtenu 2022',
@@ -307,7 +307,7 @@ export const statCards: StatCard[] = [
   {
     id: 'tool-1',
     category: 'tool',
-    icon: '🛠️',
+    icon: 'OP',
     value: 'Apache + SSL',
     label: 'Déploiement',
     detail: 'Serveurs + certificats',
@@ -316,7 +316,7 @@ export const statCards: StatCard[] = [
   {
     id: 'tool-2',
     category: 'tool',
-    icon: '🧰',
+    icon: 'WP',
     value: 'WordPress',
     label: 'Maintenance',
     detail: 'Corrections & évolutions',
@@ -365,14 +365,14 @@ export const skills: Skill[] = [
  * TECH STACK — ce que tu utilises vraiment (cohérent alternance + projets)
  */
 export const techStack = [
-  { name: 'React', icon: '⚛️', color: '#61DAFB' },
-  { name: 'React Native', icon: '📱', color: '#61DAFB' },
-  { name: 'Node.js', icon: '🟢', color: '#68A063' },
-  { name: 'Express', icon: '🧩', color: '#A8B3CF' },
-  { name: 'Tailwind', icon: '🎨', color: '#38BDF8' },
-  { name: 'MySQL', icon: '🗄️', color: '#4479A1' },
-  { name: 'MongoDB', icon: '🍃', color: '#4DB33D' },
-  { name: '4D', icon: '🧠', color: '#A8B3CF' },
-  { name: 'WordPress', icon: '📰', color: '#21759B' },
-  { name: 'Apache', icon: '🌐', color: '#D22128' }
+  { name: 'React', icon: 'RE', color: '#61DAFB' },
+  { name: 'React Native', icon: 'RN', color: '#61DAFB' },
+  { name: 'Node.js', icon: 'ND', color: '#68A063' },
+  { name: 'Express', icon: 'EX', color: '#A8B3CF' },
+  { name: 'Tailwind', icon: 'TW', color: '#38BDF8' },
+  { name: 'MySQL', icon: 'MY', color: '#4479A1' },
+  { name: 'MongoDB', icon: 'MO', color: '#4DB33D' },
+  { name: '4D', icon: '4D', color: '#A8B3CF' },
+  { name: 'WordPress', icon: 'WP', color: '#21759B' },
+  { name: 'Apache', icon: 'AP', color: '#D22128' }
 ]

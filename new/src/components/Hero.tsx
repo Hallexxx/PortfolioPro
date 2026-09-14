@@ -1,90 +1,67 @@
-import React, { useEffect, useState } from 'react'
-import { motion, useMotionValue, useSpring } from 'framer-motion'
-import {ArrowRight, Sparkles} from 'lucide-react'
+import React, { useEffect } from 'react'
+import { motion, useSpring } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
 const Hero = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const smoothX = useSpring(0, { damping: 20, stiffness: 100 })
-  const smoothY = useSpring(0, { damping: 20, stiffness: 100 })
+  const smoothX = useSpring(0, { damping: 22, stiffness: 90 })
+  const smoothY = useSpring(0, { damping: 22, stiffness: 90 })
+  const badges = ['React', 'Node.js', 'TypeScript', 'Tailwind CSS']
+  const titleWords = 'Développeur Web & Applications'.split(' ')
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 40
-      const y = (e.clientY / window.innerHeight - 0.5) * 40
-      smoothX.set(x)
-      smoothY.set(y)
-      setMousePosition({ x, y })
+      smoothX.set((e.clientX / window.innerWidth - 0.5) * 34)
+      smoothY.set((e.clientY / window.innerHeight - 0.5) * 34)
     }
 
     window.addEventListener('mousemove', handleMouseMove)
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [smoothX, smoothY])
 
-  const badges = ['React', 'Node.js', 'TypeScript', 'Tailwind CSS']
-
-  const titleWords = "Développeur Web & Applications".split(' ')
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
-      {/* 3D Sphere with parallax */}
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
       <motion.div
-        style={{ x: smoothX, y: smoothY }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none"
+        style={{ x: smoothX, y: smoothY, transformStyle: 'preserve-3d' }}
+        className="absolute left-1/2 top-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
       >
-        <div className="relative w-full h-full">
-          <motion.div
-            animate={{
-              rotate: 360,
-            }}
-            transition={{
-              duration: 30,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
-            className="absolute inset-0 rounded-full border border-[#3CF2FF]/10"
-          />
-          <motion.div
-            animate={{
-              rotate: -360,
-            }}
-            transition={{
-              duration: 40,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
-            className="absolute inset-8 rounded-full border border-[#FF2B2B]/10"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#3CF2FF]/5 to-[#FF2B2B]/5 rounded-full blur-3xl" />
-        </div>
+        <motion.div
+          animate={{ rotateX: [62, 70, 62], rotateZ: [0, 360] }}
+          transition={{ duration: 34, repeat: Infinity, ease: 'linear' }}
+          className="absolute inset-0 rounded-[34%] border border-[#3CF2FF]/14"
+        />
+        <motion.div
+          animate={{ rotateX: [70, 58, 70], rotateY: [0, 360] }}
+          transition={{ duration: 44, repeat: Infinity, ease: 'linear' }}
+          className="absolute inset-14 rounded-[38%] border border-[#FF2B2B]/12"
+        />
+        <div className="absolute inset-24 rounded-[32%] bg-[#10202A]/55 blur-2xl" />
       </motion.div>
 
-      <div className="relative z-10 max-w-5xl mx-auto text-center">
-        {/* Animated Title with Split Reveal */}
+      <div className="relative z-10 mx-auto max-w-5xl text-center">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55 }}
           className="mb-6"
         >
-          <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-[#3CF2FF]/10 border border-[#3CF2FF]/20 mb-8">
-            <Sparkles size={16} className="text-[#3CF2FF]" />
-            <span className="text-sm text-[#3CF2FF] font-medium">Portfolio Alexandre Perez</span>
+          <div className="mb-8 inline-flex items-center space-x-2 rounded-full border border-[#3CF2FF]/20 bg-[#3CF2FF]/10 px-4 py-2">
+            <span className="h-2 w-2 rounded-full bg-[#3CF2FF]" />
+            <span className="text-sm font-medium text-[#7FEAFF]">Portfolio Alexandre Perez</span>
           </div>
         </motion.div>
 
-        <h1 className="font-['Space_Grotesk'] font-bold text-5xl sm:text-6xl lg:text-7xl xl:text-8xl mb-8 leading-tight">
+        <h1 className="mb-8 font-['Space_Grotesk'] text-5xl font-bold leading-tight tracking-[-0.03em] sm:text-6xl lg:text-7xl xl:text-8xl">
           {titleWords.map((word, i) => (
             <motion.span
-              key={i}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
+              key={word}
+              initial={{ opacity: 0, y: 42, filter: 'blur(10px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{
-                duration: 0.8,
-                delay: i * 0.1,
+                duration: 0.78,
+                delay: i * 0.08,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="inline-block mr-4"
+              className="mr-4 inline-block"
             >
               {word}
             </motion.span>
@@ -92,76 +69,53 @@ const Hero = () => {
         </h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-lg sm:text-xl text-[#A8B3CF] mb-12 max-w-3xl mx-auto leading-relaxed"
+          transition={{ duration: 0.8, delay: 0.45 }}
+          className="mx-auto mb-12 max-w-3xl text-lg leading-8 text-[#B7C3D8] sm:text-xl"
         >
-          Je crée des{' '}
-          <span className="text-[#3CF2FF] font-semibold">expériences performantes</span> et{' '}
-          <span className="text-[#3CF2FF] font-semibold">élégantes</span> qui allient design moderne
-          et code de qualité
+          Je construis des interfaces rapides, des API propres et des produits complets, avec un soin particulier pour la lisibilité, les animations utiles et la stabilité.
         </motion.p>
 
-        {/* Badges with scroll reveal animation */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="flex flex-wrap items-center justify-center gap-3 mb-12"
+          transition={{ duration: 0.8, delay: 0.62 }}
+          className="mb-12 flex flex-wrap items-center justify-center gap-3"
         >
           {badges.map((badge, i) => (
             <motion.span
               key={badge}
-              initial={{ opacity: 0, scale: 0.8, filter: 'blur(4px)' }}
-              animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-              transition={{ duration: 0.5, delay: 0.8 + i * 0.1 }}
-              whileHover={{ scale: 1.05, y: -2 }}
-              className="px-4 py-2 rounded-full bg-[#0E1420] border border-white/10 text-sm font-medium hover:border-[#3CF2FF]/30 hover:bg-[#3CF2FF]/5 hover:shadow-[0_0_20px_rgba(60,242,255,0.2)] transition-all duration-300 cursor-default"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.45, delay: 0.72 + i * 0.08 }}
+              whileHover={{ y: -3 }}
+              className="cursor-default rounded-full border border-white/10 bg-[#0E1720] px-4 py-2 text-sm font-medium transition duration-300 hover:border-[#3CF2FF]/30 hover:text-[#7FEAFF]"
             >
               {badge}
             </motion.span>
           ))}
         </motion.div>
 
-        {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 0.8, delay: 0.82 }}
+          className="flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <Link
             to="/projets"
-            className="group relative px-8 py-4 rounded-xl bg-gradient-to-r from-[#3CF2FF] to-[#3CF2FF]/80 text-[#0B0F14] font-semibold overflow-hidden transform hover:scale-105 transition-all duration-300 hover:shadow-[0_0_30px_rgba(60,242,255,0.4)] flex items-center space-x-2"
+            className="relative overflow-hidden rounded-xl bg-[#7FEAFF] px-8 py-4 font-semibold text-[#071017] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B9F7FF] active:translate-y-0"
           >
-            <span>Voir mes projets</span>
-            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            <motion.div
-              className="absolute inset-0 bg-white/20"
-              initial={{ x: '-100%' }}
-              whileHover={{ x: '100%' }}
-              transition={{ duration: 0.5 }}
-            />
+            Voir mes projets
           </Link>
 
           <Link
             to="/contact"
-            className="group px-8 py-4 rounded-xl border border-[#3CF2FF]/30 text-[#3CF2FF] font-semibold hover:bg-[#3CF2FF]/10 transition-all duration-300 flex items-center space-x-2"
+            className="rounded-xl border border-[#3CF2FF]/30 px-8 py-4 font-semibold text-[#7FEAFF] transition duration-300 hover:bg-[#3CF2FF]/10"
           >
-            <span>Me contacter</span>
-            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            Me contacter
           </Link>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
-        >
-          
         </motion.div>
       </div>
     </section>

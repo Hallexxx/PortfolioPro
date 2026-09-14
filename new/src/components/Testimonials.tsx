@@ -1,5 +1,4 @@
 import React from 'react'
-import {Star} from 'lucide-react'
 import { motion } from 'framer-motion'
 import ScrollReveal from './ScrollReveal'
 import { testimonials } from '../data/home'
@@ -30,11 +29,8 @@ const Testimonials = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#3CF2FF]/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 <div className="relative">
-                  {/* Stars */}
-                  <div className="flex gap-1 mb-4">
-                    {Array.from({ length: testimonial.rating }).map((_, i) => (
-                      <Star key={i} size={16} className="fill-[#3CF2FF] text-[#3CF2FF]" />
-                    ))}
+                  <div className="mb-4 inline-flex rounded-md border border-[#3CF2FF]/25 bg-[#3CF2FF]/10 px-3 py-1 text-sm font-semibold text-[#7FEAFF]">
+                    {testimonial.rating}/5
                   </div>
 
                   {/* Quote */}

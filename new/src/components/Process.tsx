@@ -1,104 +1,42 @@
 import React from 'react'
-import {Search, Figma, Code, TrendingUp} from 'lucide-react'
 import ScrollReveal from './ScrollReveal'
 import { processSteps } from '../data/home'
 
-const iconMap = {
-  Search,
-  Figma,
-  Code,
-  TrendingUp
-}
-
 const Process = () => {
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-transparent via-[#0E1420]/30 to-transparent">
-      <div className="max-w-7xl mx-auto">
+    <section className="px-6 py-24">
+      <div className="mx-auto max-w-7xl">
         <ScrollReveal>
-          <div className="text-center mb-16">
-            <h2 className="font-['Space_Grotesk'] text-3xl sm:text-4xl font-bold mb-4">
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 font-['Space_Grotesk'] text-3xl font-bold sm:text-4xl">
               Ma façon de travailler
             </h2>
-            <p className="text-[#A8B3CF] text-lg">
-              Un process éprouvé pour des résultats optimaux
+            <p className="text-lg text-[#A8B3CF]">
+              Un cadre simple pour avancer sans perdre la qualité en route
             </p>
           </div>
         </ScrollReveal>
 
-        {/* Desktop: Horizontal timeline */}
-        <div className="hidden lg:block">
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-[#3CF2FF]/20 via-[#3CF2FF]/50 to-[#3CF2FF]/20" />
-            
-            <div className="grid grid-cols-4 gap-8">
-              {processSteps.map((step, i) => {
-                const Icon = iconMap[step.icon as keyof typeof iconMap]
-                return (
-                  <ScrollReveal key={step.title} delay={i * 0.15}>
-                    <div className="relative">
-                      {/* Node */}
-                      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-[#3CF2FF] border-4 border-[#0B0F14] z-10" />
-                      
-                      <div className="pt-32 text-center">
-                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-[#3CF2FF]/20 to-transparent border border-[#3CF2FF]/30 mb-4">
-                          <Icon size={28} className="text-[#3CF2FF]" />
-                        </div>
-                        
-                        <div className="font-['Space_Grotesk'] text-4xl font-bold text-[#3CF2FF]/30 mb-2">
-                          {step.number}
-                        </div>
-                        
-                        <h3 className="font-['Space_Grotesk'] text-xl font-semibold mb-2">
-                          {step.title}
-                        </h3>
-                        
-                        <p className="text-sm text-[#A8B3CF]">
-                          {step.description}
-                        </p>
-                      </div>
-                    </div>
-                  </ScrollReveal>
-                )
-              })}
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile: Vertical timeline */}
-        <div className="lg:hidden space-y-8">
-          {processSteps.map((step, i) => {
-            const Icon = iconMap[step.icon as keyof typeof iconMap]
-            return (
-              <ScrollReveal key={step.title} delay={i * 0.1}>
-                <div className="relative flex items-start gap-6">
-                  {/* Timeline line */}
-                  {i < processSteps.length - 1 && (
-                    <div className="absolute left-8 top-20 bottom-0 w-0.5 bg-gradient-to-b from-[#3CF2FF]/50 to-[#3CF2FF]/20" />
-                  )}
-                  
-                  {/* Node */}
-                  <div className="relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-br from-[#3CF2FF]/20 to-transparent border border-[#3CF2FF]/30 flex items-center justify-center flex-shrink-0">
-                    <Icon size={28} className="text-[#3CF2FF]" />
-                  </div>
-                  
-                  <div className="pt-2 flex-1">
-                    <div className="font-['Space_Grotesk'] text-2xl font-bold text-[#3CF2FF]/30 mb-1">
-                      {step.number}
-                    </div>
-                    
-                    <h3 className="font-['Space_Grotesk'] text-xl font-semibold mb-2">
-                      {step.title}
-                    </h3>
-                    
-                    <p className="text-sm text-[#A8B3CF]">
-                      {step.description}
-                    </p>
-                  </div>
+        <div className="grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] lg:grid-cols-4">
+          {processSteps.map((step, i) => (
+            <ScrollReveal key={step.title} delay={i * 0.1}>
+              <article className="group h-full bg-[#0B1219] p-7 transition duration-300 hover:bg-[#111B24]">
+                <div className="mb-10 flex items-center justify-between gap-4">
+                  <span className="font-['Space_Grotesk'] text-5xl font-bold text-[#3CF2FF]/35">
+                    {step.number}
+                  </span>
+                  <span className="h-px flex-1 bg-[#3CF2FF]/25" />
                 </div>
-              </ScrollReveal>
-            )
-          })}
+
+                <h3 className="mb-3 font-['Space_Grotesk'] text-xl font-semibold">
+                  {step.title}
+                </h3>
+                <p className="text-sm leading-6 text-[#A8B3CF]">
+                  {step.description}
+                </p>
+              </article>
+            </ScrollReveal>
+          ))}
         </div>
       </div>
     </section>

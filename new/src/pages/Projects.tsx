@@ -1,189 +1,287 @@
-import React, { useState, useMemo } from 'react'
-import { projects, allTags } from '../data/projects'
-import ProjectCard from '../components/ProjectCard'
+import React, { useMemo, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import ProjectModal from '../components/ProjectModal'
 import ScrollReveal from '../components/ScrollReveal'
-import { Project } from '../data/projects'
+import { Project, projects } from '../data/projects'
 
-type SortOption = 'recent' | 'popular'
+const focusOrder = ['watchlist', 'planete-creche', 'nova-agent-forge']
+
+const formatDate = (date: string) => {
+  return new Intl.DateTimeFormat('fr-FR', {
+    month: 'short',
+    year: 'numeric',
+  }).format(new Date(date))
+}
+
+const compactList = (items: string[], limit: number) => items.slice(0, limit).join(' / ')
 
 export default function Projects() {
-  const [selectedTags, setSelectedTags] = useState<string[]>([])
-  const [searchQuery, setSearchQuery] = useState('')
-  const [sortBy, setSortBy] = useState<SortOption>('recent')
+  const focusProjects = useMemo(
+    () =>
+      focusOrder
+        .map((id) => projects.find((project) => project.id === id))
+        .filter(Boolean) as Project[],
+    []
+  )
+
+  const secondaryProjects = useMemo(
+    () =>
+      projects
+        .filter((project) => !focusOrder.includes(project.id))
+        .sort((a, b) => b.date.localeCompare(a.date)),
+    []
+  )
+
+  const [activeId, setActiveId] = useState(focusProjects[0]?.id ?? projects[0].id)
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-
-  const toggleTag = (tag: string) => {
-    setSelectedTags(prev =>
-      prev.includes(tag)
-        ? prev.filter(t => t !== tag)
-        : [...prev, tag]
-    )
-  }
-
-  const filteredProjects = useMemo(() => {
-    let filtered = projects
-
-    // Filter by tags
-    if (selectedTags.length > 0) {
-      filtered = filtered.filter(project =>
-        selectedTags.every(tag => project.tags.includes(tag))
-      )
-    }
-
-    // Filter by search query
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase()
-      filtered = filtered.filter(project =>
-        project.title.toLowerCase().includes(query) ||
-        project.description.toLowerCase().includes(query) ||
-        project.tags.some(tag => tag.toLowerCase().includes(query))
-      )
-    }
-
-    // Sort
-    if (sortBy === 'recent') {
-      filtered = [...filtered].sort((a, b) => b.date.localeCompare(a.date))
-    } else {
-      filtered = [...filtered].sort((a, b) => Number(b.featured) - Number(a.featured))
-    }
-
-    return filtered
-  }, [selectedTags, searchQuery, sortBy])
+  const activeProject = focusProjects.find((project) => project.id === activeId) ?? focusProjects[0]
 
   return (
-    <div className="min-h-screen pt-32 pb-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-12 space-y-4">
-          <h1 className="text-5xl md:text-6xl font-bold text-[#EAF0FF] font-['Space_Grotesk']">
-            Mes Projets
-          </h1>
-          <p className="text-xl text-[#A8B3CF] max-w-2xl">
-            Une sélection de projets web & mobile développés avec passion et expertise technique.
-          </p>
-        </div>
+    <div className="min-h-screen overflow-hidden bg-[#080D12] pt-28 text-[#EAF0FF]">
+      <section className="relative px-6 pb-20">
+        <div className="absolute inset-0 pointer-events-none project-grid-fade" />
+        <motion.div
+          aria-hidden="true"
+          className="absolute right-[8%] top-10 hidden h-72 w-72 rounded-[18px] border border-[#3CF2FF]/20 bg-[#10202A]/40 md:block"
+          animate={{ rotateX: [58, 66, 58], rotateZ: [35, 42, 35], y: [0, -18, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+          style={{ transformStyle: 'preserve-3d' }}
+        />
 
-        {/* Filters & Search */}
-        <div className="mb-12 space-y-6">
-          {/* Search Bar */}
-          <div className="relative max-w-xl">
-            <input
-              type="text"
-              placeholder="Rechercher un projet..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-6 py-4 bg-[#0E1420]/60 backdrop-blur-xl border border-white/10 rounded-2xl text-[#EAF0FF] placeholder-[#A8B3CF]/50 focus:outline-none focus:border-[#3CF2FF]/50 transition-all"
-              aria-label="Rechercher un projet"
-            />
-            <svg
-              className="absolute right-6 top-1/2 -translate-y-1/2 w-5 h-5 text-[#A8B3CF]"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </div>
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(420px,1fr)] lg:items-end">
+          <motion.div
+            initial={{ opacity: 0, y: 24, filter: 'blur(10px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-3xl"
+          >
+            <p className="mb-5 inline-flex rounded-md border border-[#3CF2FF]/30 bg-[#3CF2FF]/10 px-3 py-1 text-sm font-medium text-[#7FEAFF]">
+              References produit et projets techniques
+            </p>
+            <h1 className="font-['Space_Grotesk'] text-5xl font-bold leading-[0.95] tracking-[-0.03em] text-balance sm:text-6xl lg:text-7xl">
+              Des projets presentes comme des produits, pas comme des articles.
+            </h1>
+            <p className="mt-8 max-w-2xl text-lg leading-8 text-[#B7C3D8]">
+              Chaque dossier montre le contexte, les fonctionnalites, les contraintes techniques et les choix d'architecture. Les trois references mises en avant sont Watchlist, Planete Creche et Nova / Agent Forge.
+            </p>
+          </motion.div>
 
-          {/* Sort & Filter Controls */}
-          <div className="flex flex-wrap items-center gap-4">
-            {/* Sort Dropdown */}
-            <div className="flex items-center gap-3">
-              <span className="text-sm text-[#A8B3CF]">Trier par:</span>
-              <div className="flex gap-2">
+          <motion.div
+            initial={{ opacity: 0, y: 28, rotateX: 8 }}
+            animate={{ opacity: 1, y: 0, rotateX: 0 }}
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="relative"
+            style={{ perspective: 1400 }}
+          >
+            <div className="case-stack relative grid gap-4">
+              {focusProjects.map((project, index) => (
                 <button
-                  onClick={() => setSortBy('recent')}
-                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                    sortBy === 'recent'
-                      ? 'bg-[#3CF2FF]/20 text-[#3CF2FF] border border-[#3CF2FF]/50'
-                      : 'bg-[#0E1420]/40 text-[#A8B3CF] border border-white/5 hover:border-white/10'
+                  key={project.id}
+                  type="button"
+                  onClick={() => setActiveId(project.id)}
+                  className={`group relative overflow-hidden rounded-2xl border p-5 text-left transition duration-500 ${
+                    activeId === project.id
+                      ? 'border-[#3CF2FF]/50 bg-[#0F1B24]'
+                      : 'border-white/[0.08] bg-[#0C131B]/76 hover:border-white/[0.18] hover:bg-[#101A23]'
                   }`}
+                  style={{ transform: `translateX(${index * 18}px)` }}
                 >
-                  Plus récents
-                </button>
-                <button
-                  onClick={() => setSortBy('popular')}
-                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                    sortBy === 'popular'
-                      ? 'bg-[#3CF2FF]/20 text-[#3CF2FF] border border-[#3CF2FF]/50'
-                      : 'bg-[#0E1420]/40 text-[#A8B3CF] border border-white/5 hover:border-white/10'
-                  }`}
-                >
-                  Featured
-                </button>
-              </div>
-            </div>
-
-            {/* Clear Filters */}
-            {(selectedTags.length > 0 || searchQuery) && (
-              <button
-                onClick={() => {
-                  setSelectedTags([])
-                  setSearchQuery('')
-                }}
-                className="px-4 py-2 rounded-xl text-sm font-medium text-[#FF2B2B] bg-[#FF2B2B]/10 border border-[#FF2B2B]/30 hover:bg-[#FF2B2B]/20 transition-all"
-              >
-                Réinitialiser filtres
-              </button>
-            )}
-          </div>
-
-          {/* Tags Filter */}
-          <div className="space-y-3">
-            <span className="text-sm text-[#A8B3CF]">Filtrer par technologie:</span>
-            <div className="flex flex-wrap gap-2">
-              {allTags.map((tag) => (
-                <button
-                  key={tag}
-                  onClick={() => toggleTag(tag)}
-                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                    selectedTags.includes(tag)
-                      ? 'bg-[#3CF2FF]/20 text-[#3CF2FF] border border-[#3CF2FF]/50'
-                      : 'bg-[#0E1420]/40 text-[#A8B3CF] border border-white/5 hover:border-white/10 hover:text-[#EAF0FF]'
-                  }`}
-                  aria-pressed={selectedTags.includes(tag)}
-                >
-                  {tag}
+                  <div className="absolute inset-y-0 left-0 w-1 bg-[#3CF2FF] opacity-0 transition duration-300 group-hover:opacity-80" />
+                  <div className="flex items-start justify-between gap-5">
+                    <div>
+                      <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7C8BA3]">
+                        Case {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <h2 className="mt-3 font-['Space_Grotesk'] text-2xl font-semibold tracking-[-0.02em] text-[#F4F8FF]">
+                        {project.title}
+                      </h2>
+                    </div>
+                    <span className="rounded-md border border-white/10 px-2.5 py-1 text-xs text-[#B7C3D8]">
+                      {formatDate(project.date)}
+                    </span>
+                  </div>
+                  <p className="mt-4 max-w-2xl text-sm leading-6 text-[#A8B3CF]">
+                    {project.description}
+                  </p>
                 </button>
               ))}
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="relative border-y border-white/6 bg-[#0B1219] px-6 py-16">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+          <ScrollReveal>
+            <div className="sticky top-28 space-y-8">
+              <div>
+                <p className="text-sm font-medium text-[#7FEAFF]">Dossier actif</p>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeProject.id}
+                    initial={{ opacity: 0, y: 16, filter: 'blur(8px)' }}
+                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                    exit={{ opacity: 0, y: -12, filter: 'blur(8px)' }}
+                    transition={{ duration: 0.35 }}
+                    className="mt-4"
+                  >
+                    <h2 className="font-['Space_Grotesk'] text-4xl font-bold tracking-[-0.03em] text-balance">
+                      {activeProject.title}
+                    </h2>
+                    <p className="mt-5 text-base leading-7 text-[#B7C3D8]">
+                      {activeProject.context}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  ['Fonctions', activeProject.features.length],
+                  ['Objectifs', activeProject.objectives.length],
+                  ['Stack', activeProject.stack.length],
+                ].map(([label, value]) => (
+                  <div key={label} className="rounded-xl bg-[#111B24] p-4">
+                    <div className="font-['Space_Grotesk'] text-3xl font-bold text-[#7FEAFF]">{value}</div>
+                    <div className="mt-1 text-xs text-[#7C8BA3]">{label}</div>
+                  </div>
+                ))}
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setSelectedProject(activeProject)}
+                className="inline-flex rounded-xl bg-[#7FEAFF] px-6 py-3 font-semibold text-[#071017] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B9F7FF] active:translate-y-0"
+              >
+                Ouvrir la fiche complete
+              </button>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid gap-5">
+            {focusProjects.map((project, index) => (
+              <ScrollReveal key={project.id} delay={index * 0.08}>
+                <motion.article
+                  onMouseEnter={() => setActiveId(project.id)}
+                  onFocus={() => setActiveId(project.id)}
+                  whileHover={{ y: -8, rotateX: 2, rotateY: index % 2 === 0 ? -2 : 2 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  className={`group relative overflow-hidden rounded-2xl border bg-[#0E1720] p-5 transition duration-500 ${
+                    activeId === project.id ? 'border-[#3CF2FF]/45' : 'border-white/[0.08]'
+                  }`}
+                  style={{ transformStyle: 'preserve-3d' }}
+                >
+                  <div className="grid gap-6 xl:grid-cols-[280px_minmax(0,1fr)]">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedProject(project)}
+                      className="relative aspect-[4/3] overflow-hidden rounded-xl bg-[#081017] text-left"
+                    >
+                      <img
+                        src={project.cover}
+                        alt={`Apercu du projet ${project.title}`}
+                        className="h-full w-full object-cover opacity-80 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#071017] via-transparent to-transparent" />
+                      <span className="absolute bottom-4 left-4 rounded-md bg-[#071017]/84 px-3 py-1 text-sm font-medium text-[#EAF0FF]">
+                        Voir le detail
+                      </span>
+                    </button>
+
+                    <div className="flex flex-col gap-5">
+                      <div>
+                        <div className="flex flex-wrap gap-2">
+                          {project.tags.slice(0, 5).map((tag) => (
+                            <span key={tag} className="rounded-md bg-white/[0.06] px-2.5 py-1 text-xs text-[#B7C3D8]">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        <h3 className="mt-4 font-['Space_Grotesk'] text-3xl font-semibold tracking-[-0.02em]">
+                          {project.title}
+                        </h3>
+                        <p className="mt-3 max-w-3xl text-sm leading-6 text-[#A8B3CF]">
+                          {project.description}
+                        </p>
+                      </div>
+
+                      <div className="grid gap-4 md:grid-cols-2">
+                        <div className="rounded-xl bg-[#0A1118] p-4">
+                          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#7C8BA3]">Fonctionnalites</p>
+                          <p className="mt-3 text-sm leading-6 text-[#DDE6F7]">
+                            {compactList(project.features, 4)}
+                          </p>
+                        </div>
+                        <div className="rounded-xl bg-[#0A1118] p-4">
+                          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#7C8BA3]">Specs techniques</p>
+                          <p className="mt-3 text-sm leading-6 text-[#DDE6F7]">
+                            {compactList(project.stack, 6)}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.article>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
+      </section>
 
-        {/* Results Count */}
-        <div className="mb-6 text-[#A8B3CF]">
-          {filteredProjects.length === 0 ? (
-            <p className="text-center py-12 text-lg">
-              Aucun projet ne correspond à vos critères de recherche.
-            </p>
-          ) : (
-            <p>
-              {filteredProjects.length} projet{filteredProjects.length > 1 ? 's' : ''} trouvé{filteredProjects.length > 1 ? 's' : ''}
-            </p>
-          )}
-        </div>
+      <section className="px-6 py-20">
+        <div className="mx-auto max-w-7xl">
+          <ScrollReveal>
+            <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+              <div>
+                <p className="text-sm font-medium text-[#7FEAFF]">Archive selective</p>
+                <h2 className="mt-3 font-['Space_Grotesk'] text-4xl font-bold tracking-[-0.03em]">
+                  Autres references livrees ou prototypées
+                </h2>
+              </div>
+              <p className="max-w-xl text-sm leading-6 text-[#A8B3CF]">
+                Un index compact pour scanner les stacks, ouvrir une fiche et comparer rapidement les projets sans repasser par une logique de blog.
+              </p>
+            </div>
+          </ScrollReveal>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-          {filteredProjects.map((project, index) => (
-            <ScrollReveal key={project.id} delay={index * 0.1}>
-              <ProjectCard
-                project={project}
+          <div className="grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08]">
+            {secondaryProjects.map((project, index) => (
+              <motion.button
+                key={project.id}
+                type="button"
                 onClick={() => setSelectedProject(project)}
-              />
-            </ScrollReveal>
-          ))}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.45, delay: Math.min(index * 0.035, 0.28) }}
+                className="grid gap-4 bg-[#0B1219] p-5 text-left transition duration-300 hover:bg-[#111B24] md:grid-cols-[1.1fr_1fr_140px]"
+              >
+                <div>
+                  <h3 className="font-['Space_Grotesk'] text-xl font-semibold">{project.title}</h3>
+                  <p className="mt-2 line-clamp-2 text-sm leading-6 text-[#A8B3CF]">{project.description}</p>
+                </div>
+                <div className="flex flex-wrap content-start gap-2">
+                  {project.stack.slice(0, 5).map((tech) => (
+                    <span key={tech} className="rounded-md bg-white/[0.06] px-2.5 py-1 text-xs text-[#B7C3D8]">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex items-center justify-start text-sm font-medium text-[#7FEAFF] md:justify-end">
+                  Ouvrir le dossier
+                </div>
+              </motion.button>
+            ))}
+          </div>
         </div>
-        </div>
+      </section>
 
-        {/* Project Modal */}
-        {selectedProject && (
-          <ProjectModal
-            project={selectedProject}
-            onClose={() => setSelectedProject(null)}
-          />
-        )}
-      </div>
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
+    </div>
   )
 }

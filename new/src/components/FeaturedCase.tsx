@@ -1,66 +1,57 @@
 import React from 'react'
-import {Zap, Star, Clock, ArrowRight, ExternalLink} from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import ScrollReveal from './ScrollReveal'
 import { featuredCaseStudy } from '../data/home'
 
-const iconMap = {
-  Zap,
-  Star,
-  Clock
-}
-
 const FeaturedCase = () => {
   const study = featuredCaseStudy
 
   return (
-    <section className="py-24 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section className="px-6 py-24">
+      <div className="mx-auto max-w-7xl">
         <ScrollReveal>
-          <div className="text-center mb-12">
-            <p className="text-[#3CF2FF] text-sm uppercase tracking-wider mb-2">
-              Case Study
+          <div className="mb-12 text-center">
+            <p className="mb-3 text-sm font-medium text-[#7FEAFF]">
+              Référence mise en avant
             </p>
-            <h2 className="font-['Space_Grotesk'] text-3xl sm:text-4xl font-bold">
-              Projet en vedette
+            <h2 className="font-['Space_Grotesk'] text-3xl font-bold sm:text-4xl">
+              Projet de présentation
             </h2>
           </div>
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <div className="group relative rounded-3xl overflow-hidden border border-white/5 bg-gradient-to-br from-[#0E1420] to-[#0B0F14]">
-            {/* Glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#3CF2FF]/10 to-[#FF2B2B]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            
-            <div className="relative grid lg:grid-cols-2 gap-8 p-8 lg:p-12">
-              {/* Left: Image */}
-              <div className="relative rounded-2xl overflow-hidden aspect-video lg:aspect-square">
-                <img 
-                  src={study.image} 
+          <motion.article
+            whileHover={{ y: -8, rotateX: 1.5 }}
+            className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0E1720]"
+            style={{ transformStyle: 'preserve-3d' }}
+          >
+            <div className="grid gap-8 p-8 lg:grid-cols-[0.95fr_1.05fr] lg:p-12">
+              <div className="relative aspect-video overflow-hidden rounded-xl bg-[#081017] lg:aspect-square">
+                <img
+                  src={study.image}
                   alt={study.title}
-                  className="w-full h-full object-cover"
+                  className="h-full w-full object-cover opacity-[0.88]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F14] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#071017] via-transparent to-transparent" />
               </div>
 
-              {/* Right: Content */}
               <div className="flex flex-col justify-center space-y-6">
                 <div>
-                  <p className="text-[#A8B3CF] text-sm mb-2">{study.client}</p>
-                  <h3 className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold mb-4">
+                  <p className="mb-2 text-sm text-[#A8B3CF]">{study.client}</p>
+                  <h3 className="mb-4 font-['Space_Grotesk'] text-3xl font-bold tracking-[-0.02em] sm:text-4xl">
                     {study.title}
                   </h3>
-                  <p className="text-[#A8B3CF] leading-relaxed mb-6">
+                  <p className="mb-6 max-w-2xl leading-7 text-[#A8B3CF]">
                     {study.description}
                   </p>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="mb-6 flex flex-wrap gap-2">
                     {study.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 rounded-full text-xs font-medium bg-[#3CF2FF]/10 text-[#3CF2FF] border border-[#3CF2FF]/20"
+                        className="rounded-md border border-[#3CF2FF]/20 bg-[#3CF2FF]/10 px-3 py-1 text-xs font-medium text-[#7FEAFF]"
                       >
                         {tag}
                       </span>
@@ -68,46 +59,31 @@ const FeaturedCase = () => {
                   </div>
                 </div>
 
-                {/* Results */}
-                <div className="grid grid-cols-3 gap-4">
-                  {study.results.map((result) => {
-                    const Icon = iconMap[result.icon as keyof typeof iconMap]
-                    return (
-                      <div
-                        key={result.label}
-                        className="p-4 rounded-xl bg-gradient-to-br from-white/5 to-transparent border border-white/5"
-                      >
-                        <Icon size={20} className="text-[#3CF2FF] mb-2" />
-                        <div className="font-['Space_Grotesk'] text-2xl font-bold text-[#3CF2FF] mb-1">
-                          {result.value}
-                        </div>
-                        <div className="text-xs text-[#A8B3CF]">{result.label}</div>
+                <div className="grid gap-4 sm:grid-cols-3">
+                  {study.results.map((result) => (
+                    <div
+                      key={result.label}
+                      className="rounded-xl bg-[#0A1118] p-4"
+                    >
+                      <div className="mb-1 font-['Space_Grotesk'] text-2xl font-bold text-[#7FEAFF]">
+                        {result.value}
                       </div>
-                    )
-                  })}
+                      <div className="text-xs text-[#A8B3CF]">{result.label}</div>
+                    </div>
+                  ))}
                 </div>
 
-                {/* CTAs */}
-                <div className="flex flex-wrap gap-4">
+                <div>
                   <Link
                     to={study.links.project}
-                    className="group/btn inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-[#3CF2FF] text-[#0B0F14] font-semibold hover:bg-[#3CF2FF]/90 transition-all duration-300"
+                    className="inline-flex rounded-xl bg-[#7FEAFF] px-6 py-3 font-semibold text-[#071017] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B9F7FF] active:translate-y-0"
                   >
-                    <span>Voir le projet</span>
-                    <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
-                  </Link>
-                  
-                  <Link
-                    to={study.links.article}
-                    className="group/btn inline-flex items-center space-x-2 px-6 py-3 rounded-xl border border-[#3CF2FF]/30 text-[#3CF2FF] font-semibold hover:bg-[#3CF2FF]/10 transition-all duration-300"
-                  >
-                    <span>Lire le retour</span>
-                    <ExternalLink size={18} className="group-hover/btn:translate-x-1 transition-transform" />
+                    Voir les projets
                   </Link>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.article>
         </ScrollReveal>
       </div>
     </section>

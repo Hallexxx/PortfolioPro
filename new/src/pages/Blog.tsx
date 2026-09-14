@@ -35,7 +35,7 @@ export default function Blog() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16 space-y-6">
-          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#EAF0FF] via-[#3CF2FF] to-[#EAF0FF] bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-6xl font-bold text-[#EAF0FF]">
             Blog & Réalisations
           </h1>
           <p className="text-xl text-[#A8B3CF] max-w-2xl mx-auto">
@@ -53,14 +53,6 @@ export default function Blog() {
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full px-6 py-4 bg-[#0E1420]/60 backdrop-blur-sm border border-white/10 rounded-2xl text-[#EAF0FF] placeholder-[#A8B3CF]/50 focus:outline-none focus:border-[#3CF2FF]/50 focus:ring-2 focus:ring-[#3CF2FF]/20 transition-all duration-300"
             />
-            <svg
-              className="absolute right-6 top-1/2 -translate-y-1/2 w-5 h-5 text-[#A8B3CF] group-focus-within:text-[#3CF2FF] transition-colors"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
           </div>
         </div>
 
@@ -84,7 +76,7 @@ export default function Blog() {
                 >
                   {tag}
                   {isSelected && (
-                    <span className="ml-2 inline-block w-4 h-4 text-xs leading-4">✕</span>
+                    <span className="ml-2 inline-block w-4 h-4 text-xs leading-4">x</span>
                   )}
                 </button>
               )
@@ -116,7 +108,7 @@ export default function Blog() {
           </div>
         ) : (
           <div className="text-center py-20">
-            <div className="text-6xl mb-4">🔍</div>
+            <div className="mb-4 font-['Space_Grotesk'] text-4xl font-bold text-[#3CF2FF]">0</div>
             <p className="text-xl text-[#A8B3CF]">Aucun article trouvé</p>
             <button
               onClick={() => {

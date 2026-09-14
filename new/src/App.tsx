@@ -38,7 +38,7 @@ function HomePage() {
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-[#0B0F14] text-[#EAF0FF] font-['Inter'] antialiased overflow-x-hidden">
+      <div className="min-h-screen bg-[#080D12] text-[#EAF0FF] font-['Manrope'] antialiased overflow-x-hidden">
         <Navbar />
         <PageTransition>
           <Routes>

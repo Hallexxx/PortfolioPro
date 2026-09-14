@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
 
 const AnimatedBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -11,74 +10,72 @@ const AnimatedBackground = () => {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    let frame = 0
+    let animationId = 0
 
-    // Gradient mesh animation
-    let time = 0
-    const animate = () => {
-      time += 0.005
+    const resize = () => {
+      const ratio = window.devicePixelRatio || 1
+      canvas.width = Math.floor(window.innerWidth * ratio)
+      canvas.height = Math.floor(window.innerHeight * ratio)
+      canvas.style.width = `${window.innerWidth}px`
+      canvas.style.height = `${window.innerHeight}px`
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0)
+    }
 
-      // Create animated gradient
-      const gradient = ctx.createRadialGradient(
-        canvas.width / 2 + Math.sin(time) * 200,
-        canvas.height / 2 + Math.cos(time) * 150,
-        0,
-        canvas.width / 2,
-        canvas.height / 2,
-        canvas.width / 2
-      )
-      
-      gradient.addColorStop(0, 'rgba(60, 242, 255, 0.03)')
-      gradient.addColorStop(0.5, 'rgba(255, 43, 43, 0.02)')
-      gradient.addColorStop(1, 'rgba(11, 15, 20, 0)')
+    const draw = () => {
+      const width = window.innerWidth
+      const height = window.innerHeight
+      const time = prefersReducedMotion ? 0 : frame * 0.006
 
+      ctx.clearRect(0, 0, width, height)
+      ctx.fillStyle = '#080D12'
+      ctx.fillRect(0, 0, width, height)
+
+      const gradient = ctx.createLinearGradient(0, 0, width, height)
+      gradient.addColorStop(0, 'rgba(60, 242, 255, 0.09)')
+      gradient.addColorStop(0.46, 'rgba(13, 24, 33, 0.2)')
+      gradient.addColorStop(1, 'rgba(255, 43, 43, 0.06)')
       ctx.fillStyle = gradient
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      ctx.fillRect(0, 0, width, height)
 
-      requestAnimationFrame(animate)
+      ctx.strokeStyle = 'rgba(127, 234, 255, 0.08)'
+      ctx.lineWidth = 1
+
+      for (let x = -80; x < width + 80; x += 72) {
+        ctx.beginPath()
+        ctx.moveTo(x + Math.sin(time + x * 0.01) * 18, 0)
+        ctx.lineTo(x - 120 + Math.cos(time + x * 0.01) * 18, height)
+        ctx.stroke()
+      }
+
+      for (let y = 48; y < height; y += 92) {
+        ctx.beginPath()
+        ctx.moveTo(0, y + Math.cos(time + y * 0.01) * 10)
+        ctx.lineTo(width, y + Math.sin(time + y * 0.01) * 10)
+        ctx.stroke()
+      }
+
+      if (!prefersReducedMotion) {
+        frame += 1
+        animationId = requestAnimationFrame(draw)
+      }
     }
 
-    animate()
+    resize()
+    draw()
 
-    const handleResize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+    window.addEventListener('resize', resize)
+
+    return () => {
+      window.removeEventListener('resize', resize)
+      cancelAnimationFrame(animationId)
     }
-
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   return (
-    <div className="fixed inset-0 pointer-events-none">
-      <canvas ref={canvasRef} className="w-full h-full opacity-40" />
-      
-      {/* Gradient orbs */}
-      <motion.div
-        animate={{
-          x: [0, 100, 0],
-          y: [0, -50, 0],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#3CF2FF]/5 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{
-          x: [0, -100, 0],
-          y: [0, 100, 0],
-        }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-[#FF2B2B]/5 rounded-full blur-3xl"
-      />
+    <div className="fixed inset-0 pointer-events-none opacity-70">
+      <canvas ref={canvasRef} className="h-full w-full" />
     </div>
   )
 }

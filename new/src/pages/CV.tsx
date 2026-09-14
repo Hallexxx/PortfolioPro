@@ -12,7 +12,7 @@ export default function CV() {
       {/* Hero section */}
       <section className="pt-32 pb-16 px-6 max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 font-['Space_Grotesk'] bg-gradient-to-r from-[#3CF2FF] to-[#FF2B2B] bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 font-['Space_Grotesk'] text-[#EAF0FF]">
             Mon Parcours
           </h1>
           <p className="text-[#A8B3CF] text-lg md:text-xl mb-8 leading-relaxed">
@@ -20,15 +20,12 @@ export default function CV() {
             Chaque expérience m'a permis d'affiner mes compétences et ma vision du web moderne.
           </p>
 
-          {/* CTA Download CV */}
           <a
             href="../../cv_alexandre_perez.pdf"
             download="../../cv_alexandre_perez.pdf"
-            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#3CF2FF] to-[#FF2B2B] rounded-full font-semibold text-[#0B0F14] hover:shadow-[0_0_40px_rgba(60,242,255,0.5)] transition-all duration-300 hover:scale-105"
+            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-[#7FEAFF] rounded-full font-semibold text-[#0B0F14] hover:bg-[#B9F7FF] transition-all duration-300 hover:scale-105"
           >
-            <span>📄</span>
             <span>Télécharger mon CV</span>
-            <span className="transform group-hover:translate-x-1 transition-transform">→</span>
           </a>
 
         </div>
@@ -112,7 +109,7 @@ export default function CV() {
       {/* CTA Section */}
       <section className="py-8 px-6 max-w-4xl mx-auto text-center">
         <div className="backdrop-blur-xl bg-gradient-to-br from-[#0E1420]/60 to-[#0B0F14]/60 border border-[#3CF2FF]/20 rounded-3xl p-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 font-['Space_Grotesk'] bg-gradient-to-r from-[#3CF2FF] to-[#FF2B2B] bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 font-['Space_Grotesk'] text-[#EAF0FF]">
             Prêt à Collaborer ?
           </h2>
           <p className="text-[#A8B3CF] text-lg mb-8">
@@ -121,10 +118,9 @@ export default function CV() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               to="/contact"
-              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#3CF2FF] to-[#FF2B2B] rounded-full font-semibold text-[#0B0F14] hover:shadow-[0_0_40px_rgba(60,242,255,0.5)] transition-all duration-300 hover:scale-105"
+              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-[#7FEAFF] rounded-full font-semibold text-[#0B0F14] hover:bg-[#B9F7FF] transition-all duration-300 hover:scale-105"
             >
               <span>Me contacter</span>
-              <span className="transform group-hover:translate-x-1 transition-transform">→</span>
             </Link>
 
             <Link

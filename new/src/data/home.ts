@@ -8,7 +8,6 @@ export const collaborations = [
 
 export const services = [
   {
-    icon: 'Code2',
     color: '#3CF2FF',
     title: 'Front-end moderne',
     description:
@@ -21,7 +20,6 @@ export const services = [
     ],
   },
   {
-    icon: 'Server',
     color: '#68A063',
     title: 'Back-end & API',
     description:
@@ -34,7 +32,6 @@ export const services = [
     ],
   },
   {
-    icon: 'Zap',
     color: '#FF2B2B',
     title: 'Apps & automatisation',
     description:
@@ -46,7 +43,6 @@ export const services = [
     ],
   },
   {
-    icon: 'Palette',
     color: '#38BDF8',
     title: 'Déploiement & maintenance',
     description:
@@ -66,44 +62,38 @@ export const processSteps = [
     number: '01',
     title: 'Comprendre',
     description: 'Analyse du besoin, objectifs, cible et contraintes',
-    icon: 'Search'
   },
   {
     number: '02',
     title: 'Concevoir',
     description: 'Architecture, maquettes, design système et validation',
-    icon: 'Figma'
   },
   {
     number: '03',
     title: 'Développer',
     description: 'Code propre, tests, intégration et déploiement continu',
-    icon: 'Code'
   },
   {
     number: '04',
     title: 'Optimiser',
     description: 'Monitoring, amélioration continue et évolution',
-    icon: 'TrendingUp'
   }
 ]
 
 export const featuredCaseStudy = {
-  title: 'Yshare — Plateforme d’événements',
-  client: 'Projet de validation (Bachelor Ynov)',
-  tags: ['React', 'Node.js', 'Express', 'Tailwind CSS', 'MySQL'],
+  title: 'Planete Creche — gestion micro-crèches',
+  client: 'Reference produit metier',
+  tags: ['Angular', 'Laravel', 'PHP', 'MySQL', 'RBAC', 'i18n'],
   description:
-    "Développement d’une plateforme d’événements permettant de créer, commenter et participer à des événements. Projet full-stack avec une UI moderne et une API REST.",
-  image:
-    'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=500&fit=crop',
+    "Plateforme de gestion pour micro-crèches avec enfants, employés, plannings, roles, contraintes de ratio et interface multilingue.",
+  image: '/logoo.png',
   results: [
-    { label: 'Fonctionnalités', value: 'CRUD complet', icon: 'Zap' },
-    { label: 'Expérience', value: 'UI moderne', icon: 'Star' },
-    { label: 'Architecture', value: 'API REST', icon: 'Clock' },
+    { label: 'Gestion', value: 'CRUD complet' },
+    { label: 'Metier', value: 'Ratio 1/3' },
+    { label: 'Architecture', value: 'API REST' },
   ],
   links: {
     project: '/projets',
-    article: '/blog/yshare-case-study',
   },
 }
 

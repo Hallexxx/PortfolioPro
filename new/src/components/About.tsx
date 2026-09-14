@@ -1,6 +1,5 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Code2, Server, Palette, MapPin, Calendar, Layers, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const About = () => {
@@ -8,27 +7,6 @@ const About = () => {
     { label: "Années d'expérience", value: '2+' },
     { label: 'Projets réalisés', value: '10+' },
     { label: 'Technologies', value: '15+' },
-  ]
-
-  const services = [
-    {
-      icon: Code2,
-      title: 'Front-end Development',
-      description: 'Interfaces modernes et réactives avec React, TypeScript et Tailwind CSS',
-      color: '#3CF2FF',
-    },
-    {
-      icon: Server,
-      title: 'Back-end Development',
-      description: 'APIs robustes et scalables avec Node.js, Express et bases de données',
-      color: '#FF2B2B',
-    },
-    {
-      icon: Palette,
-      title: 'UI/UX & Performance',
-      description: 'Design élégant et optimisation pour des expériences fluides (90+ Lighthouse)',
-      color: '#3CF2FF',
-    },
   ]
 
   const containerVariants = {
@@ -89,7 +67,7 @@ const About = () => {
 
               <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[#A8B3CF]">
                 <div className="flex items-center space-x-2">
-                  <MapPin size={18} className="text-[#3CF2FF]" />
+                  <span className="h-2 w-2 rounded-full bg-[#3CF2FF]" />
                   <span>France (Paris / Nice)</span>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -134,7 +112,6 @@ const About = () => {
               className="group inline-flex items-center space-x-2 px-6 py-3 rounded-xl border border-[#3CF2FF]/30 text-[#3CF2FF] font-semibold hover:bg-[#3CF2FF]/10 transition-all duration-300"
             >
               <span>Voir mon parcours</span>
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
         </motion.div>

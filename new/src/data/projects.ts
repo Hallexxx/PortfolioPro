@@ -19,6 +19,113 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "watchlist",
+    title: "Watchlist — suivi de contenus, sorties et priorités",
+    description:
+      "Application de suivi personnel pour organiser films, séries, jeux ou produits à surveiller, avec statuts, priorités, rappels et vues filtrées.",
+    tags: ["Projet", "React", "TypeScript", "Node.js", "API", "PostgreSQL", "UX"],
+    cover: "/data.png",
+    images: ["/data.png", "/planning.png"],
+    featured: true,
+    date: "2026-03-01",
+    context:
+      "Watchlist est pensé comme un tableau de suivi clair pour arrêter de perdre des idées, sorties ou références dans des notes dispersées.\n" +
+      "Le principe : ajouter rapidement un élément, lui associer un statut, une priorité, une date ou une source, puis retrouver l'information dans des vues lisibles selon le besoin du moment.",
+    objectives: [
+      "Centraliser les éléments à voir, tester, acheter ou surveiller dans une interface unique",
+      "Permettre une saisie rapide avec tags, priorités, dates et notes",
+      "Créer des vues de travail: à regarder, en cours, terminé, urgent, archivé",
+      "Ajouter des rappels pour les sorties importantes ou les tâches liées",
+      "Préparer une architecture API propre pour synchroniser les données entre appareils"
+    ],
+    features: [
+      "CRUD complet: création, édition, suppression et archivage d'éléments",
+      "Statuts personnalisés: à voir, en cours, terminé, abandonné, en attente",
+      "Priorités et dates: rappel de sortie, échéance, dernière mise à jour",
+      "Recherche et filtres combinés par tag, statut, type et niveau de priorité",
+      "Mode détail avec notes, liens sources, historique et informations clés",
+      "Vue tableau et vue compacte pour scanner rapidement les entrées",
+      "Préparation notifications: rappels locaux puis notifications serveur",
+      "Structure API prévue pour synchronisation multi-device et auth utilisateur"
+    ],
+    stack: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "REST API",
+      "JWT",
+      "LocalStorage / sync API"
+    ],
+    challenges:
+      "• Modélisation: garder un modèle flexible sans créer une usine à gaz entre types, tags, statuts, dates et notes.\n" +
+      "• UX de tri: permettre des filtres puissants sans perdre l'utilisateur dans trop de contrôles.\n" +
+      "• Performance front: garder les listes fluides avec recherche instantanée, transitions et données potentiellement nombreuses.\n" +
+      "• Synchronisation: prévoir les conflits entre données locales et serveur si l'application évolue vers du multi-device.\n" +
+      "• Accessibilité: rendre les statuts lisibles sans dépendre uniquement de la couleur et garder une navigation clavier propre.",
+    results:
+      "• Structure produit définie: entités, statuts, vues principales et parcours d'ajout rapide.\n" +
+      "• Base technique prête pour un MVP React + API REST.\n" +
+      "• Direction UX claire: un outil rapide, lisible, pensé pour revenir souvent sans friction."
+  },
+  {
+    id: "nova-agent-forge",
+    title: "Nova — Agent Forge",
+    description:
+      "Forge d'agents permettant de créer, configurer et orchestrer des assistants spécialisés avec prompts, outils, mémoire, scénarios et journal d'exécution.",
+    tags: ["Projet", "IA", "Agents", "React", "Node.js", "API", "Automation", "MongoDB"],
+    cover: "/aimtab.webp",
+    images: ["/aimtab.webp", "/aimout.webp", "/aimpro.webp"],
+    featured: true,
+    date: "2026-02-01",
+    context:
+      "Nova est un projet orienté agents: l'objectif est de transformer des workflows répétitifs en assistants configurables, traçables et réutilisables.\n" +
+      "Agent Forge est la partie centrale: un atelier où l'on définit le rôle d'un agent, ses règles, ses outils, ses entrées, ses sorties attendues et les étapes d'exécution.",
+    objectives: [
+      "Créer une interface de configuration d'agents sans modifier le code à chaque nouveau cas",
+      "Structurer les prompts, contraintes, variables et outils disponibles par agent",
+      "Permettre des scénarios en plusieurs étapes: recherche, analyse, génération, validation",
+      "Tracer les exécutions pour comprendre ce que l'agent a fait et corriger les erreurs",
+      "Préparer une base modulaire pour connecter email, fichiers, scraping, API et notifications"
+    ],
+    features: [
+      "Builder d'agents: nom, rôle, objectifs, ton, règles et variables d'entrée",
+      "Bibliothèque de templates pour agents de veille, rédaction, extraction et support",
+      "Workflow multi-étapes avec ordre d'exécution, conditions simples et sorties typées",
+      "Gestion des outils: API externes, fichiers, recherche, génération de documents, emails",
+      "Journal d'exécution: logs, statuts, erreurs, durée, coût estimé et payloads utiles",
+      "Historique des versions pour comparer les prompts et revenir à une configuration stable",
+      "Mode test avec exemples d'entrée avant publication d'un agent",
+      "Séparation front/back pour exposer la forge via API à d'autres interfaces"
+    ],
+    stack: [
+      "React",
+      "TypeScript",
+      "Framer Motion",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "REST API",
+      "Queue jobs",
+      "Prompt templates",
+      "File processing",
+      "Auth JWT"
+    ],
+    challenges:
+      "• Fiabilité des agents: encadrer les prompts, limiter les sorties imprévisibles et garder une trace exploitable.\n" +
+      "• Orchestration: gérer des étapes asynchrones, des statuts, des erreurs et des reprises sans bloquer l'interface.\n" +
+      "• Sécurité: isoler les outils sensibles, valider les inputs, protéger les clés API et contrôler les droits.\n" +
+      "• UX de configuration: rendre un système complexe compréhensible avec des presets, des exemples et des tests rapides.\n" +
+      "• Observabilité: afficher des logs utiles sans exposer trop de bruit technique à l'utilisateur final.",
+    results:
+      "• Concept produit cadré autour d'une forge d'agents réutilisable.\n" +
+      "• Architecture modulaire prévue: agents, tools, runs, logs, versions et templates.\n" +
+      "• Base solide pour relier Nova aux automatisations déjà envisagées: documents, emails, veille et alertes."
+  },
+  {
     id: "polewin",
     title: "PoleWin — App communautaire F1 (Prédictions & Live Chat)",
     description:
@@ -273,34 +380,49 @@ export const projects: Project[] = [
   },
 
   {
-    id: "site-micro-creches",
-    title: "Site Micro-crèches",
+    id: "planete-creche",
+    title: "Planete Creche — gestion micro-crèches",
     description:
-      "Site de gestion de plannings micro-crèche : employés + enfants, CRUD, règles de ratio 1 employé / 3 enfants, multilingue.",
-    tags: ["Projets scolaires", "Node.js", "Angular", "PHP", "Laravel"],
+      "Plateforme de gestion pour micro-crèches: enfants, employés, plannings, rôles, contraintes de ratio et interface multilingue.",
+    tags: ["Projet", "Angular", "Laravel", "PHP", "MySQL", "RBAC", "i18n"],
     cover: "/logoo.png",
-    images: ["/logoo.png"],
+    images: ["/logoo.png", "/planning.png"],
     demoUrl: "https://planetecreche.com",
     githubUrl: "https://github.com/Hallexxx/LaravelAngular",
     featured: true,
-    date: "2024-12-08",
+    date: "2026-01-15",
     context:
-      "Gestion des plannings micro-crèche. Frontend Angular + backend Laravel.\nCRUD employés et enfants.\nHoraires affectés automatiquement selon jours de garde et horaires employés, en respectant le ratio 1 employé pour 3 enfants.\nAccès strict : gérant peut modifier, employés consultent profil + planning.\nSupport multilingue FR/EN.",
+      "Planete Creche répond à un besoin métier concret: aider une micro-crèche à gérer ses enfants, ses employés et ses plannings sans perdre de temps dans des tableaux manuels.\n" +
+      "Le front Angular dialogue avec une API Laravel pour centraliser les données, appliquer les rôles, sécuriser les accès et préparer des plannings compatibles avec les contraintes de garde.",
     objectives: [
-      "Gérer employés + enfants (CRUD)",
-      "Automatiser l’affectation planning",
-      "Appliquer une règle de ratio",
-      "Mettre en place des rôles/permissions",
-      "Ajouter du multilingue"
+      "Gérer les fiches enfants, parents et employés avec un CRUD propre",
+      "Affecter les horaires selon jours de garde, disponibilités et contraintes de ratio",
+      "Différencier les accès: gérant, employés et consultation de planning",
+      "Limiter les erreurs de saisie grâce aux validations côté front et back",
+      "Proposer une interface FR/EN pour faciliter l'utilisation selon le profil"
     ],
     features: [
-      "CRUD employés et enfants",
-      "Planning auto (jours de garde / horaires)",
-      "Règle 1 employé / 3 enfants",
-      "Rôles : gérant vs employés",
-      "Multilingue FR/EN"
+      "Gestion enfants: identité, jours de garde, informations utiles et historique",
+      "Gestion employés: profils, horaires, disponibilités et accès",
+      "Planning automatique à partir des jours de garde et créneaux employés",
+      "Contrôle métier du ratio 1 employé pour 3 enfants selon les créneaux",
+      "Rôles et permissions: gérant en modification, employés en consultation ciblée",
+      "Interface multilingue FR/EN avec libellés centralisés",
+      "Validation des formulaires et messages d'erreur métier",
+      "Architecture séparée Angular / Laravel pour garder l'API réutilisable"
     ],
-    stack: ["Angular", "Laravel", "RBAC", "i18n"],
+    stack: [
+      "Angular",
+      "TypeScript",
+      "Laravel",
+      "PHP",
+      "MySQL",
+      "REST API",
+      "RBAC",
+      "i18n FR/EN",
+      "Validation serveur",
+      "Responsive UI"
+    ],
     challenges:
       "• Algorithme de planning : affecter automatiquement les horaires en fonction des jours de garde et des disponibilités employés.\n" +
       "• Gestion des conflits : éviter les chevauchements, détecter les incohérences et garantir un planning valide.\n" +
@@ -314,7 +436,8 @@ export const projects: Project[] = [
       "• Planning automatisé : génération de créneaux selon règles + affichage lisible côté interface.\n" +
       "• Conformité métier : ratio 1 employé / 3 enfants respecté et contrôlé lors de la création/modification.\n" +
       "• Accès sécurisé : permissions appliquées (RBAC) avec comportements adaptés selon le rôle.\n" +
-      "• Interface multilingue : support FR/EN intégré pour une utilisation plus flexible."
+      "• Interface multilingue : support FR/EN intégré pour une utilisation plus flexible.\n" +
+      "• Projet utilisable comme référence métier, pas seulement comme exercice technique."
 
   },
 

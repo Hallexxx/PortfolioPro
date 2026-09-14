@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Download } from 'lucide-react'
 import { motion, AnimatePresence, useScroll } from 'framer-motion'
 
 const Navbar = () => {
@@ -17,7 +16,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // ✅ Blog retiré, texte remplacé
   const navLinks = [
     { name: 'Accueil', path: '/' },
     { name: 'Projets', path: '/projets' },
@@ -50,7 +48,6 @@ const Navbar = () => {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            {/* ✅ Logo : A + "Portfolio Alexandre Perez" */}
             <Link to="/" className="flex items-center space-x-2 group">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3CF2FF] to-[#FF2B2B] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
                 <span className="text-[#0B0F14] font-['Space_Grotesk'] font-bold text-lg">
@@ -62,7 +59,6 @@ const Navbar = () => {
               </span>
             </Link>
 
-            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-1">
               {navLinks.map((link) => (
                 <Link
@@ -87,19 +83,15 @@ const Navbar = () => {
               ))}
             </div>
 
-            {/* ✅ CTA Buttons */}
             <div className="hidden md:flex items-center space-x-3">
-              {/* ✅ Téléchargement CV : met ton PDF dans /public/cv_alexandre_perez.pdf */}
               <a
                 href="/cv_alexandre_perez.pdf"
                 download="cv_alexandre_perez.pdf"
-                className="px-4 py-2 rounded-lg border border-[#3CF2FF]/30 text-[#3CF2FF] hover:bg-[#3CF2FF]/10 transition-all duration-300 flex items-center space-x-2 group"
+                className="px-4 py-2 rounded-lg border border-[#3CF2FF]/30 text-[#3CF2FF] hover:bg-[#3CF2FF]/10 transition-all duration-300"
               >
-                <Download size={16} className="group-hover:translate-y-0.5 transition-transform" />
                 <span className="text-sm font-medium">CV</span>
               </a>
 
-              {/* ✅ Bon lien contact */}
               <Link
                 to="/contact"
                 className="px-5 py-2 rounded-lg bg-gradient-to-r from-[#3CF2FF] to-[#3CF2FF]/80 text-[#0B0F14] font-semibold hover:shadow-[0_0_20px_rgba(60,242,255,0.3)] transition-all duration-300 transform hover:scale-105"
@@ -111,10 +103,10 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-white/5 transition-colors"
+              className="md:hidden rounded-lg border border-white/10 px-3 py-2 text-sm font-semibold text-[#EAF0FF] hover:bg-white/5 transition-colors"
               aria-label="Toggle menu"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? 'Fermer' : 'Menu'}
             </button>
           </div>
         </div>
@@ -146,18 +138,15 @@ const Navbar = () => {
                 ))}
 
                 <div className="pt-4 space-y-3">
-                  {/* ✅ Téléchargement CV mobile */}
                   <a
                     href="/cv_alexandre_perez.pdf"
                     download="cv_alexandre_perez.pdf"
                     onClick={() => setIsOpen(false)}
-                    className="w-full px-4 py-3 rounded-lg border border-[#3CF2FF]/30 text-[#3CF2FF] hover:bg-[#3CF2FF]/10 transition-all duration-300 flex items-center justify-center space-x-2"
+                    className="block w-full px-4 py-3 rounded-lg border border-[#3CF2FF]/30 text-[#3CF2FF] hover:bg-[#3CF2FF]/10 transition-all duration-300 text-center font-medium"
                   >
-                    <Download size={16} />
                     <span>Télécharger CV</span>
                   </a>
 
-                  {/* ✅ Bon lien contact mobile */}
                   <Link
                     to="/contact"
                     onClick={() => setIsOpen(false)}
