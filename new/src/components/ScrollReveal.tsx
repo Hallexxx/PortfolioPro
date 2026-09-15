@@ -29,17 +29,15 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
       ref={ref}
       initial={{ 
         opacity: 0, 
-        ...directions[direction],
-        filter: 'blur(10px)'
+        ...directions[direction]
       }}
       animate={isVisible ? { 
         opacity: 1, 
         x: 0,
-        y: 0,
-        filter: 'blur(0px)'
+        y: 0
       } : {}}
       transition={{
-        duration: 0.8,
+        duration: 0.6,
         delay,
         ease: [0.22, 1, 0.36, 1]
       }}

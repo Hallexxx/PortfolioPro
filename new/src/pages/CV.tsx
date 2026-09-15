@@ -31,7 +31,7 @@ export default function CV() {
       </section>
 
       {/* Stats Section */}
-      <section className="mb-8">
+      <section className="mb-8 [content-visibility:auto] [contain-intrinsic-size:900px]">
         <div className="text-center mb-4 px-6">
           <h2 className="text-3xl md:text-4xl font-bold mb-2 font-['Space_Grotesk'] text-[#EAF0FF]">
             En Quelques Chiffres
@@ -44,7 +44,7 @@ export default function CV() {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-8 px-6 max-w-6xl mx-auto">
+      <section className="py-8 px-6 max-w-6xl mx-auto [content-visibility:auto] [contain-intrinsic-size:1200px]">
         <div className="mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 font-['Space_Grotesk'] text-[#EAF0FF]">
             Timeline
@@ -57,7 +57,7 @@ export default function CV() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-8 px-6 max-w-7xl mx-auto">
+      <section className="py-8 px-6 max-w-7xl mx-auto [content-visibility:auto] [contain-intrinsic-size:900px]">
         <ScrollReveal>
           <div className="mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 font-['Space_Grotesk'] text-[#EAF0FF]">
@@ -72,7 +72,7 @@ export default function CV() {
       </section>
 
       {/* Tech Stack Section */}
-      <section className="py-8 px-6 max-w-7xl mx-auto">
+      <section className="py-8 px-6 max-w-7xl mx-auto [content-visibility:auto] [contain-intrinsic-size:720px]">
         <div className="mb-16 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 font-['Space_Grotesk'] text-[#EAF0FF]">
             Stack Préférée
@@ -106,7 +106,7 @@ export default function CV() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-8 px-6 max-w-4xl mx-auto text-center">
+      <section className="py-8 px-6 max-w-4xl mx-auto text-center [content-visibility:auto] [contain-intrinsic-size:460px]">
         <div className="backdrop-blur-xl bg-gradient-to-br from-[#0E1420]/60 to-[#0B0F14]/60 border border-[#3CF2FF]/20 rounded-3xl p-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 font-['Space_Grotesk'] text-[#EAF0FF]">
             Prêt à Collaborer ?

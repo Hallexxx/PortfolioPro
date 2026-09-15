@@ -200,6 +200,8 @@ export default function BlogArticle() {
                 <img
                   src={post.author.avatar}
                   alt={post.author.name}
+                  loading="lazy"
+                  decoding="async"
                   className="w-12 h-12 rounded-full border-2 border-[#3CF2FF]/30"
                 />
                 <div>
@@ -223,6 +225,8 @@ export default function BlogArticle() {
                 <img
                   src={post.coverImage}
                   alt={post.title}
+                  loading="eager"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F14] via-transparent to-transparent" />

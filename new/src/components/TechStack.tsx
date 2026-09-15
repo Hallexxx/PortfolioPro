@@ -12,7 +12,7 @@ const TechStack = () => {
   ]
 
   return (
-    <section className="py-24 px-6">
+    <section className="py-24 px-6 [content-visibility:auto] [contain-intrinsic-size:760px]">
       <div className="max-w-7xl mx-auto">
         <ScrollReveal>
           <div className="text-center mb-16">

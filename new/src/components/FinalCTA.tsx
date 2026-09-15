@@ -3,7 +3,7 @@ import ScrollReveal from './ScrollReveal'
 
 const FinalCTA = () => {
   return (
-    <section className="px-6 py-32">
+    <section className="px-6 py-32 [content-visibility:auto] [contain-intrinsic-size:520px]">
       <div className="mx-auto max-w-4xl">
         <ScrollReveal>
           <div className="relative">

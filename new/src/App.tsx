@@ -1,3 +1,4 @@
+import { Suspense, lazy } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -9,11 +10,12 @@ import Process from './components/Process'
 import FeaturedCase from './components/FeaturedCase'
 import TechStack from './components/TechStack'
 import FinalCTA from './components/FinalCTA'
-import Projects from './pages/Projects'
-import CV from './pages/CV'
-import Blog from './pages/Blog'
-import BlogArticle from './pages/BlogArticle'
-import Contact from './pages/Contact'
+
+const Projects = lazy(() => import('./pages/Projects'))
+const CV = lazy(() => import('./pages/CV'))
+const Blog = lazy(() => import('./pages/Blog'))
+const BlogArticle = lazy(() => import('./pages/BlogArticle'))
+const Contact = lazy(() => import('./pages/Contact'))
 
 function HomePage() {
   return (
@@ -38,14 +40,16 @@ function App() {
       <div className="min-h-screen bg-[#080D12] text-[#EAF0FF] font-['Manrope'] antialiased overflow-x-clip">
         <Navbar />
         <PageTransition>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/projets" element={<Projects />} />
-            <Route path="/cv" element={<CV />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogArticle />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
+          <Suspense fallback={<div className="min-h-screen px-6 pt-32 text-[#A8B3CF]">Chargement...</div>}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/projets" element={<Projects />} />
+              <Route path="/cv" element={<CV />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogArticle />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </Suspense>
         </PageTransition>
       </div>
     </Router>

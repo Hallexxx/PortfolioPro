@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { CSSProperties, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import ProjectModal from '../components/ProjectModal'
 import ScrollReveal from '../components/ScrollReveal'
@@ -13,7 +13,58 @@ const formatDate = (date: string) => {
   }).format(new Date(date))
 }
 
-const compactList = (items: string[], limit: number) => items.slice(0, limit).join(' / ')
+interface ActiveProjectPanelProps {
+  activeProject: Project
+  onOpen: () => void
+}
+
+function ActiveProjectPanel({ activeProject, onOpen }: ActiveProjectPanelProps) {
+  return (
+    <div data-active-panel className="rounded-2xl border border-[#3CF2FF]/20 bg-[#0E1720]/95 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.22)]">
+      <div>
+        <p className="text-sm font-medium text-[#7FEAFF]">Dossier actif</p>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeProject.id}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-4"
+          >
+            <h2 className="font-['Space_Grotesk'] text-3xl font-bold tracking-[-0.03em] text-balance xl:text-4xl">
+              {activeProject.title}
+            </h2>
+            <p className="mt-5 text-sm leading-7 text-[#B7C3D8] xl:text-base">
+              {activeProject.context}
+            </p>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      <div className="mt-7 grid grid-cols-3 gap-3 lg:grid-cols-1 xl:grid-cols-3">
+        {[
+          ['Fonctions', activeProject.features.length],
+          ['Objectifs', activeProject.objectives.length],
+          ['Stack', activeProject.stack.length],
+        ].map(([label, value]) => (
+          <div key={label} className="min-w-0 rounded-xl bg-[#111B24] p-4">
+            <div className="font-['Space_Grotesk'] text-2xl font-bold text-[#7FEAFF]">{value}</div>
+            <div className="mt-1 text-xs text-[#7C8BA3]">{label}</div>
+          </div>
+        ))}
+      </div>
+
+      <button
+        type="button"
+        onClick={onOpen}
+        className="mt-7 inline-flex min-h-11 rounded-xl bg-[#7FEAFF] px-6 py-3 font-semibold text-[#071017] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B9F7FF] active:translate-y-0"
+      >
+        Ouvrir la fiche complete
+      </button>
+    </div>
+  )
+}
 
 export default function Projects() {
   const focusProjects = useMemo(
@@ -34,7 +85,38 @@ export default function Projects() {
 
   const [activeId, setActiveId] = useState(focusProjects[0]?.id ?? projects[0].id)
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [activePanelY, setActivePanelY] = useState(0)
+  const listRef = useRef<HTMLDivElement>(null)
+  const cardRefs = useRef<Record<string, HTMLDivElement | null>>({})
   const activeProject = focusProjects.find((project) => project.id === activeId) ?? focusProjects[0]
+
+  const syncActivePanel = useCallback(() => {
+    const list = listRef.current
+    const card = cardRefs.current[activeId]
+    if (!list || !card) return
+
+    setActivePanelY(Math.max(0, card.offsetTop - list.offsetTop))
+  }, [activeId])
+
+  useLayoutEffect(() => {
+    syncActivePanel()
+  }, [syncActivePanel])
+
+  useEffect(() => {
+    syncActivePanel()
+    window.addEventListener('resize', syncActivePanel)
+
+    let observer: ResizeObserver | undefined
+    if ('ResizeObserver' in window && listRef.current) {
+      observer = new ResizeObserver(syncActivePanel)
+      observer.observe(listRef.current)
+    }
+
+    return () => {
+      window.removeEventListener('resize', syncActivePanel)
+      observer?.disconnect()
+    }
+  }, [syncActivePanel])
 
   return (
     <div className="min-h-screen overflow-x-clip bg-[#080D12] pt-28 text-[#EAF0FF]">
@@ -50,8 +132,8 @@ export default function Projects() {
 
         <div className="relative z-10 mx-auto grid max-w-7xl gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(420px,1fr)] lg:items-end">
           <motion.div
-            initial={{ opacity: 0, y: 24, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-3xl"
           >
@@ -79,15 +161,15 @@ export default function Projects() {
                   key={project.id}
                   type="button"
                   onClick={() => setActiveId(project.id)}
-                  className={`group relative overflow-hidden rounded-2xl border p-5 text-left transition duration-500 ${
+                  className={`group relative overflow-hidden rounded-2xl border p-5 text-left transition duration-500 md:translate-x-[var(--case-offset)] ${
                     activeId === project.id
                       ? 'border-[#3CF2FF]/50 bg-[#0F1B24]'
                       : 'border-white/[0.08] bg-[#0C131B]/[0.76] hover:border-white/[0.18] hover:bg-[#101A23]'
                   }`}
-                  style={{ transform: `translateX(${index * 18}px)` }}
+                  style={{ '--case-offset': `${index * 18}px` } as CSSProperties}
                 >
                   <div className="absolute inset-y-0 left-0 w-1 bg-[#3CF2FF] opacity-0 transition duration-300 group-hover:opacity-80" />
-                  <div className="flex items-start justify-between gap-5">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                     <div>
                       <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7C8BA3]">
                         Case {String(index + 1).padStart(2, '0')}
@@ -96,7 +178,7 @@ export default function Projects() {
                         {project.title}
                       </h2>
                     </div>
-                    <span className="rounded-md border border-white/10 px-2.5 py-1 text-xs text-[#B7C3D8]">
+                    <span className="w-fit shrink-0 rounded-md border border-white/10 px-2.5 py-1 text-xs text-[#B7C3D8]">
                       {formatDate(project.date)}
                     </span>
                   </div>
@@ -112,57 +194,37 @@ export default function Projects() {
 
       <section className="relative border-y border-white/[0.06] bg-[#0B1219] px-6 py-16">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.82fr_1.18fr]">
-          <ScrollReveal>
-            <div className="sticky top-28 space-y-8">
-              <div>
-                <p className="text-sm font-medium text-[#7FEAFF]">Dossier actif</p>
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeProject.id}
-                    initial={{ opacity: 0, y: 16, filter: 'blur(8px)' }}
-                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                    exit={{ opacity: 0, y: -12, filter: 'blur(8px)' }}
-                    transition={{ duration: 0.35 }}
-                    className="mt-4"
-                  >
-                    <h2 className="font-['Space_Grotesk'] text-4xl font-bold tracking-[-0.03em] text-balance">
-                      {activeProject.title}
-                    </h2>
-                    <p className="mt-5 text-base leading-7 text-[#B7C3D8]">
-                      {activeProject.context}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
+          <div className="relative hidden lg:block">
+            <motion.div
+              animate={{ y: activePanelY }}
+              transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <ActiveProjectPanel
+                activeProject={activeProject}
+                onOpen={() => setSelectedProject(activeProject)}
+              />
+            </motion.div>
+          </div>
 
-              <div className="grid grid-cols-3 gap-3">
-                {[
-                  ['Fonctions', activeProject.features.length],
-                  ['Objectifs', activeProject.objectives.length],
-                  ['Stack', activeProject.stack.length],
-                ].map(([label, value]) => (
-                  <div key={label} className="rounded-xl bg-[#111B24] p-4">
-                    <div className="font-['Space_Grotesk'] text-3xl font-bold text-[#7FEAFF]">{value}</div>
-                    <div className="mt-1 text-xs text-[#7C8BA3]">{label}</div>
-                  </div>
-                ))}
-              </div>
+          <div className="lg:hidden">
+            <ActiveProjectPanel
+              activeProject={activeProject}
+              onOpen={() => setSelectedProject(activeProject)}
+            />
+          </div>
 
-              <button
-                type="button"
-                onClick={() => setSelectedProject(activeProject)}
-                className="inline-flex rounded-xl bg-[#7FEAFF] px-6 py-3 font-semibold text-[#071017] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B9F7FF] active:translate-y-0"
-              >
-                Ouvrir la fiche complete
-              </button>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid gap-5">
+          <div ref={listRef} className="grid gap-6">
             {focusProjects.map((project, index) => (
-              <ScrollReveal key={project.id} delay={index * 0.08}>
+              <div
+                key={project.id}
+                data-project-card={project.id}
+                ref={(element) => {
+                  cardRefs.current[project.id] = element
+                }}
+              >
+              <ScrollReveal delay={index * 0.08}>
                 <motion.article
-                  onMouseEnter={() => setActiveId(project.id)}
+                  onPointerEnter={() => setActiveId(project.id)}
                   onFocus={() => setActiveId(project.id)}
                   whileHover={{ y: -8, rotateX: 2, rotateY: index % 2 === 0 ? -2 : 2 }}
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
@@ -180,6 +242,8 @@ export default function Projects() {
                       <img
                         src={project.cover}
                         alt={`Apercu du projet ${project.title}`}
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                        decoding="async"
                         className="h-full w-full object-cover opacity-80 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#071017] via-transparent to-transparent" />
@@ -192,7 +256,7 @@ export default function Projects() {
                       <div>
                         <div className="flex flex-wrap gap-2">
                           {project.tags.slice(0, 5).map((tag) => (
-                            <span key={tag} className="rounded-md bg-white/[0.06] px-2.5 py-1 text-xs text-[#B7C3D8]">
+                            <span key={tag} className="rounded-md bg-white/[0.06] px-2.5 py-1 text-xs leading-5 text-[#B7C3D8]">
                               {tag}
                             </span>
                           ))}
@@ -205,24 +269,34 @@ export default function Projects() {
                         </p>
                       </div>
 
-                      <div className="grid gap-4 md:grid-cols-2">
+                      <div className="grid gap-4">
                         <div className="rounded-xl bg-[#0A1118] p-4">
                           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#7C8BA3]">Fonctionnalites</p>
-                          <p className="mt-3 text-sm leading-6 text-[#DDE6F7]">
-                            {compactList(project.features, 4)}
-                          </p>
+                          <ul className="mt-3 grid gap-2">
+                            {project.features.slice(0, 3).map((feature) => (
+                              <li key={feature} className="grid grid-cols-[10px_1fr] gap-3 text-sm leading-6 text-[#DDE6F7]">
+                                <span className="mt-3 h-px bg-[#7FEAFF]" />
+                                <span>{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                         <div className="rounded-xl bg-[#0A1118] p-4">
                           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#7C8BA3]">Specs techniques</p>
-                          <p className="mt-3 text-sm leading-6 text-[#DDE6F7]">
-                            {compactList(project.stack, 6)}
-                          </p>
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            {project.stack.slice(0, 8).map((tech) => (
+                              <span key={tech} className="rounded-md bg-[#7FEAFF]/10 px-2.5 py-1 text-xs leading-5 text-[#B9F7FF]">
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </motion.article>
               </ScrollReveal>
+              </div>
             ))}
           </div>
         </div>
@@ -254,7 +328,7 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.45, delay: Math.min(index * 0.035, 0.28) }}
-                className="grid gap-4 bg-[#0B1219] p-5 text-left transition duration-300 hover:bg-[#111B24] md:grid-cols-[1.1fr_1fr_140px]"
+                className="grid gap-4 bg-[#0B1219] p-5 text-left transition duration-300 hover:bg-[#111B24] lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.9fr)_150px]"
               >
                 <div>
                   <h3 className="font-['Space_Grotesk'] text-xl font-semibold">{project.title}</h3>

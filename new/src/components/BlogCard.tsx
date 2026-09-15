@@ -17,6 +17,7 @@ export default function BlogCard({ post }: BlogCardProps) {
           src={post.coverImage}
           alt={post.title}
           loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0E1420] via-[#0E1420]/50 to-transparent" />
@@ -64,6 +65,8 @@ export default function BlogCard({ post }: BlogCardProps) {
           <img
             src={post.author.avatar}
             alt={post.author.name}
+            loading="lazy"
+            decoding="async"
             className="w-10 h-10 rounded-full border-2 border-[#3CF2FF]/30"
           />
           <span className="text-sm text-[#A8B3CF]">{post.author.name}</span>

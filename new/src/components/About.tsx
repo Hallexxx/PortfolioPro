@@ -31,7 +31,7 @@ const About = () => {
   }
 
   return (
-    <section id="about" className="relative py-32 px-6 overflow-hidden">
+    <section id="about" className="relative py-32 px-6 overflow-hidden [content-visibility:auto] [contain-intrinsic-size:900px]">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial="hidden"
@@ -49,7 +49,7 @@ const About = () => {
                   <div
                     className="absolute inset-0"
                     style={{
-                      backgroundImage: `url(/pere.jpg)`,
+                      backgroundImage: `url(/pere-profile.jpg)`,
                       backgroundSize: 'cover',
                       backgroundPosition: 'center',
                       backgroundRepeat: 'no-repeat',

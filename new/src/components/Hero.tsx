@@ -1,48 +1,43 @@
-import { useEffect } from 'react'
-import { motion, useSpring } from 'framer-motion'
+import { lazy, Suspense } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
+const HeroScene3D = lazy(() => import('./HeroScene3D'))
+
+function HeroSceneFallback() {
+  return (
+    <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div className="absolute right-[-5rem] top-[32%] h-[18rem] w-[18rem] rotate-12 rounded-[30%] bg-[#102532] lg:right-[7%] lg:h-[24rem] lg:w-[24rem]" />
+      <div className="absolute right-[7%] top-[29%] h-28 w-28 rotate-12 rounded-3xl bg-[#7FEAFF]/35 lg:right-[18%] lg:h-40 lg:w-40" />
+      <div className="absolute right-[4%] top-[52%] h-20 w-20 -rotate-12 rounded-2xl bg-[#FF6868]/25 lg:right-[10%] lg:h-28 lg:w-28" />
+    </div>
+  )
+}
+
 const Hero = () => {
-  const smoothX = useSpring(0, { damping: 22, stiffness: 90 })
-  const smoothY = useSpring(0, { damping: 22, stiffness: 90 })
+  const prefersReducedMotion = useReducedMotion()
   const badges = ['React', 'Node.js', 'TypeScript', 'Tailwind CSS']
   const titleWords = 'Développeur Web & Applications'.split(' ')
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      smoothX.set((e.clientX / window.innerWidth - 0.5) * 34)
-      smoothY.set((e.clientY / window.innerHeight - 0.5) * 34)
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [smoothX, smoothY])
-
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
-      <motion.div
-        style={{ x: smoothX, y: smoothY, perspective: 900, transformStyle: 'preserve-3d' }}
-        className="absolute left-1/2 top-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-      >
-        <motion.div
-          animate={{ rotateX: [62, 70, 62], rotateZ: [0, 360] }}
-          transition={{ duration: 34, repeat: Infinity, ease: 'linear' }}
-          className="absolute inset-0 rounded-[34%] border border-[#3CF2FF]/[0.14]"
-        />
-        <motion.div
-          animate={{ rotateX: [70, 58, 70], rotateY: [0, 360] }}
-          transition={{ duration: 44, repeat: Infinity, ease: 'linear' }}
-          className="absolute inset-14 rounded-[38%] border border-[#FF2B2B]/[0.12]"
-        />
-        <div className="absolute inset-24 rounded-[32%] bg-[#10202A]/55 blur-2xl" />
-      </motion.div>
+      {prefersReducedMotion ? (
+        <HeroSceneFallback />
+      ) : (
+        <Suspense fallback={<HeroSceneFallback />}>
+          <HeroScene3D reducedMotion={false} />
+        </Suspense>
+      )}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_42%,transparent_0%,rgba(8,13,18,0.14)_28%,rgba(8,13,18,0.88)_78%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_42%_50%,rgba(8,13,18,0.92)_0%,rgba(8,13,18,0.68)_36%,transparent_70%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#080D12] to-transparent" />
 
-      <div className="relative z-10 mx-auto max-w-5xl text-center">
+      <div className="relative z-10 mx-auto w-full max-w-5xl text-center lg:text-left">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55 }}
-          className="mb-6"
+          className="mb-6 lg:flex"
         >
           <div className="mb-8 inline-flex items-center space-x-2 rounded-full border border-[#3CF2FF]/20 bg-[#3CF2FF]/10 px-4 py-2">
             <span className="h-2 w-2 rounded-full bg-[#3CF2FF]" />
@@ -50,12 +45,16 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        <h1 className="mb-8 font-['Space_Grotesk'] text-5xl font-bold leading-tight tracking-[-0.03em] sm:text-6xl lg:text-7xl xl:text-8xl">
+        <h1
+          aria-label="Développeur Web et Applications"
+          className="mb-8 max-w-4xl font-['Space_Grotesk'] text-5xl font-bold leading-tight tracking-normal sm:text-6xl lg:text-7xl xl:text-8xl"
+        >
           {titleWords.map((word, i) => (
             <motion.span
               key={word}
-              initial={{ opacity: 0, y: 42, filter: 'blur(10px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              aria-hidden="true"
+              initial={{ opacity: 0, y: 42 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{
                 duration: 0.78,
                 delay: i * 0.08,
@@ -72,7 +71,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45 }}
-          className="mx-auto mb-12 max-w-3xl text-lg leading-8 text-[#B7C3D8] sm:text-xl"
+          className="mx-auto mb-12 max-w-3xl text-lg leading-8 text-[#B7C3D8] sm:text-xl lg:mx-0"
         >
           Je construis des interfaces rapides, des API propres et des produits complets, avec un soin particulier pour la lisibilité, les animations utiles et la stabilité.
         </motion.p>
@@ -81,7 +80,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.62 }}
-          className="mb-12 flex flex-wrap items-center justify-center gap-3"
+          className="mb-12 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
         >
           {badges.map((badge, i) => (
             <motion.span
@@ -101,7 +100,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.82 }}
-          className="flex flex-col items-center justify-center gap-4 sm:flex-row"
+          className="flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start"
         >
           <Link
             to="/projets"

@@ -149,6 +149,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     <img
                       src={project.images[currentImageIndex]}
                       alt={`${project.title} screenshot ${currentImageIndex + 1}`}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover"
                     />
 

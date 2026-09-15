@@ -7,7 +7,7 @@ const FeaturedCase = () => {
   const study = featuredCaseStudy
 
   return (
-    <section className="px-6 py-24">
+    <section className="px-6 py-24 [content-visibility:auto] [contain-intrinsic-size:820px]">
       <div className="mx-auto max-w-7xl">
         <ScrollReveal>
           <div className="mb-12 text-center">
@@ -31,6 +31,8 @@ const FeaturedCase = () => {
                 <img
                   src={study.image}
                   alt={study.title}
+                  loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-cover opacity-[0.88]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071017] via-transparent to-transparent" />

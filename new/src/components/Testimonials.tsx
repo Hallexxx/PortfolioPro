@@ -4,7 +4,7 @@ import { testimonials } from '../data/home'
 
 const Testimonials = () => {
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-[#0E1420]/30 to-transparent">
+    <section className="py-24 px-6 bg-gradient-to-b from-[#0E1420]/30 to-transparent [content-visibility:auto] [contain-intrinsic-size:680px]">
       <div className="max-w-7xl mx-auto">
         <ScrollReveal>
           <div className="text-center mb-16">

@@ -6,7 +6,7 @@ const serviceCodes = ['FE', 'API', 'AUTO', 'OPS']
 
 const Services = () => {
   return (
-    <section className="px-6">
+    <section className="px-6 [content-visibility:auto] [contain-intrinsic-size:720px]">
       <div className="mx-auto max-w-7xl">
         <ScrollReveal>
           <div className="mb-16 text-center">

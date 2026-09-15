@@ -75,29 +75,50 @@ export const timelineData: TimelineItem[] = [
   },
 
   {
-    id: 'proj-aimpress',
+    id: 'proj-nova-agent-forge',
     type: 'project',
-    title: 'Aimpress — Plateforme IA du quotidien (Web + API)',
+    title: 'Nova — Agent Forge',
     organization: 'Projet personnel / R&D',
     location: 'Full-stack',
     period: '2026',
     description: [
-      'Site web en React + API Node.js avec base MongoDB, visant à intégrer l’IA dans des usages quotidiens',
-      'Génération d’une API d’outils IA réutilisable dans d’autres applications (via endpoints)',
-      'Modules IA : édition/production de contenus (PDF, JSON, images), génération de documents (factures, XML), édition de facture XML',
-      'Création de chatbots personnalisables (configurables par l’utilisateur) + base de connaissances',
-      'Agent “veille produits” : recherche de produits demandés sur internet (ex : Leboncoin et autres) + notifications quand trouvé',
-      'Fonction d’assistance : rédaction de mails (à la demande) et scénarios d’envoi (ex : contacter des pharmacies autour de moi via recherche)',
-      'Objectif principal : centraliser des workflows IA propres, simples, et exploitables via une UI moderne + API'
+      'Forge d’agents pour créer, tester et versionner des assistants spécialisés',
+      'Configuration des prompts, règles, variables, outils disponibles et sorties attendues',
+      'Journal d’exécution pour suivre les statuts, erreurs, logs et résultats de chaque run',
+      'Architecture pensée pour brancher fichiers, API, emails, veille et automatisations'
     ],
     technologies: [
       'React',
+      'TypeScript',
       'Node.js',
       'Express',
       'MongoDB',
-      'API REST',
-      'LLM / IA',
-      'Automation workflows'
+      'Agents IA',
+      'Automation',
+      'API REST'
+    ]
+  },
+
+  {
+    id: 'proj-watchlist',
+    type: 'project',
+    title: 'Watchlist — suivi de contenus et priorités',
+    organization: 'Projet personnel',
+    location: 'Web app',
+    period: '2026',
+    description: [
+      'Application de suivi pour organiser films, séries, jeux, produits ou références à surveiller',
+      'Statuts, priorités, dates, tags, notes et vues filtrées pour retrouver rapidement les entrées',
+      'Recherche instantanée et interface compacte pensée pour un usage régulier',
+      'Base prévue pour une synchronisation API et un usage multi-device'
+    ],
+    technologies: [
+      'React',
+      'TypeScript',
+      'Node.js',
+      'PostgreSQL',
+      'REST API',
+      'UX'
     ]
   },
 
@@ -134,18 +155,19 @@ export const timelineData: TimelineItem[] = [
   },
 
   {
-    id: 'proj-microcreche',
+    id: 'proj-planete-creche',
     type: 'project',
-    title: 'Gestion micro-crèches — création + planning (enfants / employés)',
-    organization: 'Projet (portfolio)',
+    title: 'Planete Creche — gestion micro-crèches',
+    organization: 'Projet référence',
     location: 'Full-stack',
     period: '2024 - 2025',
     description: [
-      'Site web dédié à la gestion et à la création de micro-crèches',
-      'Gestion des plannings : enfants + employés, organisation par structure',
-      'MongoDB utilisé pour les données planning'
+      'Plateforme de gestion pour micro-crèches: enfants, employés, plannings et rôles',
+      'Planning automatique à partir des jours de garde, horaires employés et contraintes métier',
+      'Contrôle du ratio 1 employé pour 3 enfants selon les créneaux',
+      'Interface Angular connectée à une API Laravel avec permissions et i18n FR/EN'
     ],
-    technologies: ['MongoDB', 'Planning', 'Web', 'Gestion']
+    technologies: ['Angular', 'Laravel', 'PHP', 'MySQL', 'RBAC', 'i18n']
   },
 
   {

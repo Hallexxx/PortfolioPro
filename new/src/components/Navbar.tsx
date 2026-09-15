@@ -1,19 +1,37 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence, useScroll } from 'framer-motion'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const isScrolledRef = useRef(false)
   const location = useLocation()
   const { scrollYProgress } = useScroll()
 
   useEffect(() => {
+    let frame = 0
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      if (frame) return
+
+      frame = window.requestAnimationFrame(() => {
+        frame = 0
+        const nextIsScrolled = window.scrollY > 50
+        if (nextIsScrolled !== isScrolledRef.current) {
+          isScrolledRef.current = nextIsScrolled
+          setIsScrolled(nextIsScrolled)
+        }
+      })
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
   }, [])
 
   const navLinks = [

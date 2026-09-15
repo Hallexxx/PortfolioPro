@@ -3,7 +3,7 @@ import { processSteps } from '../data/home'
 
 const Process = () => {
   return (
-    <section className="px-6 py-24">
+    <section className="px-6 py-24 [content-visibility:auto] [contain-intrinsic-size:680px]">
       <div className="mx-auto max-w-7xl">
         <ScrollReveal>
           <div className="mb-16 text-center">
