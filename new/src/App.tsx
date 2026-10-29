@@ -1,59 +1,16 @@
 import { Suspense, lazy } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import AnimatedBackground from './components/AnimatedBackground'
 import PageTransition from './components/PageTransition'
-import Services from './components/Services'
-import Process from './components/Process'
-import FeaturedCase from './components/FeaturedCase'
-import TechStack from './components/TechStack'
-import FinalCTA from './components/FinalCTA'
+import HomeExperience from './components/HomeExperience'
+import Footer from './components/Footer'
 
 const Projects = lazy(() => import('./pages/Projects'))
 const CV = lazy(() => import('./pages/CV'))
+const Contact = lazy(() => import('./pages/Contact'))
 const Blog = lazy(() => import('./pages/Blog'))
 const BlogArticle = lazy(() => import('./pages/BlogArticle'))
-const Contact = lazy(() => import('./pages/Contact'))
 
-function HomePage() {
-  return (
-    <>
-      <AnimatedBackground />
-      <div className="relative z-10">
-        <Hero />
-        <About />
-        <Services />
-        <Process />
-        <FeaturedCase />
-        <TechStack />
-        <FinalCTA />
-      </div>
-    </>
-  )
+export default function App() {
+  return <BrowserRouter><Navbar /><PageTransition><Suspense fallback={<div className="page-loading">Chargement...</div>}><Routes><Route path="/" element={<HomeExperience />} /><Route path="/projets" element={<Projects />} /><Route path="/cv" element={<CV />} /><Route path="/contact" element={<Contact />} /><Route path="/blog" element={<Blog />} /><Route path="/blog/:slug" element={<BlogArticle />} /></Routes></Suspense><Footer /></PageTransition></BrowserRouter>
 }
-
-function App() {
-  return (
-    <Router>
-      <div className="min-h-screen bg-[#080D12] text-[#EAF0FF] font-['Manrope'] antialiased overflow-x-clip">
-        <Navbar />
-        <PageTransition>
-          <Suspense fallback={<div className="min-h-screen px-6 pt-32 text-[#A8B3CF]">Chargement...</div>}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/projets" element={<Projects />} />
-              <Route path="/cv" element={<CV />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogArticle />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
-          </Suspense>
-        </PageTransition>
-      </div>
-    </Router>
-  )
-}
-
-export default App

@@ -1,137 +1,24 @@
-import { Link } from "react-router-dom"
-import Timeline from '../components/Timeline'
-import HorizontalScrollStats from '../components/HorizontalScrollStats'
-import Skills from '../components/Skills'
-import ScrollReveal from '../components/ScrollReveal'
-import { timelineData, statCards, skills, techStack } from '../data/cv'
+import { motion, useReducedMotion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import { timelineData } from '../data/cv'
+import './PortfolioPages.css'
+
+const experience = timelineData.filter(item => item.type === 'experience')
+const education = timelineData.filter(item => item.type === 'education')
+const skills = [
+  { title: 'Interfaces web', items: ['React', 'TypeScript', 'JavaScript', 'HTML & CSS', 'Accessibilité', 'Responsive'] },
+  { title: 'Applications mobiles', items: ['React Native', 'Expo', 'Navigation', 'Parcours utilisateurs', 'Stockage local'] },
+  { title: 'Services & données', items: ['Node.js', 'Express', 'API REST', 'MongoDB', 'SQL', '4D'] },
+  { title: 'Livraison', items: ['Git & GitHub', 'Déploiement', 'Apache', 'SSL', 'WordPress', 'Tests'] },
+]
 
 export default function CV() {
-  return (
-    <div className="min-h-screen bg-[#0B0F14] text-[#EAF0FF]">
-      {/* Hero section */}
-      <section className="pt-32 pb-16 px-6 max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 font-['Space_Grotesk'] text-[#EAF0FF]">
-            Mon Parcours
-          </h1>
-          <p className="text-[#A8B3CF] text-lg md:text-xl mb-8 leading-relaxed">
-            De la formation aux projets marquants, découvrez mon évolution en tant que développeur créatif.
-            Chaque expérience m'a permis d'affiner mes compétences et ma vision du web moderne.
-          </p>
-
-          <a
-            href="/cv_alexandre_perez.pdf"
-            download="cv_alexandre_perez.pdf"
-            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-[#7FEAFF] rounded-full font-semibold text-[#0B0F14] hover:bg-[#B9F7FF] transition-all duration-300 hover:scale-105"
-          >
-            <span>Télécharger mon CV</span>
-          </a>
-
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="mb-8 [content-visibility:auto] [contain-intrinsic-size:900px]">
-        <div className="text-center mb-4 px-6">
-          <h2 className="text-3xl md:text-4xl font-bold mb-2 font-['Space_Grotesk'] text-[#EAF0FF]">
-            En Quelques Chiffres
-          </h2>
-          <p className="text-[#A8B3CF] text-sm">
-            Statistiques et highlights
-          </p>
-        </div>
-        <HorizontalScrollStats cards={statCards} />
-      </section>
-
-      {/* Timeline Section */}
-      <section className="py-8 px-6 max-w-6xl mx-auto [content-visibility:auto] [contain-intrinsic-size:1200px]">
-        <div className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-['Space_Grotesk'] text-[#EAF0FF]">
-            Timeline
-          </h2>
-          <p className="text-[#A8B3CF] text-lg">
-            Formation, expériences professionnelles et projets marquants
-          </p>
-        </div>
-        <Timeline items={timelineData} />
-      </section>
-
-      {/* Skills Section */}
-      <section className="py-8 px-6 max-w-7xl mx-auto [content-visibility:auto] [contain-intrinsic-size:900px]">
-        <ScrollReveal>
-          <div className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-['Space_Grotesk'] text-[#EAF0FF]">
-              Compétences Techniques
-            </h2>
-            <p className="text-[#A8B3CF] text-lg">
-              Niveau d'expertise par catégorie de technologie
-            </p>
-          </div>
-        </ScrollReveal>
-        <Skills skills={skills} />
-      </section>
-
-      {/* Tech Stack Section */}
-      <section className="py-8 px-6 max-w-7xl mx-auto [content-visibility:auto] [contain-intrinsic-size:720px]">
-        <div className="mb-16 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-['Space_Grotesk'] text-[#EAF0FF]">
-            Stack Préférée
-          </h2>
-          <p className="text-[#A8B3CF] text-lg">
-            Les technologies que j'utilise au quotidien
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {techStack.map((tech, index) => (
-            <div
-              key={tech.name}
-              className="backdrop-blur-xl bg-[#0E1420]/40 border border-[#3CF2FF]/10 rounded-2xl p-8 hover:border-[#3CF2FF]/40 transition-all duration-300 hover:scale-105 hover:shadow-[0_12px_48px_rgba(60,242,255,0.15)] group text-center"
-              style={{
-                animation: `scaleIn 0.5s ease-out ${index * 0.1}s backwards`
-              }}
-            >
-              <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                {tech.icon}
-              </div>
-              <div
-                className="text-xl font-bold font-['Space_Grotesk']"
-                style={{ color: tech.color }}
-              >
-                {tech.name}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-8 px-6 max-w-4xl mx-auto text-center [content-visibility:auto] [contain-intrinsic-size:460px]">
-        <div className="backdrop-blur-xl bg-gradient-to-br from-[#0E1420]/60 to-[#0B0F14]/60 border border-[#3CF2FF]/20 rounded-3xl p-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 font-['Space_Grotesk'] text-[#EAF0FF]">
-            Prêt à Collaborer ?
-          </h2>
-          <p className="text-[#A8B3CF] text-lg mb-8">
-            Discutons de votre projet et voyons comment je peux vous aider à le concrétiser.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              to="/contact"
-              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-[#7FEAFF] rounded-full font-semibold text-[#0B0F14] hover:bg-[#B9F7FF] transition-all duration-300 hover:scale-105"
-            >
-              <span>Me contacter</span>
-            </Link>
-
-            <Link
-              to="/projets"
-              className="group relative inline-flex items-center gap-3 px-8 py-4 backdrop-blur-xl bg-[#0E1420]/60 border border-[#3CF2FF]/40 rounded-full font-semibold text-[#3CF2FF] hover:bg-[#3CF2FF]/10 transition-all duration-300 hover:scale-105"
-            >
-              <span>Voir mes projets</span>
-            </Link>
-          </div>
-
-        </div>
-      </section>
-    </div>
-  )
+  const reduced = !!useReducedMotion()
+  return <main className="portfolio-page cv-page">
+    <header className="page-hero cv-hero"><div><span className="page-index">Portfolio / Parcours</span><h1>Un parcours<br /><em>tourné vers le concret.</em></h1><p>Développeur web et mobile, je relie conception d'interface, logique métier et mise en ligne. Mes expériences en entreprise et mes projets personnels nourrissent la même envie : construire des outils que l'on a plaisir à utiliser.</p><div className="cv-hero-actions"><a href="/cv_alexandre_perez.pdf" download>Télécharger mon CV <span aria-hidden="true">↓</span></a><Link to="/contact">Me contacter <span aria-hidden="true">↗</span></Link></div></div><div className="cv-monogram" aria-hidden="true"><span>A</span><span>P</span><small>Concevoir · Développer · Livrer</small></div></header>
+    <section className="cv-skills" id="competences"><div className="page-section-head"><span>01 / Compétences</span><h2>Les outils que<br />je mets en œuvre.</h2><p>Des compétences appliquées à des produits web et mobiles, du prototype jusqu'à la version utilisable.</p></div><div className="skills-index">{skills.map((group, index) => <motion.div key={group.title} initial={reduced ? false : { opacity: 0, x: index % 2 ? 36 : -36 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: .3 }} transition={{ duration: .6 }}><span>0{index + 1}</span><h3>{group.title}</h3><p>{group.items.join(' · ')}</p></motion.div>)}</div></section>
+    <section className="cv-journey"><div className="page-section-head"><span>02 / Expériences</span><h2>Apprendre<br />en construisant.</h2></div><div className="cv-timeline">{experience.map((item, index) => <motion.article key={item.id} initial={reduced ? false : { opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .25 }} transition={{ duration: .65, delay: index * .07 }}><div className="timeline-date">{item.period}</div><div><span>{item.organization} · {item.location}</span><h3>{item.title}</h3><ul>{item.description.map(line => <li key={line}>{line}</li>)}</ul><p>{item.technologies.join(' · ')}</p></div></motion.article>)}</div></section>
+    <section className="cv-education"><div className="page-section-head"><span>03 / Formation</span><h2>La base, puis<br />la pratique.</h2></div><div className="education-list">{education.map(item => <article key={item.id}><span>{item.period}</span><div><h3>{item.title}</h3><p>{item.organization}</p></div></article>)}</div></section>
+    <section className="cv-project-callout"><div><span>04 / Projets</span><h2>Le portfolio continue<br />avec les produits.</h2><p>Planète Crèche, Watchlist, Élan et d'autres applications montrent comment ces compétences se traduisent en interfaces et en parcours concrets.</p></div><Link to="/projets">Explorer les réalisations <span aria-hidden="true">↗</span></Link></section>
+  </main>
 }

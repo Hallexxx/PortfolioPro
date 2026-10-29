@@ -13,18 +13,17 @@ export default function HeroScene3D({ reducedMotion }: HeroScene3DProps) {
     const parent = canvas?.parentElement
     if (!canvas || !parent) return
 
-    const renderer = new THREE.WebGLRenderer({
-      canvas,
-      alpha: true,
-      antialias: true,
-      powerPreference: 'high-performance',
-    })
+    let renderer: THREE.WebGLRenderer
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'high-performance' })
+    } catch {
+      return
+    }
 
-    renderer.setClearColor('#080D12', 1)
+    renderer.setClearColor('#000000', 0)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5))
 
     const scene = new THREE.Scene()
-    scene.fog = new THREE.Fog('#080D12', 7, 12)
 
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100)
     camera.position.set(0, 0, 5.2)
@@ -34,19 +33,19 @@ export default function HeroScene3D({ reducedMotion }: HeroScene3DProps) {
     let baseY = -0.12
 
     const ambient = new THREE.AmbientLight('#FFFFFF', 0.7)
-    const key = new THREE.DirectionalLight('#C9FBFF', 1.55)
+    const key = new THREE.DirectionalLight('#fff5e8', 1.55)
     key.position.set(-2.8, 3.6, 5)
-    const rim = new THREE.DirectionalLight('#FF8A88', 0.55)
+    const rim = new THREE.DirectionalLight('#e9ad83', 0.55)
     rim.position.set(4, -1.6, 3)
-    const cyan = new THREE.PointLight('#7FEAFF', 6.5, 7)
+    const cyan = new THREE.PointLight('#d65a41', 6.5, 7)
     cyan.position.set(1.9, 1.2, 2.8)
-    const red = new THREE.PointLight('#FF6868', 2.8, 6)
+    const red = new THREE.PointLight('#f2b36a', 2.8, 6)
     red.position.set(1.4, -1.9, 2.8)
     scene.add(ambient, key, rim, cyan, red)
 
     const prismMaterial = new THREE.MeshPhysicalMaterial({
-      color: '#102532',
-      emissive: '#071C23',
+      color: '#283535',
+      emissive: '#1e2422',
       emissiveIntensity: 0.18,
       metalness: 0.34,
       roughness: 0.28,
@@ -54,8 +53,8 @@ export default function HeroScene3D({ reducedMotion }: HeroScene3DProps) {
       clearcoatRoughness: 0.2,
     })
     const cyanMaterial = new THREE.MeshPhysicalMaterial({
-      color: '#7FEAFF',
-      emissive: '#145E67',
+      color: '#d65a41',
+      emissive: '#7a2c1d',
       emissiveIntensity: 0.38,
       metalness: 0.24,
       roughness: 0.3,
@@ -63,8 +62,8 @@ export default function HeroScene3D({ reducedMotion }: HeroScene3DProps) {
       clearcoatRoughness: 0.18,
     })
     const coralMaterial = new THREE.MeshPhysicalMaterial({
-      color: '#FF6868',
-      emissive: '#651A20',
+      color: '#f0b876',
+      emissive: '#8e5427',
       emissiveIntensity: 0.22,
       metalness: 0.24,
       roughness: 0.42,
@@ -72,8 +71,8 @@ export default function HeroScene3D({ reducedMotion }: HeroScene3DProps) {
       clearcoatRoughness: 0.24,
     })
     const shadowMaterial = new THREE.MeshStandardMaterial({
-      color: '#0B171E',
-      emissive: '#061016',
+      color: '#33433f',
+      emissive: '#1b2522',
       emissiveIntensity: 0.16,
       metalness: 0.28,
       roughness: 0.7,
@@ -111,10 +110,10 @@ export default function HeroScene3D({ reducedMotion }: HeroScene3DProps) {
       const height = parent.clientHeight
       const isMobile = width < 700
 
-      baseY = isMobile ? -0.98 : -0.12
-      sculpture.position.x = isMobile ? 1.08 : 2.28
+      baseY = isMobile ? -0.28 : -0.12
+      sculpture.position.x = 0
       sculpture.position.y = baseY
-      sculpture.scale.setScalar(isMobile ? 0.48 : 0.78)
+      sculpture.scale.setScalar(isMobile ? 0.62 : 0.95)
 
       renderer.setSize(width, height, false)
       camera.aspect = width / Math.max(height, 1)
@@ -194,8 +193,8 @@ export default function HeroScene3D({ reducedMotion }: HeroScene3DProps) {
   }, [reducedMotion])
 
   return (
-    <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-      <canvas ref={canvasRef} className="h-full w-full" />
+    <div className="hero-scene" aria-hidden="true">
+      <canvas ref={canvasRef} />
     </div>
   )
 }
