@@ -20,56 +20,56 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "watchlist",
-    title: "Watchlist — suivi de contenus, sorties et priorités",
-    description:
-      "Application de suivi personnel pour organiser films, séries, jeux ou produits à surveiller, avec statuts, priorités, rappels et vues filtrées.",
-    tags: ["Projet", "React", "TypeScript", "Node.js", "API", "PostgreSQL", "UX"],
-    cover: "/data.png",
-    images: ["/data.png", "/planning.png"],
+    title: "Watchlist — cinéma, séries et découvertes",
+    description: "Application mobile pour retrouver les films, séries et animes à voir, suivre sa progression et partager ses découvertes.",
+    tags: ["Application mobile", "React Native", "Expo", "TypeScript", "Cinéma"],
+    cover: "/showcase/watchlist-cinema.svg",
+    images: ["/showcase/watchlist-cinema.svg", "/showcase/watchlist-reel.svg"],
+    demoUrl: "https://cinememory.app",
     featured: true,
-    date: "2026-03-01",
-    context:
-      "Watchlist est pensé comme un tableau de suivi clair pour arrêter de perdre des idées, sorties ou références dans des notes dispersées.\n" +
-      "Le principe : ajouter rapidement un élément, lui associer un statut, une priorité, une date ou une source, puis retrouver l'information dans des vues lisibles selon le besoin du moment.",
+    date: "2026-05-09",
+    context: "Watchlist, développé dans le dépôt CineMemory, réunit la mémoire personnelle des œuvres et leur découverte. L'app propose un suivi des films, séries et animes ainsi que des profils et échanges autour du cinéma.",
     objectives: [
-      "Centraliser les éléments à voir, tester, acheter ou surveiller dans une interface unique",
-      "Permettre une saisie rapide avec tags, priorités, dates et notes",
-      "Créer des vues de travail: à regarder, en cours, terminé, urgent, archivé",
-      "Ajouter des rappels pour les sorties importantes ou les tâches liées",
-      "Préparer une architecture API propre pour synchroniser les données entre appareils"
+      "Centraliser les œuvres à voir et celles déjà regardées",
+      "Retrouver sa progression, ses notes et ses favoris",
+      "Faciliter les recommandations et échanges entre amis"
     ],
     features: [
-      "CRUD complet: création, édition, suppression et archivage d'éléments",
-      "Statuts personnalisés: à voir, en cours, terminé, abandonné, en attente",
-      "Priorités et dates: rappel de sortie, échéance, dernière mise à jour",
-      "Recherche et filtres combinés par tag, statut, type et niveau de priorité",
-      "Mode détail avec notes, liens sources, historique et informations clés",
-      "Vue tableau et vue compacte pour scanner rapidement les entrées",
-      "Préparation notifications: rappels locaux puis notifications serveur",
-      "Structure API prévue pour synchronisation multi-device et auth utilisateur"
+      "Fiches détaillées des films, séries et animes",
+      "Suivi des saisons, épisodes, notes et favoris",
+      "Découverte des sorties et cinémas proches",
+      "Profils, amis et conversations",
+      "Catalogue de démonstration accessible hors ligne"
     ],
-    stack: [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
-      "Node.js",
-      "Express",
-      "PostgreSQL",
-      "REST API",
-      "JWT",
-      "LocalStorage / sync API"
+    stack: ["React Native", "Expo", "TypeScript", "Zustand", "AsyncStorage", "Supabase"],
+    challenges: "Garder une navigation mobile rapide malgré la richesse des fiches, de la progression et des fonctions sociales. Préserver une expérience utile même lorsque les services externes sont indisponibles.",
+    results: "Une application mobile avec suivi personnel, découverte et parcours social. La page de présentation donne accès aux options de téléchargement."
+  },
+  {
+    id: "elan",
+    title: "Élan — entraînement et alimentation",
+    description: "Application personnelle qui adapte les séances au rythme réel et réunit exercices, repas, courses et progression.",
+    tags: ["Application mobile", "React Native", "Expo", "Sport", "Nutrition"],
+    cover: "/showcase/elan-exercise.jpg",
+    images: ["/showcase/elan-exercise.jpg"],
+    featured: true,
+    date: "2026-10-10",
+    context: "Élan est une application mobile personnelle de sport et d'alimentation. Elle conserve les données sur l'appareil et permet de reprendre son programme sans perdre le fil lorsqu'une séance est reportée.",
+    objectives: [
+      "Adapter les séances et jours de repos aux imprévus",
+      "Réunir entraînement, recettes, courses et mesures",
+      "Conserver les données localement avec export possible"
     ],
-    challenges:
-      "• Modélisation: garder un modèle flexible sans créer une usine à gaz entre types, tags, statuts, dates et notes.\n" +
-      "• UX de tri: permettre des filtres puissants sans perdre l'utilisateur dans trop de contrôles.\n" +
-      "• Performance front: garder les listes fluides avec recherche instantanée, transitions et données potentiellement nombreuses.\n" +
-      "• Synchronisation: prévoir les conflits entre données locales et serveur si l'application évolue vers du multi-device.\n" +
-      "• Accessibilité: rendre les statuts lisibles sans dépendre uniquement de la couleur et garder une navigation clavier propre.",
-    results:
-      "• Structure produit définie: entités, statuts, vues principales et parcours d'ajout rapide.\n" +
-      "• Base technique prête pour un MVP React + API REST.\n" +
-      "• Direction UX claire: un outil rapide, lisible, pensé pour revenir souvent sans friction."
+    features: [
+      "Programme de cinq séances et deux jours de repos avec report automatique",
+      "115 variantes d'exercices avec démonstrations locales",
+      "97 recettes et planning de repas hebdomadaire",
+      "Liste de courses et suivi des mesures",
+      "Export ZIP des données et photos"
+    ],
+    stack: ["React Native", "Expo", "TypeScript", "AsyncStorage", "Expo Router"],
+    challenges: "Garder les calculs de séances, les reports et les listes de courses cohérents, tout en maintenant une expérience entièrement utilisable hors ligne.",
+    results: "Une application iOS personnelle avec entraînement, nutrition et suivi réunis dans une même interface. Démonstration sur demande."
   },
   {
     id: "nova-agent-forge",
@@ -381,64 +381,32 @@ export const projects: Project[] = [
 
   {
     id: "planete-creche",
-    title: "Planete Creche — gestion micro-crèches",
-    description:
-      "Plateforme de gestion pour micro-crèches: enfants, employés, plannings, rôles, contraintes de ratio et interface multilingue.",
-    tags: ["Projet", "Angular", "Laravel", "PHP", "MySQL", "RBAC", "i18n"],
-    cover: "/logoo.png",
-    images: ["/logoo.png", "/planning.png"],
+    title: "Planète Crèche — gestion des micro-crèches",
+    description: "Plateforme métier pour coordonner plannings, présences, absences, échanges avec les familles et suivi administratif.",
+    tags: ["Produit", "React", "Node.js", "MongoDB", "Expo", "Petite enfance"],
+    cover: "/showcase/planete-planning.jpeg",
+    images: ["/showcase/planete-planning.jpeg", "/showcase/planete-vitrine.jpeg"],
     demoUrl: "https://planetecreche.com",
-    githubUrl: "https://github.com/Hallexxx/LaravelAngular",
+    githubUrl: "https://github.com/Hallexxx/micro_creche_front",
     featured: true,
     date: "2026-01-15",
-    context:
-      "Planete Creche répond à un besoin métier concret: aider une micro-crèche à gérer ses enfants, ses employés et ses plannings sans perdre de temps dans des tableaux manuels.\n" +
-      "Le front Angular dialogue avec une API Laravel pour centraliser les données, appliquer les rôles, sécuriser les accès et préparer des plannings compatibles avec les contraintes de garde.",
+    context: "Planète Crèche aide les gestionnaires de micro-crèches à suivre la journée, préparer les plannings et traiter les demandes. Le produit actuel comprend une interface React, une API Node/Express et une application mobile Expo.",
     objectives: [
-      "Gérer les fiches enfants, parents et employés avec un CRUD propre",
-      "Affecter les horaires selon jours de garde, disponibilités et contraintes de ratio",
-      "Différencier les accès: gérant, employés et consultation de planning",
-      "Limiter les erreurs de saisie grâce aux validations côté front et back",
-      "Proposer une interface FR/EN pour faciliter l'utilisation selon le profil"
+      "Donner une vue claire des enfants et employés présents",
+      "Rendre les plannings et les absences cohérents entre les surfaces",
+      "Faciliter la communication avec les parents",
+      "Conserver une trace fiable des décisions et changements"
     ],
     features: [
-      "Gestion enfants: identité, jours de garde, informations utiles et historique",
-      "Gestion employés: profils, horaires, disponibilités et accès",
-      "Planning automatique à partir des jours de garde et créneaux employés",
-      "Contrôle métier du ratio 1 employé pour 3 enfants selon les créneaux",
-      "Rôles et permissions: gérant en modification, employés en consultation ciblée",
-      "Interface multilingue FR/EN avec libellés centralisés",
-      "Validation des formulaires et messages d'erreur métier",
-      "Architecture séparée Angular / Laravel pour garder l'API réutilisable"
+      "Plannings enfants et employés",
+      "Suivi des présences, absences et pointages",
+      "Demandes parents, pré-inscriptions et messagerie",
+      "Documents et suivi administratif",
+      "Accès adaptés aux gestionnaires, équipes et familles"
     ],
-    stack: [
-      "Angular",
-      "TypeScript",
-      "Laravel",
-      "PHP",
-      "MySQL",
-      "REST API",
-      "RBAC",
-      "i18n FR/EN",
-      "Validation serveur",
-      "Responsive UI"
-    ],
-    challenges:
-      "• Algorithme de planning : affecter automatiquement les horaires en fonction des jours de garde et des disponibilités employés.\n" +
-      "• Gestion des conflits : éviter les chevauchements, détecter les incohérences et garantir un planning valide.\n" +
-      "• Règle métier ratio 1/3 : appliquer et contrôler la contrainte 1 employé pour 3 enfants selon les créneaux.\n" +
-      "• RBAC (rôles/droits) : sécuriser l’accès (gérant modifie / employés consultent) côté back et côté front.\n" +
-      "• Synchronisation front/back : assurer une cohérence des données (CRUD, états, refresh) entre Angular et Laravel.\n" +
-      "• Multilingue : intégrer i18n FR/EN sans dupliquer les écrans et en gardant une UI claire.",
-
-    results:
-      "• Gestion complète : CRUD employés/enfants + pages dédiées gérant vs employés.\n" +
-      "• Planning automatisé : génération de créneaux selon règles + affichage lisible côté interface.\n" +
-      "• Conformité métier : ratio 1 employé / 3 enfants respecté et contrôlé lors de la création/modification.\n" +
-      "• Accès sécurisé : permissions appliquées (RBAC) avec comportements adaptés selon le rôle.\n" +
-      "• Interface multilingue : support FR/EN intégré pour une utilisation plus flexible.\n" +
-      "• Projet utilisable comme référence métier, pas seulement comme exercice technique."
-
+    stack: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "Expo", "React Native"],
+    challenges: "Faire converger planning, absences, demandes et pointage vers des données cohérentes. Expliquer clairement aux équipes l'impact d'un changement sur le planning et les règles métier.",
+    results: "Une plateforme web et mobile pensée pour les tâches quotidiennes d'une micro-crèche. Le frontend public est consultable sur GitHub ; le produit est présenté sur son site."
   },
 
   {

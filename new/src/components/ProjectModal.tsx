@@ -282,7 +282,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-6 py-3 bg-[#0E1420]/60 border border-white/10 rounded-xl text-[#A8B3CF] font-medium hover:text-[#EAF0FF] hover:border-white/20 transition-all"
               >
-                Voir le code
+                {project.id === 'planete-creche' ? 'Voir le frontend' : 'Voir le code'}
               </a>
             )}
           </div>

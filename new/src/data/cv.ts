@@ -241,7 +241,7 @@ export const statCards: StatCard[] = [
     id: 'stat-3',
     category: 'stat',
     icon: 'XP',
-    value: '2+ an',
+    value: '2+ ans',
     label: "d’expérience pro",
     detail: 'Alternances IFSI + Kletel',
     color: '#3CF2FF'

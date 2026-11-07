@@ -5,6 +5,10 @@ interface HeroScene3DProps {
   reducedMotion: boolean
 }
 
+const DUST_COUNT = 900
+const RING_COUNT = 260
+
+/** A quiet cloud of light particles orbiting behind the portrait. No solid shapes. */
 export default function HeroScene3D({ reducedMotion }: HeroScene3DProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -21,132 +25,108 @@ export default function HeroScene3D({ reducedMotion }: HeroScene3DProps) {
     }
 
     renderer.setClearColor('#000000', 0)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5))
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75))
 
     const scene = new THREE.Scene()
-
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100)
-    camera.position.set(0, 0, 5.2)
+    camera.position.set(0, 0, 6.4)
 
-    const sculpture = new THREE.Group()
-    scene.add(sculpture)
-    let baseY = -0.12
+    const world = new THREE.Group()
+    scene.add(world)
 
-    const ambient = new THREE.AmbientLight('#FFFFFF', 0.7)
-    const key = new THREE.DirectionalLight('#fff5e8', 1.55)
-    key.position.set(-2.8, 3.6, 5)
-    const rim = new THREE.DirectionalLight('#e9ad83', 0.55)
-    rim.position.set(4, -1.6, 3)
-    const cyan = new THREE.PointLight('#d65a41', 6.5, 7)
-    cyan.position.set(1.9, 1.2, 2.8)
-    const red = new THREE.PointLight('#f2b36a', 2.8, 6)
-    red.position.set(1.4, -1.9, 2.8)
-    scene.add(ambient, key, rim, cyan, red)
-
-    const prismMaterial = new THREE.MeshPhysicalMaterial({
-      color: '#283535',
-      emissive: '#1e2422',
-      emissiveIntensity: 0.18,
-      metalness: 0.34,
-      roughness: 0.28,
-      clearcoat: 0.9,
-      clearcoatRoughness: 0.2,
+    /* ---- soft dust sphere ---- */
+    const dustPositions = new Float32Array(DUST_COUNT * 3)
+    const dustSeeds = new Float32Array(DUST_COUNT)
+    for (let index = 0; index < DUST_COUNT; index += 1) {
+      const radius = 1.6 + Math.pow(Math.random(), 0.7) * 2.4
+      const theta = Math.random() * Math.PI * 2
+      const phi = Math.acos(2 * Math.random() - 1)
+      dustPositions[index * 3] = radius * Math.sin(phi) * Math.cos(theta)
+      dustPositions[index * 3 + 1] = radius * Math.cos(phi) * 0.78
+      dustPositions[index * 3 + 2] = radius * Math.sin(phi) * Math.sin(theta) * 0.7
+      dustSeeds[index] = Math.random() * Math.PI * 2
+    }
+    const dustGeometry = new THREE.BufferGeometry()
+    dustGeometry.setAttribute('position', new THREE.BufferAttribute(dustPositions, 3))
+    const dustMaterial = new THREE.PointsMaterial({
+      color: '#9a8571', size: 0.032, transparent: true, opacity: 0, sizeAttenuation: true, depthWrite: false,
     })
-    const cyanMaterial = new THREE.MeshPhysicalMaterial({
-      color: '#d65a41',
-      emissive: '#7a2c1d',
-      emissiveIntensity: 0.38,
-      metalness: 0.24,
-      roughness: 0.3,
-      clearcoat: 0.8,
-      clearcoatRoughness: 0.18,
+    const dust = new THREE.Points(dustGeometry, dustMaterial)
+
+    /* ---- a single warm halo ring of particles, echoing the portrait ---- */
+    const ringPositions = new Float32Array(RING_COUNT * 3)
+    for (let index = 0; index < RING_COUNT; index += 1) {
+      const angle = (index / RING_COUNT) * Math.PI * 2
+      const radius = 2.42 + (Math.random() - 0.5) * 0.2
+      ringPositions[index * 3] = Math.cos(angle) * radius
+      ringPositions[index * 3 + 1] = Math.sin(angle) * radius * 0.94
+      ringPositions[index * 3 + 2] = (Math.random() - 0.5) * 0.35
+    }
+    const ringGeometry = new THREE.BufferGeometry()
+    ringGeometry.setAttribute('position', new THREE.BufferAttribute(ringPositions, 3))
+    const ringMaterial = new THREE.PointsMaterial({
+      color: '#d65a41', size: 0.05, transparent: true, opacity: 0, sizeAttenuation: true, depthWrite: false,
     })
-    const coralMaterial = new THREE.MeshPhysicalMaterial({
-      color: '#f0b876',
-      emissive: '#8e5427',
-      emissiveIntensity: 0.22,
-      metalness: 0.24,
-      roughness: 0.42,
-      clearcoat: 0.58,
-      clearcoatRoughness: 0.24,
-    })
-    const shadowMaterial = new THREE.MeshStandardMaterial({
-      color: '#33433f',
-      emissive: '#1b2522',
-      emissiveIntensity: 0.16,
-      metalness: 0.28,
-      roughness: 0.7,
-    })
+    const ring = new THREE.Points(ringGeometry, ringMaterial)
+    ring.rotation.set(0.56, 0, -0.18)
 
-    const core = new THREE.Mesh(new THREE.OctahedronGeometry(1.08, 1), prismMaterial)
-    core.position.set(0, 0.02, 0.12)
-    core.rotation.set(0.42, -0.34, 0.18)
-
-    const cyanBlock = new THREE.Mesh(new THREE.BoxGeometry(0.82, 0.82, 0.82, 2, 2, 2), cyanMaterial)
-    cyanBlock.position.set(0.78, 0.78, 0.2)
-    cyanBlock.rotation.set(0.28, 0.22, 0.36)
-
-    const coralPrism = new THREE.Mesh(new THREE.DodecahedronGeometry(0.45, 0), coralMaterial)
-    coralPrism.position.set(1.23, -0.35, 0.08)
-    coralPrism.rotation.set(0.4, -0.12, 0.16)
-
-    const base = new THREE.Mesh(new THREE.BoxGeometry(1.72, 0.34, 1.08, 2, 1, 2), shadowMaterial)
-    base.position.set(-0.05, -0.96, -0.18)
-    base.rotation.set(0.08, 0.26, -0.04)
-
-    const backPlate = new THREE.Mesh(new THREE.BoxGeometry(1.5, 1.18, 0.28, 2, 2, 1), shadowMaterial)
-    backPlate.position.set(-0.55, 0.1, -0.34)
-    backPlate.rotation.set(0.2, -0.34, -0.18)
-
-    sculpture.add(backPlate, core, cyanBlock, coralPrism, base)
+    world.add(dust, ring)
 
     const pointer = { x: 0, y: 0 }
+    const eased = { x: 0, y: 0 }
+    let scrollOffset = 0
+    let easedScroll = 0
     let animationId = 0
-    let lastFrameTime = 0
+    let intro = 0
     const clock = new THREE.Clock()
+    const basePositions = dustPositions.slice()
 
     const resize = () => {
       const width = parent.clientWidth
       const height = parent.clientHeight
-      const isMobile = width < 700
-
-      baseY = isMobile ? -0.28 : -0.12
-      sculpture.position.x = 0
-      sculpture.position.y = baseY
-      sculpture.scale.setScalar(isMobile ? 0.62 : 0.95)
-
+      const compact = width < 760
+      world.scale.setScalar(compact ? 0.72 : 1)
+      world.position.x = compact ? 0 : 1.15
+      world.position.y = compact ? 0 : 0.2
       renderer.setSize(width, height, false)
       camera.aspect = width / Math.max(height, 1)
       camera.updateProjectionMatrix()
     }
 
-    const animate = (timestamp = 0) => {
-      if (!reducedMotion && timestamp - lastFrameTime < 16) {
-        animationId = requestAnimationFrame(animate)
-        return
-      }
-
-      lastFrameTime = timestamp
-      const delta = clock.getDelta()
+    const render = () => {
+      const delta = Math.min(clock.getDelta(), 0.05)
       const elapsed = clock.elapsedTime
 
-      if (!reducedMotion) {
-        sculpture.rotation.y = -0.22 + Math.sin(elapsed * 0.24) * 0.18 + pointer.x * 0.12
-        sculpture.rotation.x = -0.08 + pointer.y * 0.05
-        sculpture.position.y = baseY + Math.sin(elapsed * 0.48) * 0.08
+      intro = Math.min(intro + delta * 0.6, 1)
+      const introEase = 1 - Math.pow(1 - intro, 3)
 
-        core.rotation.y += delta * 0.14
-        core.rotation.z = 0.18 + Math.sin(elapsed * 0.34) * 0.06
-        cyanBlock.position.y = 0.78 + Math.sin(elapsed * 0.58) * 0.08
-        coralPrism.rotation.x = 0.4 + Math.cos(elapsed * 0.46) * 0.06
-        backPlate.rotation.z = -0.18 + Math.sin(elapsed * 0.34) * 0.04
+      eased.x += (pointer.x - eased.x) * 0.045
+      eased.y += (pointer.y - eased.y) * 0.045
+      easedScroll += (scrollOffset - easedScroll) * 0.06
+
+      // Each particle breathes very slightly along its own axis.
+      const attribute = dustGeometry.attributes.position as THREE.BufferAttribute
+      for (let index = 0; index < DUST_COUNT; index += 1) {
+        const drift = Math.sin(elapsed * 0.35 + dustSeeds[index]) * 0.07
+        attribute.array[index * 3 + 1] = basePositions[index * 3 + 1] + drift
       }
+      attribute.needsUpdate = true
+
+      world.rotation.y = elapsed * 0.035 + eased.x * 0.16
+      world.rotation.x = eased.y * 0.08
+      world.position.y = (parent.clientWidth < 760 ? 0 : 0.2) - easedScroll * 0.9
+
+      ring.rotation.z = -0.18 + elapsed * 0.045
+
+      dustMaterial.opacity = 0.5 * introEase
+      ringMaterial.opacity = (0.72 + Math.sin(elapsed * 0.5) * 0.1) * introEase
 
       renderer.render(scene, camera)
+    }
 
-      if (!reducedMotion && !document.hidden) {
-        animationId = requestAnimationFrame(animate)
-      }
+    const animate = () => {
+      render()
+      if (!document.hidden) animationId = requestAnimationFrame(animate)
     }
 
     const handlePointerMove = (event: PointerEvent) => {
@@ -154,40 +134,44 @@ export default function HeroScene3D({ reducedMotion }: HeroScene3DProps) {
       pointer.y = (event.clientY / window.innerHeight - 0.5) * -2
     }
 
+    const handleScroll = () => {
+      scrollOffset = Math.min(window.scrollY / Math.max(window.innerHeight, 1), 1.4)
+    }
+
     const handleVisibilityChange = () => {
       if (document.hidden) {
         cancelAnimationFrame(animationId)
         return
       }
-
       clock.getDelta()
       animationId = requestAnimationFrame(animate)
     }
 
     resize()
-    animate()
 
-    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches
-    if (canHover && !reducedMotion) {
-      window.addEventListener('pointermove', handlePointerMove, { passive: true })
+    if (reducedMotion) {
+      intro = 1
+      render()
+    } else {
+      animate()
+      const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+      if (canHover) window.addEventListener('pointermove', handlePointerMove, { passive: true })
+      window.addEventListener('scroll', handleScroll, { passive: true })
+      document.addEventListener('visibilitychange', handleVisibilityChange)
     }
+
     window.addEventListener('resize', resize)
-    document.addEventListener('visibilitychange', handleVisibilityChange)
 
     return () => {
       cancelAnimationFrame(animationId)
       window.removeEventListener('pointermove', handlePointerMove)
+      window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', resize)
       document.removeEventListener('visibilitychange', handleVisibilityChange)
-      backPlate.geometry.dispose()
-      core.geometry.dispose()
-      cyanBlock.geometry.dispose()
-      coralPrism.geometry.dispose()
-      base.geometry.dispose()
-      prismMaterial.dispose()
-      cyanMaterial.dispose()
-      coralMaterial.dispose()
-      shadowMaterial.dispose()
+      dustGeometry.dispose()
+      ringGeometry.dispose()
+      dustMaterial.dispose()
+      ringMaterial.dispose()
       renderer.dispose()
     }
   }, [reducedMotion])
