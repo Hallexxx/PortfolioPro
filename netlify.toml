@@ -1,0 +1,14 @@
+# Le portfolio vit dans new/, pas a la racine du depot.
+[build]
+  base = "new"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# React Router : toute URL inconnue rend l'app, sinon /projets/<slug> renvoie 404.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
