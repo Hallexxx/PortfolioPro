@@ -10,6 +10,7 @@
 .case-qualiecho{--case-bg:#f2e9e2;--case-ink:#1b292f;--case-accent:#b95a40;--case-soft:#e9ded5}
 .case-immo{--case-bg:#dce6e5;--case-ink:#1b3736;--case-accent:#317b79;--case-soft:#d0dedd}
 .case-nidtempo{--case-bg:#232a35;--case-ink:#eef1f6;--case-accent:#8fb0e0;--case-soft:#2b3342}
+.case-paraphe{--case-bg:#eef1ee;--case-ink:#16221e;--case-accent:#006343;--case-soft:#e3e9e4}
 
 .case-page h1,.case-page h2,.case-page h3,.case-page h4,.case-page p{margin:0}
 .case-page h1,.case-page h2,.case-page h3{font-family:'DM Sans',sans-serif;letter-spacing:-.052em;text-wrap:balance;font-weight:620}

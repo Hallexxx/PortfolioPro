@@ -14,6 +14,14 @@ export type PortfolioProject = {
 
 export const portfolioProjects: PortfolioProject[] = [
   {
+    id: 'paraphe', name: 'Paraphe', field: 'Notariat · Web, Mac & iPhone',
+    description: "Le copilote du clerc de notaire : il lit les pièces d'un dossier, les croise et montre ce qui ne colle pas avant la signature.",
+    contribution: "Conception produit et design system, module métier partagé (contrôles, délais légaux, simulateurs), puis développement des trois interfaces depuis un seul dépôt.",
+    details: ['Constats croisés entre pièces', 'Délais légaux calculés', 'Compte-rendu de rendez-vous'],
+    stack: ['Next.js', 'Expo', 'Electron', 'TypeScript'],
+    image: '/cases/paraphe-app-dossier.jpg', mobile: '/cases/paraphe-mobile-dossier.jpg', accent: 'paraphe',
+  },
+  {
     id: 'planete-creche', name: 'Planète Crèche', field: 'Petite enfance · Web & mobile',
     description: 'Une plateforme qui relie gestionnaires, professionnels et familles autour du quotidien de la micro-crèche.',
     contribution: 'Conception de parcours métier, développement des interfaces web et mobile, intégration des rôles et des données de la structure.',

@@ -46,10 +46,185 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
+    "slug": "paraphe",
+    "portfolioId": "paraphe",
+    "name": "Paraphe",
+    "num": "01",
+    "kind": "Notariat & conformité",
+    "status": "Démonstration",
+    "accent": "paraphe",
+    "icon": "/cases/paraphe-icon.png",
+    "eyebrow": "Le copilote du clerc de notaire",
+    "title": "Voir l'écart avant la signature.",
+    "lead": "Paraphe lit les pièces d'un dossier notarial, les croise entre elles et montre ce qui ne colle pas avant le rendez-vous de signature. Il vérifie et prépare : la rédaction et la responsabilité de l'acte restent au notaire.",
+    "intro": "Un seul produit, trois interfaces.",
+    "introText": "Un dépôt unique donne le site vitrine, l'app web, l'app Mac et l'app iPhone. Les contrôles, les délais légaux et les simulateurs vivent dans un module métier sans interface, partagé par les trois ; les couleurs et le mouvement viennent d'une même source de tokens. Le clerc retrouve la même langue visuelle sur son double écran et en rendez-vous.",
+    "stack": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Expo / React Native",
+      "Electron",
+      "Node.js"
+    ],
+    "hero": {
+      "desktop": "/cases/paraphe-app-dossier.jpg",
+      "phone": "/cases/paraphe-mobile-dossier.jpg",
+      "chip": "Web · Mac · iPhone"
+    },
+    "features": [
+      {
+        "num": "01",
+        "title": "L'écart, montré en premier",
+        "text": "Chaque constat pose les deux valeurs côte à côte avec la pièce et la page d'où elles viennent : 62,40 m² sur le mesurage contre 64,12 m² au compromis. Le clerc voit la contradiction, pas une alerte vague."
+      },
+      {
+        "num": "02",
+        "title": "Sept familles de contrôles",
+        "text": "Concordance des noms, surface Carrez, financement, diagnostics, validité des pièces d'identité, relecture du projet d'acte et pièces manquantes. Les pièces sont croisées entre elles, pas vérifiées une par une."
+      },
+      {
+        "num": "03",
+        "title": "Les délais calculés, jamais saisis",
+        "text": "Rétractation SRU prorogée au premier jour ouvrable, préemption à deux mois, condition suspensive de prêt, déclaration de succession à six mois : les échéances sont déduites des pièces et replacées sur une frise."
+      },
+      {
+        "num": "04",
+        "title": "Le rendez-vous devient un compte-rendu",
+        "text": "L'enregistrement ne démarre qu'après l'accord explicite du client. Paraphe en tire la situation familiale, les points d'attention, la liste des pièces à demander et le mail récapitulatif."
+      },
+      {
+        "num": "05",
+        "title": "Des chiffres à donner au client",
+        "text": "Le simulateur de frais d'acquisition détaille droits de mutation, émoluments, débours et contribution de sécurité immobilière, avec le barème appliqué et un export PDF."
+      }
+    ],
+    "steps": [
+      {
+        "num": "01",
+        "title": "Déposez",
+        "text": "Un PDF ou une photo de la pièce, depuis le Mac ou le téléphone."
+      },
+      {
+        "num": "02",
+        "title": "Croisez",
+        "text": "Paraphe lit la pièce, en tire les valeurs et les compare au reste du dossier."
+      },
+      {
+        "num": "03",
+        "title": "Tranchez",
+        "text": "Chaque constat se valide ou s'écarte à la main. Le notaire garde la décision."
+      }
+    ],
+    "shots": [
+      {
+        "src": "/cases/paraphe-mobile-dossiers.jpg",
+        "caption": "Dossiers"
+      },
+      {
+        "src": "/cases/paraphe-mobile-dossier.jpg",
+        "caption": "Constats"
+      },
+      {
+        "src": "/cases/paraphe-mobile-fiche.jpg",
+        "caption": "Fiche du dossier"
+      },
+      {
+        "src": "/cases/paraphe-mobile-delais.jpg",
+        "caption": "Délais"
+      },
+      {
+        "src": "/cases/paraphe-mobile-rendez-vous.jpg",
+        "caption": "Rendez-vous"
+      },
+      {
+        "src": "/cases/paraphe-mobile-simulateur.jpg",
+        "caption": "Simulateur"
+      }
+    ],
+    "galleryKind": "phone",
+    "imageLabel": "Captures prises dans Paraphe sur simulateur iPhone et dans le build web, avec le jeu de données de démonstration",
+    "pricing": "Démonstration",
+    "pricingNote": "Aucune offre commerciale ni publication en boutique à ce jour. Sans clé API configurée, les apps restent en mode démonstration : le type de pièce est deviné au nom du fichier et rien n'est envoyé. Les dossiers, les parties et les montants montrés ici sont fictifs.",
+    "links": [],
+    "faq": [
+      {
+        "q": "Paraphe rédige-t-il l'acte ?",
+        "a": "Non. Il lit, croise et prépare. La rédaction de l'acte et la responsabilité qui va avec restent celles du notaire ; chaque constat se valide ou s'écarte à la main."
+      },
+      {
+        "q": "Faut-il changer de logiciel métier ?",
+        "a": "Non. Paraphe travaille à côté d'iNot, Kivia ou Fichorga : il lit des fichiers et rend une fiche à copier. Rien n'est à installer chez l'éditeur."
+      },
+      {
+        "q": "Que deviennent les pièces déposées ?",
+        "a": "Elles ne servent jamais à entraîner un modèle. Sans clé API configurée, rien ne quitte la machine : la démonstration devine le type de pièce au nom du fichier."
+      },
+      {
+        "q": "L'enregistrement d'un rendez-vous est-il automatique ?",
+        "a": "Non. Le micro reste bloqué tant que l'accord du client n'est pas donné, et l'écran le rappelle explicitement."
+      },
+      {
+        "q": "Sur quelles plateformes tourne l'application ?",
+        "a": "Le web, le Mac via Electron et l'iPhone via Expo. Les trois partagent le même module métier et les mêmes couleurs ; Windows et Android sont prévus depuis la même base."
+      }
+    ],
+    "deepdive": {
+      "index": "Paraphe sur ordinateur",
+      "title": "Deux écrans,",
+      "titleEm": "une seule lecture.",
+      "text": "Le clerc travaille avec son logiciel métier à gauche et Paraphe à droite. L'app Mac embarque exactement le même build que le web, dans une fenêtre de 1320 x 860 à barre de titre native.",
+      "layout": "web",
+      "stage": {
+        "image": "/cases/paraphe-site-hero.jpg",
+        "alt": "Site vitrine de Paraphe : voir l'écart avant la signature",
+        "url": "paraphe · site vitrine"
+      },
+      "cards": [
+        {
+          "tag": "01 / Repérer",
+          "title": "La liste s'ouvre sur ce qui bloque.",
+          "text": "Avant la liste complète des dossiers, un bandeau remonte les constats à régler avant signature, chacun avec son dossier et le nombre de jours restants.",
+          "image": "/cases/paraphe-app-dossiers.jpg",
+          "alt": "Liste des dossiers dans Paraphe sur ordinateur",
+          "url": "Paraphe · dossiers"
+        },
+        {
+          "tag": "02 / Comparer",
+          "title": "Deux valeurs, deux sources.",
+          "text": "Le dossier ouvre sur les anomalies. Chaque carte affiche la valeur de gauche, celle de droite, la page d'où elle vient, et l'écart chiffré en surligneur.",
+          "image": "/cases/paraphe-app-dossier.jpg",
+          "alt": "Constats d'un dossier dans Paraphe sur ordinateur",
+          "url": "Paraphe · contrôles"
+        },
+        {
+          "tag": "03 / Anticiper",
+          "title": "La semaine, le mois, le retard.",
+          "text": "Les échéances de tous les dossiers se rangent sur un même axe. Un trait d'encre marque aujourd'hui, et les délais dépassés restent visibles plutôt que masqués.",
+          "image": "/cases/paraphe-app-delais.jpg",
+          "alt": "Écran des délais dans Paraphe sur ordinateur",
+          "url": "Paraphe · délais"
+        },
+        {
+          "tag": "04 / Chiffrer",
+          "title": "Le détail derrière le montant.",
+          "text": "24 694 € de frais sur une vente à 312 000 €, décomposés ligne par ligne avec le taux départemental retenu. Le clerc donne le chiffre et explique d'où il sort.",
+          "image": "/cases/paraphe-app-simulateurs.jpg",
+          "alt": "Simulateur de frais d'acquisition dans Paraphe",
+          "url": "Paraphe · simulateurs"
+        }
+      ],
+      "note": {
+        "title": "Calme par défaut, couleur au bon moment.",
+        "text": "Le vert encre porte la marque et l'état « vérifié », le surligneur citron ne sert qu'à l'écart qui mérite l'attention. Partout ailleurs, du blanc, des filets d'un pixel et une seule famille typographique. Les états ne reposent jamais sur la couleur seule : chaque pastille porte son icône et son libellé."
+      }
+    }
+  },
+  {
     "slug": "planete-creche",
     "portfolioId": "planete-creche",
     "name": "Planète Crèche",
-    "num": "01",
+    "num": "02",
     "kind": "Petite enfance",
     "status": "Disponible",
     "accent": "creche",
@@ -216,7 +391,7 @@ export const caseStudies: CaseStudy[] = [
     "slug": "watchlist",
     "portfolioId": "watchlist",
     "name": "Watchlist",
-    "num": "02",
+    "num": "03",
     "kind": "Cinéma & culture",
     "status": "Disponible",
     "accent": "watchlist",
@@ -387,7 +562,7 @@ export const caseStudies: CaseStudy[] = [
     "slug": "elan",
     "portfolioId": "elan",
     "name": "Élan",
-    "num": "03",
+    "num": "04",
     "kind": "Sport & nutrition",
     "status": "App personnelle",
     "accent": "elan",
@@ -513,7 +688,7 @@ export const caseStudies: CaseStudy[] = [
     "slug": "nova",
     "portfolioId": "nova",
     "name": "Nova",
-    "num": "04",
+    "num": "05",
     "kind": "Agents IA & pilotage",
     "status": "Web disponible",
     "accent": "nova",
@@ -658,7 +833,7 @@ export const caseStudies: CaseStudy[] = [
     "slug": "qualiecho",
     "portfolioId": "qualiecho",
     "name": "QualiÉcho",
-    "num": "05",
+    "num": "06",
     "kind": "Écoute & qualité",
     "status": "Démo interactive",
     "accent": "qualiecho",
@@ -833,7 +1008,7 @@ export const caseStudies: CaseStudy[] = [
     "slug": "immo-compta",
     "portfolioId": "planete-immo",
     "name": "Planète Immo",
-    "num": "06",
+    "num": "07",
     "kind": "Immobilier & patrimoine",
     "status": "Web disponible",
     "accent": "immo",
@@ -965,7 +1140,7 @@ export const caseStudies: CaseStudy[] = [
   {
     "slug": "nidtempo",
     "name": "NidTempo",
-    "num": "07",
+    "num": "08",
     "kind": "Présences en micro-crèche",
     "status": "Concept en développement",
     "accent": "nidtempo",
