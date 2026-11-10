@@ -46,10 +46,207 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
+    "slug": "sillage",
+    "portfolioId": "sillage",
+    "name": "Sillage",
+    "num": "01",
+    "kind": "Succession & familles",
+    "status": "En préparation",
+    "accent": "sillage",
+    "icon": "/cases/sillage-icon.png",
+    "eyebrow": "Proposé par les offices notariaux",
+    "title": "Après un décès, chaque démarche trouve sa place.",
+    "lead": "Sillage accompagne une famille du premier jour jusqu'au partage : les démarches à faire, leurs délais, les courriers prêts à envoyer, les pièces à réunir et ce qui revient à chacun. Gratuit pour les familles, payé par les offices.",
+    "intro": "Une chose à la fois, jamais la liste entière.",
+    "introText": "Les héritiers cherchent cette application une seule fois, au pire moment. L'écran d'accueil ne montre donc que ce qui compte cette semaine, chaque démarche affiche sa date limite et qui s'en charge, et tout chiffre est annoncé comme une estimation que le notaire confirmera. Un seul dépôt donne le site, l'app web installable, l'app Mac et l'app iPhone.",
+    "stack": [
+      "React",
+      "Vite",
+      "TypeScript",
+      "Expo / React Native",
+      "Electron",
+      "Hono",
+      "Postgres"
+    ],
+    "hero": {
+      "desktop": "/cases/sillage-app-aujourdhui.jpg",
+      "phone": "/cases/sillage-mobile-aujourdhui.jpg",
+      "chip": "Web · Mac · iPhone · Android"
+    },
+    "features": [
+      {
+        "num": "01",
+        "title": "Treize questions, puis le chemin",
+        "text": "Le questionnaire d'accueil déduit les démarches qui concernent vraiment cette famille — banques, retraite, CAF, assurance vie, logement, véhicule, abonnements, impôts — et les range dans le temps avec leurs délais légaux."
+      },
+      {
+        "num": "02",
+        "title": "Les courriers déjà écrits",
+        "text": "Résiliations, banques, caisses : les lettres sont prêtes, partent groupées, s'exportent en PDF et passent en « envoyé ». Sans réponse après quinze jours, Sillage propose la relance."
+      },
+      {
+        "num": "03",
+        "title": "Les pièces photographiées une fois",
+        "text": "Acte de décès, livret de famille, contrat de mariage, relevés : chaque document est pris en photo une seule fois, reste rangé, et part à l'étude. Le compteur montre ce qu'il manque encore."
+      },
+      {
+        "num": "04",
+        "title": "Qui hérite de quoi, en une minute",
+        "text": "Le simulateur applique la dévolution légale, la réserve, la quotité disponible, les droits en ligne directe et l'assurance vie 990 I. Chaque montant est présenté comme une estimation, jamais comme un calcul définitif."
+      },
+      {
+        "num": "05",
+        "title": "La famille se répartit le travail",
+        "text": "Un code d'invitation à huit caractères ouvre le dossier aux autres héritiers et à l'étude. Chacun voit qui fait quoi, et deux personnes peuvent modifier le dossier en même temps sans rien perdre."
+      },
+      {
+        "num": "06",
+        "title": "Le dossier arrive complet chez le clerc",
+        "text": "Ce que la famille remplit rejoint le copilote du clerc : Sillage et Paraphe reposent sur la même plateforme, et l'office propose l'application sous son propre nom."
+      }
+    ],
+    "steps": [
+      {
+        "num": "01",
+        "title": "Répondez",
+        "text": "Treize questions simples, sans jargon et sans compte à créer."
+      },
+      {
+        "num": "02",
+        "title": "Avancez",
+        "text": "Une démarche après l'autre, avec sa date limite et son responsable."
+      },
+      {
+        "num": "03",
+        "title": "Transmettez",
+        "text": "Les pièces et l'inventaire partent à l'étude, prêts pour le partage."
+      }
+    ],
+    "shots": [
+      {
+        "src": "/cases/sillage-mobile-aujourdhui.jpg",
+        "caption": "Aujourd'hui"
+      },
+      {
+        "src": "/cases/sillage-mobile-demarches.jpg",
+        "caption": "Démarches"
+      },
+      {
+        "src": "/cases/sillage-mobile-pieces.jpg",
+        "caption": "Pièces"
+      },
+      {
+        "src": "/cases/sillage-mobile-famille.jpg",
+        "caption": "Famille"
+      },
+      {
+        "src": "/cases/sillage-mobile-simulateur.jpg",
+        "caption": "Simulateur"
+      }
+    ],
+    "galleryKind": "phone",
+    "imageLabel": "Captures prises dans Sillage sur simulateur iPhone et dans le build web, avec le dossier de démonstration",
+    "pricing": "Gratuit pour les familles",
+    "pricingNote": "Le modèle repose sur les offices notariaux, qui proposent Sillage en marque blanche : on ne vend rien aux familles. Aucune application n'est publiée en boutique à ce jour et aucun tarif office n'est annoncé. Les noms, montants et dossiers montrés ici sont fictifs.",
+    "links": [],
+    "faq": [
+      {
+        "q": "Qui paie l'application ?",
+        "a": "Les offices notariaux. Les familles ne paient rien : elles cherchent cette application une seule fois, au pire moment, et la publicité les touche mal. Les notaires, eux, les rencontrent tous les jours."
+      },
+      {
+        "q": "Faut-il créer un compte ?",
+        "a": "Non. Le dossier est enregistré sur l'appareil et l'application fonctionne hors ligne. Le compte ne sert qu'au partage entre héritiers et avec l'étude."
+      },
+      {
+        "q": "Comment la famille partage-t-elle le dossier ?",
+        "a": "Avec un code à huit caractères, valable sept jours et utilisable une fois. Un dossier n'est lisible que par ses membres, et les fichiers des pièces restent sur l'appareil qui les a ajoutés : seuls leur nom et leur statut circulent."
+      },
+      {
+        "q": "Que se passe-t-il si deux héritiers modifient en même temps ?",
+        "a": "Chaque appareil note ses actions. Si quelqu'un a modifié le dossier entre-temps, elles sont rejouées sur sa version avec la même fonction métier, donc rien n'est perdu."
+      },
+      {
+        "q": "Les montants affichés font-ils foi ?",
+        "a": "Non. Le simulateur donne une estimation pour comprendre avant le rendez-vous. Le notaire établit le calcul définitif en tenant compte du testament, des donations et du régime matrimonial."
+      },
+      {
+        "q": "L'application est-elle disponible ?",
+        "a": "Pas encore. Sillage est un concept en préparation, complet sur le web, le Mac et l'iPhone ; le site vitrine présente le produit visé et invite les offices à participer au lancement."
+      }
+    ],
+    "deepdive": {
+      "index": "Sillage sur ordinateur",
+      "title": "Le même dossier,",
+      "titleEm": "en grand.",
+      "text": "Les héritiers qui préfèrent l'ordinateur retrouvent exactement le dossier du téléphone. L'app web s'installe comme une application, et l'app Mac embarque ce même build dans une fenêtre à barre de titre native.",
+      "layout": "web",
+      "stage": {
+        "image": "/cases/sillage-site-hero.jpg",
+        "alt": "Site vitrine de Sillage : après un décès, chaque démarche trouve sa place",
+        "url": "sillage · site vitrine"
+      },
+      "cards": [
+        {
+          "tag": "01 / CETTE SEMAINE",
+          "title": "Le reste peut attendre.",
+          "text": "L'accueil tient en trois blocs : l'avancée du parcours, ce qui est en retard, et les quelques démarches à faire maintenant. Le reste du dossier attend dans les autres onglets.",
+          "image": "/cases/sillage-app-aujourdhui.jpg",
+          "alt": "Écran d'accueil de Sillage sur ordinateur",
+          "url": "Sillage · aujourd'hui"
+        },
+        {
+          "tag": "02 / DANS LE TEMPS",
+          "title": "La première semaine, le premier mois.",
+          "text": "Les démarches ne sont pas une liste à plat : elles sont rangées par échéance, avec le responsable et le retard éventuel. Chaque ligne s'exporte dans un agenda.",
+          "image": "/cases/sillage-app-demarches.jpg",
+          "alt": "Liste des démarches de Sillage sur ordinateur",
+          "url": "Sillage · démarches"
+        },
+        {
+          "tag": "03 / SANS RÉDIGER",
+          "title": "Les lettres sont déjà écrites.",
+          "text": "Chaque organisme a son courrier, son statut d'envoi et sa relance. La famille n'a pas à chercher la bonne formule ni la bonne adresse.",
+          "image": "/cases/sillage-app-courriers.jpg",
+          "alt": "Courriers prêts à envoyer dans Sillage",
+          "url": "Sillage · courriers"
+        },
+        {
+          "tag": "04 / ESTIMER",
+          "title": "Comprendre avant le rendez-vous.",
+          "text": "Part du conjoint, part de chaque enfant, réserve et quotité disponible, droits estimés : le simulateur montre le calcul, et rappelle que le notaire l'établira définitivement.",
+          "image": "/cases/sillage-app-simulateur.jpg",
+          "alt": "Simulateur de succession de Sillage",
+          "url": "Sillage · qui hérite"
+        },
+        {
+          "tag": "05 / RASSEMBLER",
+          "title": "L'inventaire, bien par bien.",
+          "text": "Biens, comptes, dettes et assurances vie se saisissent une fois et alimentent le simulateur comme le dossier transmis à l'étude.",
+          "image": "/cases/sillage-app-patrimoine.jpg",
+          "alt": "Inventaire du patrimoine dans Sillage",
+          "url": "Sillage · patrimoine"
+        },
+        {
+          "tag": "06 / SUIVRE",
+          "title": "Où en est le dossier chez le notaire.",
+          "text": "Notoriété, déclaration, partage : la famille voit l'étape en cours, ce que l'étude attend d'elle et peut lui écrire sans quitter l'application.",
+          "image": "/cases/sillage-app-notaire.jpg",
+          "alt": "Suivi du dossier chez le notaire dans Sillage",
+          "url": "Sillage · chez le notaire"
+        }
+      ],
+      "note": {
+        "title": "Lisible pour quelqu'un de fatigué.",
+        "text": "Texte à 17 px minimum en Atkinson Hyperlegible Next, dessinée pour la basse vision, et des titres en Newsreader pour que la marque parle comme une lettre bien écrite. Zones tactiles de 48 px, aucun mouvement en boucle, contraste AAA sur le texte courant. Aucun code funéraire : pas de noir, pas de parchemin, une eau profonde et un seul point chaud."
+      }
+    }
+  },
+  {
     "slug": "paraphe",
     "portfolioId": "paraphe",
     "name": "Paraphe",
-    "num": "01",
+    "num": "02",
     "kind": "Notariat & conformité",
     "status": "Démonstration",
     "accent": "paraphe",
@@ -224,7 +421,7 @@ export const caseStudies: CaseStudy[] = [
     "slug": "planete-creche",
     "portfolioId": "planete-creche",
     "name": "Planète Crèche",
-    "num": "02",
+    "num": "03",
     "kind": "Petite enfance",
     "status": "Disponible",
     "accent": "creche",
@@ -391,7 +588,7 @@ export const caseStudies: CaseStudy[] = [
     "slug": "watchlist",
     "portfolioId": "watchlist",
     "name": "Watchlist",
-    "num": "03",
+    "num": "04",
     "kind": "Cinéma & culture",
     "status": "Disponible",
     "accent": "watchlist",
@@ -562,7 +759,7 @@ export const caseStudies: CaseStudy[] = [
     "slug": "elan",
     "portfolioId": "elan",
     "name": "Élan",
-    "num": "04",
+    "num": "05",
     "kind": "Sport & nutrition",
     "status": "App personnelle",
     "accent": "elan",
@@ -688,7 +885,7 @@ export const caseStudies: CaseStudy[] = [
     "slug": "nova",
     "portfolioId": "nova",
     "name": "Nova",
-    "num": "05",
+    "num": "06",
     "kind": "Agents IA & pilotage",
     "status": "Web disponible",
     "accent": "nova",
@@ -833,7 +1030,7 @@ export const caseStudies: CaseStudy[] = [
     "slug": "qualiecho",
     "portfolioId": "qualiecho",
     "name": "QualiÉcho",
-    "num": "06",
+    "num": "07",
     "kind": "Écoute & qualité",
     "status": "Démo interactive",
     "accent": "qualiecho",
@@ -1008,7 +1205,7 @@ export const caseStudies: CaseStudy[] = [
     "slug": "immo-compta",
     "portfolioId": "planete-immo",
     "name": "Planète Immo",
-    "num": "07",
+    "num": "08",
     "kind": "Immobilier & patrimoine",
     "status": "Web disponible",
     "accent": "immo",
@@ -1140,7 +1337,7 @@ export const caseStudies: CaseStudy[] = [
   {
     "slug": "nidtempo",
     "name": "NidTempo",
-    "num": "08",
+    "num": "09",
     "kind": "Présences en micro-crèche",
     "status": "Concept en développement",
     "accent": "nidtempo",

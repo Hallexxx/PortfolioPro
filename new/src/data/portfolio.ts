@@ -14,6 +14,14 @@ export type PortfolioProject = {
 
 export const portfolioProjects: PortfolioProject[] = [
   {
+    id: 'sillage', name: 'Sillage', field: 'Succession · Web, Mac & mobile',
+    description: "Le parcours succession des familles, proposé par les offices notariaux : démarches, délais, courriers, pièces et partage entre héritiers.",
+    contribution: "Conception produit et charte de marque, règles métier partagées (démarches, délais légaux, courriers, simulateur de succession), synchronisation du dossier entre héritiers, puis développement du site et des trois applications.",
+    details: ['Démarches datées et réparties', 'Courriers prêts à envoyer', 'Simulateur de dévolution'],
+    stack: ['React', 'Expo', 'Electron', 'Hono', 'Postgres'],
+    image: '/cases/sillage-app-aujourdhui.jpg', mobile: '/cases/sillage-mobile-aujourdhui.jpg', accent: 'sillage',
+  },
+  {
     id: 'paraphe', name: 'Paraphe', field: 'Notariat · Web, Mac & iPhone',
     description: "Le copilote du clerc de notaire : il lit les pièces d'un dossier, les croise et montre ce qui ne colle pas avant la signature.",
     contribution: "Conception produit et design system, module métier partagé (contrôles, délais légaux, simulateurs), puis développement des trois interfaces depuis un seul dépôt.",
